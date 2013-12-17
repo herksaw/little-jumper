@@ -3,7 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Game Event</name>
     <events>
-        <variable constant="0" name="GrassWideFrequency" sid="8148543060379368" static="0" type="number">50</variable>
+        <variable constant="0" name="CloudTimer" sid="2602885991533445" static="0" type="number">0</variable>
+        <variable constant="0" name="GrassWideFrequency" sid="8148543060379368" static="0" type="number">30</variable>
         <variable constant="0" name="GrassWideVariation" sid="5473949630683315" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="9853607774072398" static="0" type="number">0</variable>
         <variable constant="1" name="GRASS_WIDE" sid="4506296822903806" static="0" type="number">1</variable>
@@ -57,7 +58,7 @@
             </conditions>
             <actions>
                 <action id="-7" name="Scroll to position" sid="1473057355335472" type="System">
-                    <param id="0" name="X">270</param>
+                    <param id="0" name="X">LayoutWidth / 2</param>
                     <param id="1" name="Y">MinScroll</param>
                 </action>
                 <action id="-10" name="Add to" sid="8446987408440973" type="System">
@@ -66,6 +67,10 @@
                 </action>
                 <action id="-11" name="Add to" sid="2030731794140527" type="Fly">
                     <param id="0" name="Instance variable">timer</param>
+                    <param id="1" name="Value">dt</param>
+                </action>
+                <action id="-10" name="Add to" sid="709262535880718" type="System">
+                    <param id="0" name="Variable">CloudTimer</param>
                     <param id="1" name="Value">dt</param>
                 </action>
                 <action id="-2" name="Set Y" sid="6971834082303431" type="TiledBackground">
@@ -170,6 +175,42 @@
                 <action id="-9" name="Destroy" sid="2702788178652886" type="GrassHalf" />
             </actions>
         </event-block>
+        <event-block sid="5871431895770664">
+            <conditions>
+                <condition id="-3" inverted="1" name="Is on-screen" sid="5974061375275552" type="GrassWide" />
+                <condition id="-2" name="Compare Y" sid="677421881768677" type="GrassWide">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="9237573185152534" type="GrassWide" />
+            </actions>
+        </event-block>
+        <event-block sid="3929191629464387">
+            <conditions>
+                <condition id="-3" inverted="1" name="Is on-screen" sid="533566956016788" type="Coin" />
+                <condition id="-2" name="Compare Y" sid="9285074757140025" type="Coin">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1683842764737058" type="Coin" />
+            </actions>
+        </event-block>
+        <event-block sid="6229852048607072">
+            <conditions>
+                <condition id="-3" inverted="1" name="Is on-screen" sid="9863900214837185" type="Fly" />
+                <condition id="-2" name="Compare Y" sid="5248748920856594" type="Fly">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="4632977893820812" type="Fly" />
+            </actions>
+        </event-block>
         <comment>Destroy any platforms that go off the bottom of the screen so they don&apos;t keep using up memory and CPU and cause the game to slow down.</comment>
         <comment>If the player falls off the bottom of the screen, restart the layout.</comment>
         <event-block sid="4149360091038138">
@@ -212,16 +253,49 @@
             </actions>
         </event-block>
         <comment>Allow the player to wrap around to the left and right.</comment>
-        <event-block sid="7033346177039899">
+        <event-block sid="2909142555340545">
             <conditions>
-                <condition id="1" name="Is overlapping another object" sid="4316380568947963" type="GrassHalf">
+                <condition id="1" name="Is overlapping another object" sid="2071086230169494" type="GrassHalf">
                     <param id="0" name="Object">GrassHalf</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-1" name="Set X" sid="1299017028388821" type="GrassHalf">
-                    <param id="0" name="X">random(35, LayoutWidth - 35)</param>
+                <action id="-1" name="Set X" sid="5041617935231297" type="GrassHalf">
+                    <param id="0" name="X">random(GrassHalf.Width / 2, (LayoutWidth - GrassHalf.Width) / 2)</param>
                 </action>
+            </actions>
+        </event-block>
+        <event-block sid="4163261713179776">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="384304415546371" type="GrassHalf">
+                    <param id="0" name="Object">GrassWide</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-1" name="Set X" sid="7195445249905995" type="GrassHalf">
+                    <param id="0" name="X">random(GrassHalf.Width / 2, (LayoutWidth - GrassHalf.Width) / 2)</param>
+                </action>
+                <action id="-9" name="Destroy" sid="118873970700006" type="GrassHalf" />
+            </actions>
+        </event-block>
+        <event-block sid="2757001584333395">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="3713709562520045" type="Coin">
+                    <param id="0" name="Object">GrassHalf</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="2006895011707673" type="Coin" />
+            </actions>
+        </event-block>
+        <event-block sid="5624419437576073">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="1942168279725688" type="Coin">
+                    <param id="0" name="Object">GrassWide</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="1704958914456435" type="Coin" />
             </actions>
         </event-block>
         <event-block sid="5212748262229865">
@@ -303,11 +377,28 @@
             <actions>
                 <action id="-9" name="Set value" sid="5169770886651983" type="System">
                     <param id="0" name="Variable">GrassWideVariation</param>
-                    <param id="1" name="Value">floor(random(1, GrassWideFrequency))</param>
+                    <param id="1" name="Value">floor(random(GRASS_WIDE, GrassWideFrequency))</param>
                 </action>
             </actions>
             <sub-events>
-                <event-block sid="5983018421748907">
+                <event-block disabled="1" sid="6645455337800028">
+                    <conditions>
+                        <condition id="-10" name="For" sid="5182889505766588" type="System">
+                            <param id="0" name="Name">&quot;CoinLoop&quot;</param>
+                            <param id="1" name="Start index">1</param>
+                            <param id="2" name="End index">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="1127573663677917" type="System">
+                            <param id="0" name="Object to create">Coin</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">random(ViewportTop(&quot;Game&quot;) - (Coin.Width / 2), ViewportBottom(&quot;Game&quot;) - (Coin.Width / 2))</param>
+                            <param id="3" name="Y">random(ViewportTop(&quot;Game&quot;) - (Coin.Height / 2), ViewportBottom(&quot;Game&quot;) - (Coin.Height / 2))</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block collapsed="1" sid="5983018421748907">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="4919417336191752" type="System">
                             <param id="0" name="Variable">GrassWideVariation</param>
@@ -319,14 +410,15 @@
                         <action id="-3" name="Create object" sid="7632921942035856" type="System">
                             <param id="0" name="Object to create">GrassWide</param>
                             <param id="1" name="Layer">&quot;Game&quot;</param>
-                            <param id="2" name="X">random(105, LayoutWidth - 105)</param>
-                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
+                            <param id="2" name="X">random(GrassWide.Width / 2, LayoutWidth - (GrassWide.Width / 2))</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
                         </action>
+                        <action id="-25" name="Move to bottom" sid="3024182268663912" type="GrassWide" />
                         <action id="-3" name="Create object" sid="4074960399128054" type="System">
                             <param id="0" name="Object to create">Fly</param>
                             <param id="1" name="Layer">&quot;Game&quot;</param>
                             <param id="2" name="X">GrassWide.X</param>
-                            <param id="3" name="Y">GrassWide.Y - 70</param>
+                            <param id="3" name="Y">GrassWide.Y - GrassWide.Height</param>
                         </action>
                         <action id="-10" name="Set value" sid="8035155796810159" type="Fly">
                             <param id="0" name="Instance variable">direction</param>
@@ -379,11 +471,120 @@
                         <action id="-3" name="Create object" sid="7698470637025788" type="System">
                             <param id="0" name="Object to create">GrassHalf</param>
                             <param id="1" name="Layer">&quot;Game&quot;</param>
-                            <param id="2" name="X">random(35, LayoutWidth - 35)</param>
-                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
+                            <param id="2" name="X">random(GrassHalf.Width / 2, LayoutWidth - (GrassHalf.Width / 2))</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
                         </action>
                         <action id="-25" name="Move to bottom" sid="7646467399402365" type="GrassHalf" />
+                        <action id="-3" name="Create object" sid="8031630682442929" type="System">
+                            <param id="0" name="Object to create">Coin</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">GrassHalf.X</param>
+                            <param id="3" name="Y">GrassHalf.Y - GrassHalf.Height - (Coin.Height / 2)</param>
+                        </action>
                     </actions>
+                </event-block>
+                <event-block collapsed="1" sid="797253448159978">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3367991449537522" type="System">
+                            <param id="0" name="Variable">CloudTimer</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="900545334354543" type="System">
+                            <param id="0" name="Object to create">Cloud</param>
+                            <param id="1" name="Layer">&quot;Parallax&quot;</param>
+                            <param id="2" name="X">random(Cloud.Width, LayoutWidth - Cloud.Width)</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1284921525095532" type="Cloud">
+                            <param id="0" name="Instance variable">variation</param>
+                            <param id="1" name="Value">floor(random(0, 3))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4368273885569578" type="Cloud">
+                            <param id="0" name="Instance variable">direction</param>
+                            <param id="1" name="Value">floor(random(1, 3))</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7043751554269345" type="System">
+                            <param id="0" name="Variable">CloudTimer</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="5556637347403603">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="4413045604893877" type="Cloud">
+                                    <param id="0" name="Instance variable">variation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="4275864742654511" type="Cloud">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6568802159599474">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5225910019238312" type="Cloud">
+                                    <param id="0" name="Instance variable">variation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="6484467189569452" type="Cloud">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6428334074356319">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="7628845845683634" type="Cloud">
+                                    <param id="0" name="Instance variable">variation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9004910387035007" type="Cloud">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8153161358927176">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="961901175321572" type="Cloud">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">LEFT_DIRECTION</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4712952665923877" type="Cloud">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">-10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6641409218052279">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="7507411392042099" type="Cloud">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">RIGHT_DIRECTION</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="7565562070825754" type="Cloud">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-block>
