@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
     <name>Little Jumper</name>
-    <description>An infinite jumping game.</description>
-    <version>1.0.1</version>
+    <description>An infinite jumping game in 2D.</description>
+    <version>1.0.2</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -101,7 +101,7 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="597443212653047" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -114,15 +114,16 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5484093060383687" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
                 </animation>
             </animation-folder>
         </object-type>
         <object-type name="Fly" sid="245691744947481">
             <plugin id="Sprite" />
             <instance-variables>
-                <instance-variable name="timer" sid="8740203054156888" type="number" />
                 <instance-variable name="direction" sid="499513822098656" type="number" />
+                <instance-variable name="tileX" sid="1298117679046284" type="number" />
+                <instance-variable name="tileY" sid="6976233667387945" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="CustomMovement" sid="5304460820069777">
@@ -183,9 +184,9 @@
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8849737043783508" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.507042" />
-                    <frame duration="1" hotspotX="0.503876" hotspotY="0.507042" />
-                    <frame duration="1" hotspotX="0.503876" hotspotY="0.507042" />
+                    <frame duration="0" hotspotX="0.5" hotspotY="0.507042" />
+                    <frame duration="0" hotspotX="0.503876" hotspotY="0.507042" />
+                    <frame duration="0" hotspotX="0.503876" hotspotY="0.507042" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -200,7 +201,7 @@
         <object-type name="Health" sid="6900089848291723">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4285117170310967" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4285117170310967" speed="0">
                     <frame duration="1" hotspotX="0.509434" hotspotY="0.511111" />
                 </animation>
             </animation-folder>
@@ -208,7 +209,7 @@
         <object-type name="HUDBeta" sid="2474708861249101">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9051462689414922" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9051462689414922" speed="0">
                     <frame duration="1" hotspotX="0.510638" hotspotY="0.510638">
                         <collision-poly>
                             <point x="0.148936" y="0.148936" />
@@ -230,7 +231,7 @@
         <object-type name="HUDCoin" sid="1891431927085911">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6527126108989259" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6527126108989259" speed="0">
                     <frame duration="1" hotspotX="0.510638" hotspotY="0.510638">
                         <collision-poly>
                             <point x="0.148936" y="0.148936" />
@@ -245,6 +246,51 @@
                     </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Bridge" sid="2837328472503148">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="timer" sid="2030602296605958" type="number" />
+                <instance-variable name="direction" sid="8292094545309027" type="number" />
+                <instance-variable name="speed" sid="5162995741189811" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="3467062841423234">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+                <behavior-type name="CustomMovement" sid="1481898913127321">
+                    <behavior id="custom" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9206233755743863" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="-0.636364" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BridgeLogs" sid="6052786879800519">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="timer" sid="6361084805400447" type="number" />
+                <instance-variable name="direction" sid="3505097398552985" type="number" />
+                <instance-variable name="speed" sid="3414978102279338" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="8671922720872391">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+                <behavior-type name="CustomMovement" sid="7584141151062474">
+                    <behavior id="custom" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9518576482643078" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="-0.333333" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="DebugBox" sid="449839191740686">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families>
