@@ -4,7 +4,7 @@
     <name>Game Event</name>
     <events>
         <variable constant="0" name="CloudTimer" sid="2602885991533445" static="0" type="number">0</variable>
-        <variable constant="0" name="GrassWideFrequency" sid="8148543060379368" static="0" type="number">30</variable>
+        <variable constant="0" name="GrassWideFrequency" sid="8148543060379368" static="0" type="number">3</variable>
         <variable constant="0" name="GrassWideVariation" sid="5473949630683315" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="9853607774072398" static="0" type="number">0</variable>
         <variable constant="1" name="GRASS_WIDE" sid="4506296822903806" static="0" type="number">1</variable>
@@ -15,9 +15,23 @@
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
         <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
+        <event-block sid="9183279066982204">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="3075470781218971" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="3034819531976152" type="CoinNumberBox">
+                    <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="3" name="Set font size" sid="1708181925278736" type="CoinNumberBox">
+                    <param id="0" name="Size (pt)">25</param>
+                </action>
+            </actions>
+        </event-block>
         <event-block sid="4058837736674107">
             <conditions>
-                <condition id="-2" name="Compare Y" sid="3187000737313048" type="Beta">
+                <condition id="-2" name="Compare Y" sid="3187000737313048" type="Player">
                     <param id="0" name="Comparison">2</param>
                     <param id="1" name="Y co-ordinate">MinScroll</param>
                 </condition>
@@ -25,7 +39,7 @@
             <actions>
                 <action id="-9" name="Set value" sid="4335274104061187" type="System">
                     <param id="0" name="Variable">MinScroll</param>
-                    <param id="1" name="Value">Beta.Y</param>
+                    <param id="1" name="Value">Player.Y</param>
                 </action>
             </actions>
             <sub-events>
@@ -76,19 +90,22 @@
                 <action id="-2" name="Set Y" sid="6971834082303431" type="TiledBackground">
                     <param id="0" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
                 </action>
+                <action id="0" name="Set text" sid="1101862838342857" type="CoinNumberBox">
+                    <param id="0" name="Text">Player.totalCoin</param>
+                </action>
             </actions>
         </event-block>
         <comment>As soon as the player lands, jump immediately.</comment>
         <comment>Use left and right arrow keys to control the player.  (This is necessary because the &apos;Default controls&apos; property has been set to &apos;No&apos; on the platform behavior, so we can automate jumping.)</comment>
         <event-block sid="4581304348058059">
             <conditions>
-                <condition behavior="Platform" id="2" name="Is on floor" sid="8088519924956645" type="Beta" />
+                <condition behavior="Platform" id="2" name="Is on floor" sid="8088519924956645" type="Player" />
             </conditions>
             <actions>
-                <action behavior="Platform" id="7" name="Simulate control" sid="1372705589710239" type="Beta">
+                <action behavior="Platform" id="7" name="Simulate control" sid="1372705589710239" type="Player">
                     <param id="0" name="Control">2</param>
                 </action>
-                <action id="4" name="Set animation" sid="9395678913874671" type="Beta">
+                <action id="4" name="Set animation" sid="9395678913874671" type="Player">
                     <param id="0" name="Animation">&quot;Front&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
@@ -101,10 +118,10 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="Platform" id="7" name="Simulate control" sid="1004274731022885" type="Beta">
+                <action behavior="Platform" id="7" name="Simulate control" sid="1004274731022885" type="Player">
                     <param id="0" name="Control">0</param>
                 </action>
-                <action id="4" name="Set animation" sid="9395144783254139" type="Beta">
+                <action id="4" name="Set animation" sid="9395144783254139" type="Player">
                     <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
@@ -117,10 +134,10 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="Platform" id="7" name="Simulate control" sid="3991388518972319" type="Beta">
+                <action behavior="Platform" id="7" name="Simulate control" sid="3991388518972319" type="Player">
                     <param id="0" name="Control">1</param>
                 </action>
-                <action id="4" name="Set animation" sid="2719447311617795" type="Beta">
+                <action id="4" name="Set animation" sid="2719447311617795" type="Player">
                     <param id="0" name="Animation">&quot;JumpRight&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
@@ -136,10 +153,10 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="Platform" id="7" name="Simulate control" sid="4365897524536795" type="Beta">
+                <action behavior="Platform" id="7" name="Simulate control" sid="4365897524536795" type="Player">
                     <param id="0" name="Control">0</param>
                 </action>
-                <action id="4" name="Set animation" sid="3702162753036679" type="Beta">
+                <action id="4" name="Set animation" sid="3702162753036679" type="Player">
                     <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
@@ -154,10 +171,10 @@
                 </condition>
             </conditions>
             <actions>
-                <action behavior="Platform" id="7" name="Simulate control" sid="1763649803891046" type="Beta">
+                <action behavior="Platform" id="7" name="Simulate control" sid="1763649803891046" type="Player">
                     <param id="0" name="Control">1</param>
                 </action>
-                <action id="4" name="Set animation" sid="2330043746564646" type="Beta">
+                <action id="4" name="Set animation" sid="2330043746564646" type="Player">
                     <param id="0" name="Animation">&quot;JumpRight&quot;</param>
                     <param id="1" name="From">1</param>
                 </action>
@@ -215,8 +232,8 @@
         <comment>If the player falls off the bottom of the screen, restart the layout.</comment>
         <event-block sid="4149360091038138">
             <conditions>
-                <condition id="-3" inverted="1" name="Is on-screen" sid="8789824598731238" type="Beta" />
-                <condition id="-2" name="Compare Y" sid="5069024211004187" type="Beta">
+                <condition id="-3" inverted="1" name="Is on-screen" sid="8789824598731238" type="Player" />
+                <condition id="-2" name="Compare Y" sid="5069024211004187" type="Player">
                     <param id="0" name="Comparison">4</param>
                     <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
                 </condition>
@@ -228,27 +245,41 @@
         </event-block>
         <event-block sid="6316081974247797">
             <conditions>
-                <condition id="-1" name="Compare X" sid="7482881357424283" type="Beta">
+                <condition id="-1" name="Compare X" sid="7482881357424283" type="Player">
                     <param id="0" name="Comparison">2</param>
                     <param id="1" name="X co-ordinate">-10</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-1" name="Set X" sid="8633821615115085" type="Beta">
+                <action id="-1" name="Set X" sid="8633821615115085" type="Player">
                     <param id="0" name="X">LayoutWidth + 9</param>
                 </action>
             </actions>
         </event-block>
         <event-block sid="3331551947777185">
             <conditions>
-                <condition id="-1" name="Compare X" sid="1743025575082695" type="Beta">
+                <condition id="-1" name="Compare X" sid="1743025575082695" type="Player">
                     <param id="0" name="Comparison">4</param>
                     <param id="1" name="X co-ordinate">LayoutWidth + 10</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-1" name="Set X" sid="7284920440179264" type="Beta">
+                <action id="-1" name="Set X" sid="7284920440179264" type="Player">
                     <param id="0" name="X">-9</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6797931657461624">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="9711130614080923" type="Player">
+                    <param id="0" name="Object">Coin</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="7487099138142309" type="Coin" />
+                <action id="-11" name="Add to" sid="4419604149518349" type="Player">
+                    <param id="0" name="Instance variable">totalCoin</param>
+                    <param id="1" name="Value">1</param>
                 </action>
             </actions>
         </event-block>
@@ -272,9 +303,6 @@
                 </condition>
             </conditions>
             <actions>
-                <action disabled="1" id="-1" name="Set X" sid="7195445249905995" type="GrassHalf">
-                    <param id="0" name="X">random(GrassHalf.Width / 2, (LayoutWidth - GrassHalf.Width) / 2)</param>
-                </action>
                 <action id="-9" name="Destroy" sid="118873970700006" type="GrassHalf" />
             </actions>
         </event-block>
@@ -297,6 +325,69 @@
             <actions>
                 <action id="-9" name="Destroy" sid="1704958914456435" type="Coin" />
             </actions>
+        </event-block>
+        <event-block sid="7865693160766816">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="6278899304591088" type="Player">
+                    <param id="0" name="Object">Enemy</param>
+                </condition>
+                <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="2743532890711815" type="Player" />
+            </conditions>
+            <actions>
+                <action behavior="Flash" id="0" name="Flash" sid="8673001194392077" type="Player">
+                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                    <param id="2" name="Duration">1.0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="9058233402068578">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="5073921388790157" type="Player">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">Fly.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="9942596423944381" type="Player">
+                            <param id="0" name="Animation">&quot;HurtRight&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="1855148793114214" type="Player">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6125445776589269">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="7767033948782791" type="Player">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="X co-ordinate">Fly.X</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="7850577221782591" type="Player">
+                            <param id="0" name="Animation">&quot;HurtLeft&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="7833348590173776" type="Player">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="795127634830204">
+                    <conditions>
+                        <condition id="-15" name="Pick nearest/furthest" sid="4123283255354615" type="Health">
+                            <param id="0" name="Which">1</param>
+                            <param id="1" name="X">0</param>
+                            <param id="2" name="Y">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6424632999505986" type="Health" />
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="5212748262229865">
             <conditions>
