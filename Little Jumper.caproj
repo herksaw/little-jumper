@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -12,6 +12,7 @@
     <used-plugins>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -124,6 +125,7 @@
                 <instance-variable name="direction" sid="499513822098656" type="number" />
                 <instance-variable name="tileX" sid="1298117679046284" type="number" />
                 <instance-variable name="tileY" sid="6976233667387945" type="number" />
+                <instance-variable name="life" sid="2828849979697617" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="CustomMovement" sid="5304460820069777">
@@ -320,6 +322,58 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="StarParticles" sid="5131972513201743">
+            <plugin id="Particles" />
+            <texture />
+        </object-type>
+        <object-type name="LockBlue" sid="2804453638618515">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="994114600357579" speed="0">
+                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LockGreen" sid="2704488274660343">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6218323766433828" speed="0">
+                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LockRed" sid="806221333722184">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8166528917894367" speed="0">
+                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LockYellow" sid="5498752322805384">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1820752604957717" speed="0">
+                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Star" sid="8668282118682967">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="CustomMovement" sid="7022437113203843">
+                    <behavior id="custom" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="4" loop="1" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6616739051463402" speed="4">
+                    <frame duration="2" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -330,6 +384,8 @@
                 <instance-variable name="totalCoin" sid="6043421239395242" type="number" />
                 <instance-variable name="life" sid="301502082705608" type="number" />
                 <instance-variable name="name" sid="3680970676380199" type="number" />
+                <instance-variable name="isStar" sid="3123948734772794" type="number" />
+                <instance-variable name="starTimer" sid="9444714846788053" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="7997466528632153">
@@ -344,6 +400,19 @@
             <members>
                 <member>Fly</member>
             </members>
+        </family>
+        <family name="Lock" plugin-id="Sprite" sid="2280487292734918">
+            <members>
+                <member>LockBlue</member>
+                <member>LockGreen</member>
+                <member>LockRed</member>
+                <member>LockYellow</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="3909585732219602">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
         </family>
     </families>
     <layout-folder expanded="1">
