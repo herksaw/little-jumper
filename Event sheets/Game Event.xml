@@ -3,6 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Game Event</name>
     <events>
+        <variable constant="0" name="EnemiesFrequency" sid="409151676941108" static="0" type="number">2</variable>
+        <variable constant="0" name="EnemiesVariation" sid="8818763468791296" static="0" type="number">0</variable>
         <variable constant="0" name="CoinFrequency" sid="9851590177290782" static="0" type="number">1</variable>
         <variable constant="0" name="CoinVariation" sid="4740122202064194" static="0" type="number">0</variable>
         <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">20</variable>
@@ -19,6 +21,8 @@
         <variable constant="0" name="GrassWideVariation" sid="5473949630683315" static="0" type="number">0</variable>
         <variable constant="0" name="GrassHalfFrequency" sid="3866764329498598" static="0" type="number">1</variable>
         <variable constant="0" name="GrassHalfVariation" sid="4537961053544164" static="0" type="number">0</variable>
+        <variable constant="1" name="SLIME" sid="6066955832816319" static="0" type="number">1</variable>
+        <variable constant="1" name="FLY" sid="2333232577699062" static="0" type="number">0</variable>
         <variable constant="1" name="COIN" sid="1966484749219432" static="0" type="number">0</variable>
         <variable constant="1" name="STAR" sid="6871752941710067" static="0" type="number">0</variable>
         <variable constant="1" name="GRASS_CLIFF_RIGHT" sid="6463931221102185" static="0" type="number">0</variable>
@@ -33,11 +37,13 @@
         <variable constant="1" name="LEFT_DIRECTION" sid="7684093787814345" static="0" type="number">1</variable>
         <variable constant="0" name="CloudTimer" sid="2602885991533445" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="9853607774072398" static="0" type="number">0</variable>
+        <variable constant="0" name="BlueKey" sid="5975893634296502" static="0" type="number">0</variable>
+        <variable constant="0" name="RedKey" sid="4670251531635483" static="0" type="number">0</variable>
         <comment>This variable holds the current scroll position, which gets smaller as the player moves upwards.</comment>
         <variable comment="The current scroll Y position" constant="0" name="MinScroll" sid="1158545394144303" static="0" type="number">999</variable>
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
-        <event-group description="" sid="5194284430658767" title="System">
+        <event-group collapsed="1" description="" sid="5194284430658767" title="System">
             <sub-events>
                 <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
                 <event-block sid="4278721947506207">
@@ -56,15 +62,7 @@
                             <param id="0" name="Where">1</param>
                             <param id="1" name="Object">Player</param>
                         </action>
-                        <action id="-29" name="Move to object" sid="7869032563530651" type="LockGreen">
-                            <param id="0" name="Where">1</param>
-                            <param id="1" name="Object">Player</param>
-                        </action>
                         <action id="-29" name="Move to object" sid="4626439008819749" type="LockRed">
-                            <param id="0" name="Where">1</param>
-                            <param id="1" name="Object">Player</param>
-                        </action>
-                        <action id="-29" name="Move to object" sid="7570679610441268" type="LockYellow">
                             <param id="0" name="Where">1</param>
                             <param id="1" name="Object">Player</param>
                         </action>
@@ -347,14 +345,14 @@
                 </event-block>
                 <event-block sid="5430733907941179">
                     <conditions>
-                        <condition id="-3" inverted="1" name="Is on-screen" sid="3652199816640512" type="Fly" />
-                        <condition id="-2" name="Compare Y" sid="1763121390730448" type="Fly">
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="3652199816640512" type="Enemy" />
+                        <condition id="-2" name="Compare Y" sid="1763121390730448" type="Enemy">
                             <param id="0" name="Comparison">0</param>
                             <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-9" name="Destroy" sid="8364679538491661" type="Fly" />
+                        <action id="-9" name="Destroy" sid="8364679538491661" type="Enemy" />
                     </actions>
                 </event-block>
                 <comment>Destroy any platforms that go off the bottom of the screen so they don&apos;t keep using up memory and CPU and cause the game to slow down.</comment>
@@ -625,13 +623,17 @@
                             <param id="1" name="&apos;Off&apos; time">0.1</param>
                             <param id="2" name="Duration">1.0</param>
                         </action>
+                        <action id="-12" name="Subtract from" sid="7665300589987537" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="9676508463512518">
                             <conditions>
                                 <condition id="-1" name="Compare X" sid="6748755434255548" type="Player">
                                     <param id="0" name="Comparison">2</param>
-                                    <param id="1" name="X co-ordinate">Fly.X</param>
+                                    <param id="1" name="X co-ordinate">Enemy.X</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -648,7 +650,7 @@
                             <conditions>
                                 <condition id="-1" name="Compare X" sid="2953713419722282" type="Player">
                                     <param id="0" name="Comparison">4</param>
-                                    <param id="1" name="X co-ordinate">Fly.X</param>
+                                    <param id="1" name="X co-ordinate">Enemy.X</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -659,18 +661,6 @@
                                 <action behavior="Platform" id="7" name="Simulate control" sid="1744764025259" type="Player">
                                     <param id="0" name="Control">1</param>
                                 </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="6146620288048741">
-                            <conditions>
-                                <condition id="-15" name="Pick nearest/furthest" sid="6013437516563172" type="Health">
-                                    <param id="0" name="Which">1</param>
-                                    <param id="1" name="X">0</param>
-                                    <param id="2" name="Y">0</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-9" name="Destroy" sid="5411840877183559" type="Health" />
                             </actions>
                         </event-block>
                     </sub-events>
@@ -716,15 +706,72 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-12" name="Subtract from" sid="762782843635961" type="Fly">
+                                <action id="-12" name="Subtract from" sid="5182416722038808" type="Fly">
                                     <param id="0" name="Instance variable">life</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
-                                <action id="4" name="Set animation" sid="1215211776624156" type="Fly">
+                                <action id="4" name="Set animation" sid="9137310369852463" type="Fly">
                                     <param id="0" name="Animation">&quot;DiedRight&quot;</param>
                                     <param id="1" name="From">1</param>
                                 </action>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="3972911143809631" type="Fly">
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9232223877373079" type="Fly">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">200</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block collapsed="1" sid="2958022666480023">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="3582187178619533" type="Player">
+                            <param id="0" name="Object">Slime</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="1189178121925865" type="Player">
+                            <param id="0" name="Instance variable">isStar</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6222268252218864">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="2084638263195673" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="3764809604717276" type="Slime">
+                                    <param id="0" name="Instance variable">life</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="6686778307216664" type="Slime">
+                                    <param id="0" name="Animation">&quot;DiedLeft&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9606556271608462" type="Slime">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">200</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5587916227679719">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="8342786639704067" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="2512284774995867" type="Slime">
+                                    <param id="0" name="Instance variable">life</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="8101684818780151" type="Slime">
+                                    <param id="0" name="Animation">&quot;DiedRight&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="1631674832048835" type="Slime">
                                     <param id="0" name="Which">2</param>
                                     <param id="1" name="Speed">200</param>
                                 </action>
@@ -734,8 +781,215 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="3854492226766296" title="Logic">
+        <event-group collapsed="1" description="" sid="3854492226766296" title="Logic">
             <sub-events>
+                <event-block sid="1751662599900824">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="6116593095057817" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="3396079533217055" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block collapsed="1" sid="1090121749564453">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1915617776667057" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6417250785122211">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="5193817523236329" type="Health">
+                                    <param id="0" name="Unique ID">22</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="7052439646477345" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9334388340543154">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="1936669027153238" type="Health">
+                                    <param id="0" name="Unique ID">26</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="6860280061536307" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8288940559168456">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="6807766248837657" type="Health">
+                                    <param id="0" name="Unique ID">27</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="2420300576006252" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block collapsed="1" sid="6478580908236552">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4773175320306726" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="4741719097308168">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="5196659202909217" type="Health">
+                                    <param id="0" name="Unique ID">22</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="6475718397071698" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="783665108534944">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="7010575146106852" type="Health">
+                                    <param id="0" name="Unique ID">26</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9166175920185825" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="7229987917465903">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="1564403624305205" type="Health">
+                                    <param id="0" name="Unique ID">27</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9093003486797004" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block collapsed="1" sid="3284507238047814">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="5551582626512389" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="2335440223159895">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="6463337710597056" type="Health">
+                                    <param id="0" name="Unique ID">22</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="5305263366493781" type="Health">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4695430757019797">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="5630019721028943" type="Health">
+                                    <param id="0" name="Unique ID">26</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9110404646360362" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="541274386656347">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="305390360125819" type="Health">
+                                    <param id="0" name="Unique ID">27</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="5362105273395201" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block collapsed="1" sid="2459814288080798">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="1751026253036861" type="Player">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="4118970512788396">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="7006343779284598" type="Health">
+                                    <param id="0" name="Unique ID">22</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="6470006261988928" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1569096812565191">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="7805322367275426" type="Health">
+                                    <param id="0" name="Unique ID">26</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9104420978495078" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1499760276260271">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="2759802904134999" type="Health">
+                                    <param id="0" name="Unique ID">27</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="4628790267744565" type="Health">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
                 <event-block sid="7821819720586697">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="6937681575829172" type="Player">
@@ -790,7 +1044,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="9204982721248199">
+                <event-block collapsed="1" sid="9204982721248199">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="78225731255813" type="Fly">
                             <param id="0" name="Instance variable">life</param>
@@ -856,6 +1110,78 @@
                             <actions>
                                 <action id="4" name="Set animation" sid="1406058093978625" type="Fly">
                                     <param id="0" name="Animation">&quot;FlyLeft&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block collapsed="1" sid="9454944183743302">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8345788698355872" type="Slime">
+                            <param id="0" name="Instance variable">life</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="8076461040855342">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="2874101328677245" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="8385295303802783" type="Slime">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">-20</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9713873888645899">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="2541870018754999" type="Slime">
+                                    <param id="0" name="Comparison">3</param>
+                                    <param id="1" name="X co-ordinate">Self.tileX</param>
+                                </condition>
+                                <condition id="2" name="Is playing" sid="5665016794665244" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="4115850788713494" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5256821346909547">
+                            <conditions>
+                                <condition id="2" name="Is playing" sid="6018890983319405" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="804953065339206" type="Slime">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">20</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9904539865002587">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="7552147569467847" type="Slime">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="X co-ordinate">Self.tileX + GrassWide.Width</param>
+                                </condition>
+                                <condition id="2" name="Is playing" sid="5649274876923888" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="3833699243234208" type="Slime">
+                                    <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
                                     <param id="1" name="From">1</param>
                                 </action>
                             </actions>
@@ -928,9 +1254,65 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="6262226309885548">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="3544085554655957" type="System">
+                            <param id="0" name="Variable">BlueKey</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="5624575278608242" type="HUDKeyBlue">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8934785060094189">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="973394510266743" type="System">
+                            <param id="0" name="Variable">BlueKey</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="8600769238242093" type="HUDKeyBlue">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2080266894844864">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5102189092120527" type="System">
+                            <param id="0" name="Variable">RedKey</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="7335391257910464" type="HUDKeyRed">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9944546233103506">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5967933051971671" type="System">
+                            <param id="0" name="Variable">RedKey</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set frame" sid="4595495356888037" type="HUDKeyRed">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="4153992389788106">
+        <event-block collapsed="1" sid="4153992389788106">
             <conditions>
                 <condition id="0" name="On function" sid="1143780483638221" type="Function">
                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
@@ -963,7 +1345,7 @@
                 </action>
             </actions>
             <sub-events>
-                <event-block collapsed="1" sid="5983018421748907">
+                <event-block sid="5983018421748907">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="4919417336191752" type="System">
                             <param id="0" name="Variable">GrassWideVariation</param>
@@ -979,56 +1361,135 @@
                             <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
                         </action>
                         <action id="-25" name="Move to bottom" sid="3024182268663912" type="GrassWide" />
-                        <action id="-3" name="Create object" sid="4074960399128054" type="System">
-                            <param id="0" name="Object to create">Fly</param>
-                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                            <param id="2" name="X">GrassWide.X</param>
-                            <param id="3" name="Y">GrassWide.Y - (GrassWide.Height * 2)</param>
+                        <action id="-9" name="Set value" sid="4894193403346572" type="System">
+                            <param id="0" name="Variable">EnemiesVariation</param>
+                            <param id="1" name="Value">floor(random(0, EnemiesFrequency))</param>
                         </action>
-                        <action id="-10" name="Set value" sid="7643986691114389" type="Fly">
-                            <param id="0" name="Instance variable">tileX</param>
-                            <param id="1" name="Value">GrassWide.X - (GrassWide.Width / 2)</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="8842780885797561" type="Fly">
-                            <param id="0" name="Instance variable">tileY</param>
-                            <param id="1" name="Value">GrassWide.Y - (GrassWide.Height / 2)</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="8035155796810159" type="Fly">
-                            <param id="0" name="Instance variable">direction</param>
-                            <param id="1" name="Value">floor(random(1, 3))</param>
-                        </action>
-                        <action id="-24" name="Move to top" sid="6646540042898057" type="Fly" />
                     </actions>
                     <sub-events>
-                        <event-block sid="2914928472058247">
+                        <event-block sid="7212075954694536">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="19094457469783" type="Fly">
-                                    <param id="0" name="Instance variable">direction</param>
+                                <condition id="-14" name="Compare variable" sid="3856176674048406" type="System">
+                                    <param id="0" name="Variable">EnemiesVariation</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">LEFT_DIRECTION</param>
+                                    <param id="2" name="Value">FLY</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="4" name="Set animation" sid="592181909622492" type="Fly">
-                                    <param id="0" name="Animation">&quot;FlyLeft&quot;</param>
-                                    <param id="1" name="From">1</param>
+                                <action id="-3" name="Create object" sid="4074960399128054" type="System">
+                                    <param id="0" name="Object to create">Fly</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="X">GrassWide.X</param>
+                                    <param id="3" name="Y">GrassWide.Y - (GrassWide.Height * 2)</param>
                                 </action>
+                                <action id="-10" name="Set value" sid="7643986691114389" type="Fly">
+                                    <param id="0" name="Instance variable">tileX</param>
+                                    <param id="1" name="Value">GrassWide.X - (GrassWide.Width / 2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="8842780885797561" type="Fly">
+                                    <param id="0" name="Instance variable">tileY</param>
+                                    <param id="1" name="Value">GrassWide.Y - (GrassWide.Height / 2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="8035155796810159" type="Fly">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Value">floor(random(1, 3))</param>
+                                </action>
+                                <action id="-24" name="Move to top" sid="6646540042898057" type="Fly" />
                             </actions>
+                            <sub-events>
+                                <event-block sid="9670736119699785">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="9465792077270024" type="Fly">
+                                            <param id="0" name="Instance variable">direction</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">LEFT_DIRECTION</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="3756181425938527" type="Fly">
+                                            <param id="0" name="Animation">&quot;FlyLeft&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5901418251246564">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="8033918261406399" type="Fly">
+                                            <param id="0" name="Instance variable">direction</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">RIGHT_DIRECTION</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="943800918358959" type="Fly">
+                                            <param id="0" name="Animation">&quot;FlyRight&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
-                        <event-block sid="2929038269526744">
+                        <event-block sid="4469276694798269">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="3876153796765129" type="Fly">
-                                    <param id="0" name="Instance variable">direction</param>
+                                <condition id="-14" name="Compare variable" sid="3157080530320613" type="System">
+                                    <param id="0" name="Variable">EnemiesVariation</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">RIGHT_DIRECTION</param>
+                                    <param id="2" name="Value">SLIME</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="4" name="Set animation" sid="9426565592068004" type="Fly">
-                                    <param id="0" name="Animation">&quot;FlyRight&quot;</param>
-                                    <param id="1" name="From">1</param>
+                                <action id="-3" name="Create object" sid="9207485428646107" type="System">
+                                    <param id="0" name="Object to create">Slime</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="X">GrassWide.X</param>
+                                    <param id="3" name="Y">GrassWide.BBoxTop - (Slime.Height / 2)</param>
                                 </action>
+                                <action id="-10" name="Set value" sid="4621391129096886" type="Slime">
+                                    <param id="0" name="Instance variable">tileX</param>
+                                    <param id="1" name="Value">GrassWide.X - (GrassWide.Width / 2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="1965140355340209" type="Slime">
+                                    <param id="0" name="Instance variable">tileY</param>
+                                    <param id="1" name="Value">GrassWide.Y - (GrassWide.Height / 2)</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="1986285132114358" type="Slime">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Value">floor(random(1, 3))</param>
+                                </action>
+                                <action id="-24" name="Move to top" sid="1419934993197242" type="Slime" />
                             </actions>
+                            <sub-events>
+                                <event-block sid="6659836700387534">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="977447299321818" type="Slime">
+                                            <param id="0" name="Instance variable">direction</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">LEFT_DIRECTION</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="3715955525853833" type="Slime">
+                                            <param id="0" name="Animation">&quot;WalkLeft&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9263288829852589">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="7346628852882948" type="Slime">
+                                            <param id="0" name="Instance variable">direction</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">RIGHT_DIRECTION</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="5069885216745949" type="Slime">
+                                            <param id="0" name="Animation">&quot;WalkRight&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>

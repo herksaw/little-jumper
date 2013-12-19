@@ -57,10 +57,6 @@
         </object-type>
         <object-type name="Beta" sid="4966839681467301">
             <plugin id="Sprite" />
-            <instance-variables>
-                <instance-variable name="totalCoin2" sid="4765131078406948" type="number" />
-                <instance-variable name="life2" sid="8750966556669272" type="number" />
-            </instance-variables>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="6698642657343585" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -125,7 +121,7 @@
                 <instance-variable name="direction" sid="499513822098656" type="number" />
                 <instance-variable name="tileX" sid="1298117679046284" type="number" />
                 <instance-variable name="tileY" sid="6976233667387945" type="number" />
-                <instance-variable name="life" sid="2828849979697617" type="number" />
+                <instance-variable name="life2" sid="2828849979697617" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="CustomMovement" sid="5304460820069777">
@@ -203,7 +199,8 @@
         <object-type name="Health" sid="6900089848291723">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4285117170310967" speed="0">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4285117170310967" speed="0">
+                    <frame duration="1" hotspotX="0.509434" hotspotY="0.511111" />
                     <frame duration="1" hotspotX="0.509434" hotspotY="0.511111" />
                 </animation>
             </animation-folder>
@@ -334,26 +331,10 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="LockGreen" sid="2704488274660343">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6218323766433828" speed="0">
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="LockRed" sid="806221333722184">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8166528917894367" speed="0">
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="LockYellow" sid="5498752322805384">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1820752604957717" speed="0">
                     <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -373,6 +354,91 @@
                     <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="HUDKeyBlue" sid="2608284826776323">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4203593081532671" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="HUDKeyRed" sid="3903310342033657">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6478790919294942" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Slime" sid="4630343195032944">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="direction" sid="4653511676424454" type="number" />
+                <instance-variable name="tileX" sid="7775631530347747" type="number" />
+                <instance-variable name="tileY" sid="4495837621278539" type="number" />
+                <instance-variable name="life2" sid="8215886538593846" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="CustomMovement" sid="4465630555469718">
+                    <behavior id="custom" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="1" name="WalkLeft" pingpong="0" repeatcount="0" repeatto="0" sid="7247411511978811" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.509804" hotspotY="0.5" />
+                </animation>
+                <animation framecount="2" loop="1" name="WalkRight" pingpong="0" repeatcount="0" repeatto="0" sid="1462686548005217" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.490196" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="DiedLeft" pingpong="0" repeatcount="1" repeatto="0" sid="9066997226780615" speed="5">
+                    <frame duration="1" hotspotX="0.508475" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="DiedRight" pingpong="0" repeatcount="1" repeatto="0" sid="4195339277453481" speed="5">
+                    <frame duration="1" hotspotX="0.491525" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="HUDClose" sid="9673513335529961">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="2001959807630526" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Water" sid="5055397588986886">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="WaterTopMid" sid="9816959435500823">
+            <plugin id="TiledBg" />
+            <texture />
         </object-type>
     </object-folder>
     <families>
@@ -399,14 +465,16 @@
         <family name="Enemy" plugin-id="Sprite" sid="9253178698631335">
             <members>
                 <member>Fly</member>
+                <member>Slime</member>
             </members>
+            <instance-variables>
+                <instance-variable name="life" sid="7607645812433121" type="number" />
+            </instance-variables>
         </family>
         <family name="Lock" plugin-id="Sprite" sid="2280487292734918">
             <members>
                 <member>LockBlue</member>
-                <member>LockGreen</member>
                 <member>LockRed</member>
-                <member>LockYellow</member>
             </members>
             <behaviors>
                 <behavior-type name="Jumpthru" sid="3909585732219602">
