@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -92,11 +92,6 @@
         </object-type>
         <object-type name="GrassHalf" sid="166924682434403">
             <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="1285946565235192">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="597443212653047" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
@@ -105,11 +100,6 @@
         </object-type>
         <object-type name="GrassWide" sid="2386813476961921">
             <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="9550643748190947">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5484093060383687" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
@@ -294,11 +284,6 @@
         </object-type>
         <object-type name="GrassCliffLeft" sid="1857370509681049">
             <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="5343060947125971">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="5528885133818944" speed="0">
                     <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
@@ -308,11 +293,6 @@
         </object-type>
         <object-type name="GrassCliffRight" sid="7121009665190818">
             <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="2166139663047825">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="3409449002787177" speed="0">
                     <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
@@ -451,7 +431,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9519069470754752" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -459,15 +439,15 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8227760159411373" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209">
                         <collision-poly>
-                            <point x="0.00952381" y="0.0285714" />
-                            <point x="0.5" y="0" />
-                            <point x="0.990476" y="0.0285714" />
-                            <point x="0.995238" y="0.5" />
-                            <point x="0.857143" y="0.571429" />
-                            <point x="0.142857" y="0.571429" />
-                            <point x="0.0047619" y="0.5" />
+                            <point x="0.0141509" y="0.0697674" />
+                            <point x="0.5" y="0.0232558" />
+                            <point x="0.985849" y="0.0697674" />
+                            <point x="0.990566" y="0.837209" />
+                            <point x="0.853774" y="0.953489" />
+                            <point x="0.146226" y="0.953489" />
+                            <point x="0.00943396" y="0.837209" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -495,7 +475,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6040053180053134" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -503,7 +483,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9060970317252568" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -529,7 +509,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9000559284706321" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -537,7 +517,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1525967551320807" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -597,6 +577,58 @@
             </members>
             <behaviors>
                 <behavior-type name="Jumpthru" sid="3909585732219602">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="Half" plugin-id="Sprite" sid="3699077153204249">
+            <members>
+                <member>GrassHalf</member>
+                <member>SandHalf</member>
+                <member>SnowHalf</member>
+                <member>StoneHalf</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="8141183461409059">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="CliffLeft" plugin-id="Sprite" sid="2815242434553326">
+            <members>
+                <member>GrassCliffLeft</member>
+                <member>SandCliffLeft</member>
+                <member>SnowCliffLeft</member>
+                <member>StoneCliffLeft</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="2067166089945213">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="CliffRight" plugin-id="Sprite" sid="5131956562335839">
+            <members>
+                <member>GrassCliffRight</member>
+                <member>SandCliffRight</member>
+                <member>SnowCliffRight</member>
+                <member>StoneCliffRight</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="8107423901384524">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="Wide" plugin-id="Sprite" sid="8205261553805286">
+            <members>
+                <member>GrassWide</member>
+                <member>SandWide</member>
+                <member>SnowWide</member>
+                <member>StoneWide</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="9879078957113047">
                     <behavior id="jumpthru" />
                 </behavior-type>
             </behaviors>
