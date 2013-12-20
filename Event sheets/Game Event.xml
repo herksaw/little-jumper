@@ -58,6 +58,13 @@
                         <action id="3" name="Set font size" sid="5593496149946909" type="CoinNumberBox">
                             <param id="0" name="Size (pt)">25</param>
                         </action>
+                        <action id="5" name="Set web font" sid="4594969489868492" type="PlayerHeightBox">
+                            <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                        </action>
+                        <action id="3" name="Set font size" sid="9277742792199477" type="PlayerHeightBox">
+                            <param id="0" name="Size (pt)">25</param>
+                        </action>
                         <action id="-29" name="Move to object" sid="9723443026795157" type="LockBlue">
                             <param id="0" name="Where">1</param>
                             <param id="1" name="Object">Player</param>
@@ -137,7 +144,10 @@
                             <param id="0" name="Text">Player.totalCoin</param>
                         </action>
                         <action id="0" name="Set text" sid="6823784163895974" type="DebugBox">
-                            <param id="0" name="Text">floor(Player.X)</param>
+                            <param id="0" name="Text">floor(Player.Y)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="7966559457675479" type="PlayerHeightBox">
+                            <param id="0" name="Text">&quot;Height: &quot; &amp; -floor((Player.Y))</param>
                         </action>
                         <action id="-24" name="Move to top" sid="5803378280356695" type="Player" />
                     </actions>
@@ -235,6 +245,42 @@
         </event-group>
         <event-group collapsed="1" description="" sid="7914053857964889" title="Memory">
             <sub-events>
+                <event-block sid="426573163353817">
+                    <conditions>
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="5390088553169166" type="Lock" />
+                        <condition id="-2" name="Compare Y" sid="6884816339619526" type="Lock">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="2546386387217874" type="Lock" />
+                    </actions>
+                </event-block>
+                <event-block sid="5396469168570999">
+                    <conditions>
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="6544572311072115" type="WaterTopMid" />
+                        <condition id="-2" name="Compare Y" sid="1976170372865424" type="WaterTopMid">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="7695755266500662" type="WaterTopMid" />
+                    </actions>
+                </event-block>
+                <event-block sid="6582297293947034">
+                    <conditions>
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="9600593684876718" type="Water" />
+                        <condition id="-2" name="Compare Y" sid="28018241725009" type="Water">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="9571005266306472" type="Water" />
+                    </actions>
+                </event-block>
                 <event-block sid="2473790766914522">
                     <conditions>
                         <condition id="-3" inverted="1" name="Is on-screen" sid="2293091090765817" type="Cloud" />
@@ -347,7 +393,7 @@
                     <conditions>
                         <condition id="-3" inverted="1" name="Is on-screen" sid="3652199816640512" type="Enemy" />
                         <condition id="-2" name="Compare Y" sid="1763121390730448" type="Enemy">
-                            <param id="0" name="Comparison">0</param>
+                            <param id="0" name="Comparison">4</param>
                             <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
                         </condition>
                     </conditions>
@@ -372,7 +418,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="2613182393368741" title="Collision">
+        <event-group description="" sid="2613182393368741" title="Collision">
             <sub-events>
                 <event-block sid="9614317370821308">
                     <conditions>
@@ -781,7 +827,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="3854492226766296" title="Logic">
+        <event-group description="" sid="3854492226766296" title="Logic">
             <sub-events>
                 <event-block sid="1751662599900824">
                     <conditions>
@@ -1016,6 +1062,15 @@
                         <action id="0" name="Set spraying" sid="1981318519392686" type="StarParticles">
                             <param id="0" name="State">1</param>
                         </action>
+                        <action behavior="Platform" id="4" name="Set jump strength" sid="8295354888701055" type="Player">
+                            <param id="0" name="Jump strength">2000</param>
+                        </action>
+                        <action behavior="Platform" id="1" name="Set max speed" sid="9832872530835293" type="Player">
+                            <param id="0" name="Max Speed">1000</param>
+                        </action>
+                        <action behavior="Platform" id="2" name="Set acceleration" sid="2219480069235994" type="Player">
+                            <param id="0" name="Acceleration">4000</param>
+                        </action>
                         <action id="-11" name="Add to" sid="3909481123652819" type="Player">
                             <param id="0" name="Instance variable">starTimer</param>
                             <param id="1" name="Value">dt</param>
@@ -1041,6 +1096,15 @@
                         </action>
                         <action id="0" name="Set spraying" sid="740990683958761" type="StarParticles">
                             <param id="0" name="State">0</param>
+                        </action>
+                        <action behavior="Platform" id="4" name="Set jump strength" sid="8932987539261415" type="Player">
+                            <param id="0" name="Jump strength">1000</param>
+                        </action>
+                        <action behavior="Platform" id="1" name="Set max speed" sid="9025375844361398" type="Player">
+                            <param id="0" name="Max Speed">500</param>
+                        </action>
+                        <action behavior="Platform" id="2" name="Set acceleration" sid="974301614515459" type="Player">
+                            <param id="0" name="Acceleration">2000</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1312,7 +1376,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block collapsed="1" sid="4153992389788106">
+        <event-block sid="4153992389788106">
             <conditions>
                 <condition id="0" name="On function" sid="1143780483638221" type="Function">
                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
@@ -1524,6 +1588,9 @@
                             <param id="0" name="Instance variable">direction</param>
                             <param id="1" name="Value">floor(random(1, 3))</param>
                         </action>
+                        <action id="17" name="Execute Javascript" sid="3073780573929996" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;bridge&apos;)&quot;</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="8242790016928891">
@@ -1588,6 +1655,9 @@
                         <action id="-10" name="Set value" sid="2344271792085586" type="BridgeLogs">
                             <param id="0" name="Instance variable">direction</param>
                             <param id="1" name="Value">floor(random(3, 5))</param>
+                        </action>
+                        <action id="17" name="Execute Javascript" sid="7919621268776508" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;bridgelogs&apos;)&quot;</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -1718,6 +1788,9 @@
                                     <param id="0" name="Where">0</param>
                                     <param id="1" name="Object">BridgeLogs</param>
                                 </action>
+                                <action id="17" name="Execute Javascript" sid="9914219700376856" type="Browser">
+                                    <param id="0" name="Javascript">&quot;console.log(&apos;coin&apos;)&quot;</param>
+                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="1139280741666862">
@@ -1746,6 +1819,9 @@
                                 <action id="-29" name="Move to object" sid="66324330072833" type="Star">
                                     <param id="0" name="Where">0</param>
                                     <param id="1" name="Object">BridgeLogs</param>
+                                </action>
+                                <action id="17" name="Execute Javascript" sid="8470496320194015" type="Browser">
+                                    <param id="0" name="Javascript">&quot;console.log(&apos;star&apos;)&quot;</param>
                                 </action>
                             </actions>
                         </event-block>
