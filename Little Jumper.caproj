@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
