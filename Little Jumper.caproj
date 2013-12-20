@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -10,16 +10,17 @@
     <unique-id>14fir0wto7bt4</unique-id>
     <saved-with-version>13900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
@@ -52,8 +53,13 @@
         <object-type name="Keyboard" sid="6097745199123141">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type name="TiledBackground" sid="5622933521528387">
+        <object-type name="Sky" sid="5622933521528387">
             <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Fade" sid="7035022978659968">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
             <texture />
         </object-type>
         <object-type name="Beta" sid="4966839681467301">
@@ -539,6 +545,22 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Mushroom" sid="5782492075264726">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="type" sid="1484604216243737" type="number" />
+            </instance-variables>
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1169956661579697" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="-0.125" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="-0.125" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Space" sid="2546561710476381">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -568,6 +590,7 @@
             </members>
             <instance-variables>
                 <instance-variable name="life" sid="7607645812433121" type="number" />
+                <instance-variable name="speed" sid="1898690545645378" type="number" />
             </instance-variables>
         </family>
         <family name="Lock" plugin-id="Sprite" sid="2280487292734918">
