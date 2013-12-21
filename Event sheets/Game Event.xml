@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Game Event</name>
     <events>
+        <variable constant="0" name="AudioFlag" sid="4951322465580892" static="0" type="number">1</variable>
         <variable constant="0" name="CurrentHeight" sid="8204775679643404" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentLevel" sid="2384745318579744" static="0" type="number">0</variable>
         <comment>/* List of frequency</comment>
@@ -58,7 +59,7 @@
         <variable comment="The current scroll Y position" constant="0" name="MinScroll" sid="1158545394144303" static="0" type="number">999</variable>
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
-        <event-group collapsed="1" description="" sid="5194284430658767" title="System">
+        <event-group description="" sid="5194284430658767" title="System">
             <sub-events>
                 <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
                 <event-block sid="4278721947506207">
@@ -1174,15 +1175,15 @@
                         </action>
                         <action id="-9" name="Set value" sid="2659244988147427" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">18</param>
+                            <param id="1" name="Value">15</param>
                         </action>
                         <action id="-10" name="Set value" sid="2314036786859561" type="Bridge">
                             <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">30</param>
+                            <param id="1" name="Value">50</param>
                         </action>
                         <action id="-10" name="Set value" sid="4594613404121909" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">30</param>
+                            <param id="1" name="Value">50</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1221,15 +1222,15 @@
                         </action>
                         <action id="-9" name="Set value" sid="6973024448753305" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">15</param>
+                            <param id="1" name="Value">10</param>
                         </action>
                         <action id="-10" name="Set value" sid="6056919589070378" type="Bridge">
                             <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">50</param>
+                            <param id="1" name="Value">60</param>
                         </action>
                         <action id="-10" name="Set value" sid="7551069537809775" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">50</param>
+                            <param id="1" name="Value">60</param>
                         </action>
                         <action id="-10" name="Set value" sid="773744763649189" type="Enemy">
                             <param id="0" name="Instance variable">speed</param>
@@ -1276,7 +1277,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="9106361420418061" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">12</param>
+                            <param id="1" name="Value">5</param>
                         </action>
                         <action id="-10" name="Set value" sid="9763461943103032" type="Bridge">
                             <param id="0" name="Instance variable">speed</param>
@@ -1327,11 +1328,11 @@
                         </action>
                         <action id="-9" name="Set value" sid="3894177158585139" type="System">
                             <param id="0" name="Variable">HalfFrequency</param>
-                            <param id="1" name="Value">100</param>
+                            <param id="1" name="Value">4</param>
                         </action>
                         <action id="-9" name="Set value" sid="7872359524864139" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">10</param>
+                            <param id="1" name="Value">2</param>
                         </action>
                         <action id="-10" name="Set value" sid="7909386205869228" type="Bridge">
                             <param id="0" name="Instance variable">speed</param>
@@ -3095,7 +3096,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" sid="6927354907691136">
+                        <event-block any="1" collapsed="1" sid="6927354907691136">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="5953108436831646" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>

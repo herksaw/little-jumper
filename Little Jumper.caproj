@@ -10,10 +10,10 @@
     <unique-id>14fir0wto7bt4</unique-id>
     <saved-with-version>13900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -35,6 +35,7 @@
         <height>960</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
+    <first-layout>Main Menu Layout</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -561,6 +562,44 @@
             <plugin id="TiledBg" />
             <texture />
         </object-type>
+        <object-type name="Logo" sid="6046622394426178">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1909862543476809" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Button" sid="146097400257185">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4509885422792205" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ButtonPlayText" sid="5191992607375538">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ButtonTimePlayText" sid="692799237897429">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ButtonAchievementText" sid="3731799618173915">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ButtonQuitText" sid="3679709227571725">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ButtonAudio" sid="9094420076382687">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1846591819629029" speed="0">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -659,9 +698,11 @@
     </families>
     <layout-folder expanded="1">
         <layout>Game Layout.xml</layout>
+        <layout>Main Menu Layout.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Game Event.xml</event-sheet>
+        <event-sheet>Main Menu Event.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="23">
@@ -683,7 +724,7 @@
             <file name="icon-128.png" />
             <file name="loading-logo.png" />
         </file-folder>
-        <file-folder expanded="0" name="Fonts">
+        <file-folder expanded="1" name="Fonts">
             <file-folder expanded="0" name="Chunkfive">
                 <file name="chunkfive-webfont.eot" />
                 <file name="chunkfive-webfont.svg" />
