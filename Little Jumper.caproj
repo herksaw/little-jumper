@@ -10,10 +10,11 @@
     <unique-id>14fir0wto7bt4</unique-id>
     <saved-with-version>13900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
@@ -600,6 +601,9 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Audio" sid="1827819081859366">
+            <plugin id="Audio" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -713,9 +717,65 @@
         <global-instance type="Keyboard" uid="24" />
         <global-instance type="Function" uid="14" />
         <global-instance type="Browser" uid="48" />
+        <global-instance type="Audio" uid="75">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+                <speed-of-sound>5000</speed-of-sound>
+                <doppler-factor>1</doppler-factor>
+            </properties>
+        </global-instance>
     </global-instances>
-    <sounds-folder expanded="1" />
-    <music-folder expanded="1" />
+    <sounds-folder expanded="1">
+        <file name="click.m4a" />
+        <file name="click.ogg" />
+        <file name="eat_normal.m4a" />
+        <file name="eat_normal.ogg" />
+        <file name="eat_poison.m4a" />
+        <file name="eat_poison.ogg" />
+        <file name="eat_star.m4a" />
+        <file name="eat_star.ogg" />
+        <file name="enemy_died.m4a" />
+        <file name="enemy_died.ogg" />
+        <file name="hit_enemy_a.m4a" />
+        <file name="hit_enemy_a.ogg" />
+        <file name="hit_enemy_b.m4a" />
+        <file name="hit_enemy_b.ogg" />
+        <file name="hurt.m4a" />
+        <file name="hurt.ogg" />
+        <file name="jump_a.m4a" />
+        <file name="jump_a.ogg" />
+        <file name="jump_b.m4a" />
+        <file name="jump_b.ogg" />
+        <file name="land.m4a" />
+        <file name="land.ogg" />
+        <file name="switch.m4a" />
+        <file name="switch.ogg" />
+    </sounds-folder>
+    <music-folder expanded="1">
+        <file name="achievement_bgm.m4a" />
+        <file name="achievement_bgm.ogg" />
+        <file name="grass_bgm.m4a" />
+        <file name="grass_bgm.ogg" />
+        <file name="level_5_bgm.m4a" />
+        <file name="level_5_bgm.ogg" />
+        <file name="main_menu_bgm.m4a" />
+        <file name="main_menu_bgm.ogg" />
+        <file name="menu_selection_bgm.m4a" />
+        <file name="menu_selection_bgm.ogg" />
+        <file name="sand_bgm.m4a" />
+        <file name="sand_bgm.ogg" />
+        <file name="snow_bgm.m4a" />
+        <file name="snow_bgm.ogg" />
+        <file name="stone_bgm.m4a" />
+        <file name="stone_bgm.ogg" />
+    </music-folder>
     <files-folder expanded="0">
         <file-folder expanded="0" name="Icons">
             <file name="icon-16.png" />

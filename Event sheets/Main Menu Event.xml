@@ -37,6 +37,12 @@
                 <action id="3" name="Set font size" sid="1281371923632397" type="ButtonQuitText">
                     <param id="0" name="Size (pt)">18</param>
                 </action>
+                <action id="0" name="Play" sid="9199110076460205" type="Audio">
+                    <param id="0" name="Audio file">main_menu_bgm</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;main_menu_bgm&quot;</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="8589311189374007">
@@ -78,6 +84,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Play" sid="5049926082702223" type="Audio">
+                            <param id="0" name="Audio file">click</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">10</param>
+                            <param id="1" name="Tag (optional)">&quot;click&quot;</param>
+                        </action>
                         <action id="5" name="Set frame" sid="7421330825834414" type="Button">
                             <param id="0" name="Frame number">1</param>
                         </action>
@@ -104,6 +116,12 @@
                 </condition>
             </conditions>
             <actions>
+                <action id="0" name="Play" sid="6132680998188174" type="Audio">
+                    <param id="0" name="Audio file">switch</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">10</param>
+                    <param id="1" name="Tag (optional)">&quot;switch&quot;</param>
+                </action>
                 <action id="5" name="Set frame" sid="2647685115039417" type="ButtonAudio">
                     <param id="0" name="Frame number">1</param>
                 </action>
@@ -133,6 +151,12 @@
                 </condition>
             </conditions>
             <actions>
+                <action id="0" name="Play" sid="8813681885985208" type="Audio">
+                    <param id="0" name="Audio file">switch</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">10</param>
+                    <param id="1" name="Tag (optional)">&quot;switch&quot;</param>
+                </action>
                 <action id="5" name="Set frame" sid="3315027410370804" type="ButtonAudio">
                     <param id="0" name="Frame number">0</param>
                 </action>
