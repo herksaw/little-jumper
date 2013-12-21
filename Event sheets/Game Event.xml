@@ -6,6 +6,8 @@
         <variable constant="0" name="AudioFlag" sid="4951322465580892" static="0" type="number">1</variable>
         <variable constant="0" name="CurrentHeight" sid="8204775679643404" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentLevel" sid="2384745318579744" static="0" type="number">0</variable>
+        <variable constant="0" name="HitEnemyVariation" sid="1286964031056115" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayerJumpVariation" sid="5883998605771122" static="0" type="number">0</variable>
         <comment>/* List of frequency</comment>
         <variable constant="0" name="CoinFrequency" sid="9851590177290782" static="0" type="number">1</variable>
         <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">20</variable>
@@ -71,15 +73,9 @@
                             <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
-                        <action id="3" name="Set font size" sid="5593496149946909" type="CoinNumberBox">
-                            <param id="0" name="Size (pt)">25</param>
-                        </action>
                         <action id="5" name="Set web font" sid="4594969489868492" type="PlayerHeightBox">
                             <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
-                        </action>
-                        <action id="3" name="Set font size" sid="9277742792199477" type="PlayerHeightBox">
-                            <param id="0" name="Size (pt)">25</param>
                         </action>
                         <action id="-29" name="Move to object" sid="9723443026795157" type="LockBlue">
                             <param id="0" name="Where">1</param>
@@ -185,9 +181,45 @@
                         <action behavior="Fade" id="1" name="Start fade" sid="8132760378356576" type="Sky" />
                     </actions>
                 </event-block>
+                <event-block sid="2185096325281153">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1834469766821499" type="System">
+                            <param id="0" name="Variable">AudioFlag</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="6535093279152979" type="Audio">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2356391271353455">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1806373585383731" type="System">
+                            <param id="0" name="Variable">AudioFlag</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="9289036610197046" type="Audio">
+                            <param id="0" name="Mode">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6180266066730591">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="4780224467833277" type="Touch">
+                            <param id="0" name="Object">HUDClose</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="7861142062135304" title="Debug">
+        <event-group description="" sid="7861142062135304" title="Debug">
             <sub-events>
                 <event-block sid="5405765113996254">
                     <conditions>
@@ -196,6 +228,7 @@
                             <param id="1" name="Comparison">2</param>
                             <param id="2" name="Value">500</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="6871770647972498" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="2326947223923178" type="System">
@@ -209,13 +242,14 @@
                         <condition id="-14" name="Compare variable" sid="3969795682919149" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Value">500</param>
+                            <param id="2" name="Value">1000</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="1803144328523197" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">1000</param>
+                            <param id="2" name="Value">1500</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9051940614652477" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="3857991374682386" type="System">
@@ -229,13 +263,14 @@
                         <condition id="-14" name="Compare variable" sid="2815978942812369" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Value">1000</param>
+                            <param id="2" name="Value">2000</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="8205427452222112" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">1500</param>
+                            <param id="2" name="Value">2500</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9467304287925045" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="7892167002752725" type="System">
@@ -249,13 +284,14 @@
                         <condition id="-14" name="Compare variable" sid="3973800109537041" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Value">1500</param>
+                            <param id="2" name="Value">3000</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="4133039514054422" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">2000</param>
+                            <param id="2" name="Value">3500</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9411579419488883" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="7052447098246305" type="System">
@@ -269,8 +305,9 @@
                         <condition id="-14" name="Compare variable" sid="351788389290093" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Value">2000</param>
+                            <param id="2" name="Value">4000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="4588566395561617" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="9789024787460165" type="System">
@@ -283,22 +320,23 @@
         </event-group>
         <event-group collapsed="1" description="" disabled="1" sid="6324912479345579" title="Level">
             <sub-events>
-                <event-block disabled="1" sid="5858462652419309">
+                <event-block sid="5858462652419309">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="5845193168303482" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">30000</param>
+                            <param id="2" name="Value">29000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="61431068219206" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="2323608367434499" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
-                            <param id="1" name="Value">0</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block disabled="1" sid="623947961393328">
+                <event-block sid="623947961393328">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="7460045144066487" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
@@ -308,17 +346,18 @@
                         <condition id="-14" name="Compare variable" sid="9799737720834306" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">60000</param>
+                            <param id="2" name="Value">59000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9393202657033469" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="9471989740943799" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
-                            <param id="1" name="Value">1</param>
+                            <param id="1" name="Value">2</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block disabled="1" sid="9916714920700419">
+                <event-block sid="9916714920700419">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="6116740643590617" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
@@ -328,17 +367,18 @@
                         <condition id="-14" name="Compare variable" sid="8168349423960089" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">90000</param>
+                            <param id="2" name="Value">89000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="7212738563368805" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="9992845396138133" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
-                            <param id="1" name="Value">2</param>
+                            <param id="1" name="Value">3</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block disabled="1" sid="2572778118990927">
+                <event-block sid="2572778118990927">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="477380229637033" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
@@ -348,23 +388,25 @@
                         <condition id="-14" name="Compare variable" sid="2964493402733115" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">120000</param>
+                            <param id="2" name="Value">119000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9880190062639111" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="9209195574521437" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
-                            <param id="1" name="Value">3</param>
+                            <param id="1" name="Value">4</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block disabled="1" sid="1656803021610076">
+                <event-block sid="1656803021610076">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="8438837727254239" type="System">
                             <param id="0" name="Variable">CurrentHeight</param>
                             <param id="1" name="Comparison">5</param>
                             <param id="2" name="Value">120000</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="2367360442711993" type="System" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="988322480894079" type="System">
@@ -393,75 +435,151 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="7419523435028224">
+                <event-block sid="9055978703767757">
                     <conditions>
-                        <condition id="2" name="Key is down" sid="5137892331598523" type="Keyboard">
-                            <param id="0" name="Key">37 (Left arrow)</param>
-                        </condition>
+                        <condition behavior="Platform" id="5" name="On jump" sid="8474747669159616" type="Player" />
                     </conditions>
                     <actions>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="7421033341448576" type="Player">
-                            <param id="0" name="Control">0</param>
+                        <action id="-9" name="Set value" sid="5271006917571127" type="System">
+                            <param id="0" name="Variable">PlayerJumpVariation</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
                         </action>
-                        <action id="4" name="Set animation" sid="5022986439830652" type="Player">
-                            <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
-                            <param id="1" name="From">1</param>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="9134514580978393">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5465212844504967" type="System">
+                                    <param id="0" name="Variable">PlayerJumpVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="8678876462959855" type="Audio">
+                                    <param id="0" name="Audio file">jump_a</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;jump_a&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5607148628072463">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3270082188410937" type="System">
+                                    <param id="0" name="Variable">PlayerJumpVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="5977412868098234" type="Audio">
+                                    <param id="0" name="Audio file">jump_b</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;jump_b&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2248951790706042">
+                    <conditions>
+                        <condition behavior="Platform" id="9" name="On landed" sid="9082473835450555" type="Player" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="8350339954327143" type="Audio">
+                            <param id="0" name="Audio file">land</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">20</param>
+                            <param id="1" name="Tag (optional)">&quot;land&quot;</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="9425616353674216">
+                <event-block sid="6555800721048575">
                     <conditions>
-                        <condition id="2" name="Key is down" sid="2298222032179059" type="Keyboard">
-                            <param id="0" name="Key">39 (Right arrow)</param>
-                        </condition>
+                        <condition id="-20" name="Is on mobile device" sid="855795242826751" type="System" />
                     </conditions>
-                    <actions>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="5665612466775108" type="Player">
-                            <param id="0" name="Control">1</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="2250281500063984" type="Player">
-                            <param id="0" name="Animation">&quot;JumpRight&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="3101183377506925">
+                            <conditions>
+                                <condition id="8" name="Compare orientation" sid="4601993392570043" type="Touch">
+                                    <param id="0" name="Orientation">2</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Angle">-8</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="1408372586112537" type="Player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="4575640467897739" type="Player">
+                                    <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9629721399591605">
+                            <conditions>
+                                <condition id="8" name="Compare orientation" sid="5497034391299379" type="Touch">
+                                    <param id="0" name="Orientation">2</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Angle">8</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="1700759741676832" type="Player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="1883491492248005" type="Player">
+                                    <param id="0" name="Animation">&quot;JumpRight&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="9769607241463748">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="2888353465640174" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="2113309255358612">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="6617733469601207" type="Keyboard">
+                                    <param id="0" name="Key">37 (Left arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="6798072880862567" type="Player">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="6841482906687899" type="Player">
+                                    <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1257744067288529">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="9786999235208163" type="Keyboard">
+                                    <param id="0" name="Key">39 (Right arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="2188396127650269" type="Player">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="9734696310658395" type="Player">
+                                    <param id="0" name="Animation">&quot;JumpRight&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>On a mobile device, use the left-to-right tilt (Gamma) to also control movement.  This simply simulates pressing a control if the device has tilted enough to the left or right.</comment>
-                <event-block sid="6319323368911226">
-                    <conditions>
-                        <condition id="8" name="Compare orientation" sid="5451690573826562" type="Touch">
-                            <param id="0" name="Orientation">2</param>
-                            <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Angle">-8</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="9395420639896061" type="Player">
-                            <param id="0" name="Control">0</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="3899354985311261" type="Player">
-                            <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="4274589291766502">
-                    <conditions>
-                        <condition id="8" name="Compare orientation" sid="7177549133663539" type="Touch">
-                            <param id="0" name="Orientation">2</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Angle">8</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action behavior="Platform" id="7" name="Simulate control" sid="5848098954910959" type="Player">
-                            <param id="0" name="Control">1</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="8425845477950716" type="Player">
-                            <param id="0" name="Animation">&quot;JumpRight&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
-                </event-block>
             </sub-events>
         </event-group>
         <event-group collapsed="1" description="" sid="7914053857964889" title="Memory">
@@ -645,6 +763,7 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="33" name="Stop all" sid="8195083998886748" type="Audio" />
                         <action id="-21" name="Reset global variables" sid="5549651657036738" type="System" />
                         <action id="-26" name="Restart layout" sid="2250098091678883" type="System" />
                     </actions>
@@ -686,6 +805,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Play" sid="5025194538470404" type="Audio">
+                            <param id="0" name="Audio file">gain_coin</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;gain_coin&quot;</param>
+                        </action>
                         <action id="-9" name="Destroy" sid="7410825650120748" type="Coin" />
                         <action id="-11" name="Add to" sid="1784131710635251" type="Player">
                             <param id="0" name="Instance variable">totalCoin</param>
@@ -700,6 +825,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Play" sid="2902628479206096" type="Audio">
+                            <param id="0" name="Audio file">eat_star</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">10</param>
+                            <param id="1" name="Tag (optional)">&quot;eat_star&quot;</param>
+                        </action>
                         <action id="-9" name="Destroy" sid="6638964213325719" type="Star" />
                         <action id="-10" name="Set value" sid="4561987212490429" type="Player">
                             <param id="0" name="Instance variable">isStar</param>
@@ -723,6 +854,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Play" sid="6993252919763756" type="Audio">
+                            <param id="0" name="Audio file">eat_normal</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">20</param>
+                            <param id="1" name="Tag (optional)">&quot;eat_normal&quot;</param>
+                        </action>
                         <action id="-9" name="Destroy" sid="8147524884528958" type="Mushroom" />
                         <action id="-11" name="Add to" sid="7204986992929743" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -742,6 +879,12 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Play" sid="4853053801231442" type="Audio">
+                            <param id="0" name="Audio file">eat_poison</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">20</param>
+                            <param id="1" name="Tag (optional)">&quot;eat_normal&quot;</param>
+                        </action>
                         <action id="-9" name="Destroy" sid="3099119740239839" type="Mushroom" />
                         <action id="-11" name="Add to" sid="1556296183225276" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -984,6 +1127,12 @@
                             <param id="0" name="Instance variable">life</param>
                             <param id="1" name="Value">1</param>
                         </action>
+                        <action id="0" name="Play" sid="1308958778580955" type="Audio">
+                            <param id="0" name="Audio file">hurt</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">20</param>
+                            <param id="1" name="Tag (optional)">&quot;hurt&quot;</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="9676508463512518">
@@ -1033,8 +1182,47 @@
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="4501877457160788" type="System">
+                            <param id="0" name="Variable">HitEnemyVariation</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
+                        </action>
+                    </actions>
                     <sub-events>
+                        <event-block sid="7263616703684011">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4206923039041922" type="System">
+                                    <param id="0" name="Variable">HitEnemyVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="9654097764674821" type="Audio">
+                                    <param id="0" name="Audio file">hit_enemy_a</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;hit_enemy_a&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3598949010160699">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8088672877874283" type="System">
+                                    <param id="0" name="Variable">HitEnemyVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="2372062318693829" type="Audio">
+                                    <param id="0" name="Audio file">hit_enemy_a</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;hit_enemy_b&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
                         <event-block sid="4919734070802086">
                             <conditions>
                                 <condition id="2" name="Is playing" sid="3114237902789558" type="Fly">
@@ -1042,6 +1230,12 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Play" sid="4964591383774829" type="Audio">
+                                    <param id="0" name="Audio file">enemy_died</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;enemy_died&quot;</param>
+                                </action>
                                 <action id="-12" name="Subtract from" sid="2439419755105404" type="Fly">
                                     <param id="0" name="Instance variable">life</param>
                                     <param id="1" name="Value">1</param>
@@ -1063,6 +1257,12 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Play" sid="5943201459896433" type="Audio">
+                                    <param id="0" name="Audio file">enemy_died</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;enemy_died&quot;</param>
+                                </action>
                                 <action id="-12" name="Subtract from" sid="5182416722038808" type="Fly">
                                     <param id="0" name="Instance variable">life</param>
                                     <param id="1" name="Value">1</param>
@@ -1079,7 +1279,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="2958022666480023">
+                <event-block collapsed="1" sid="2958022666480023">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="3582187178619533" type="Player">
                             <param id="0" name="Object">Slime</param>
@@ -1090,8 +1290,47 @@
                             <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="9043294126922615" type="System">
+                            <param id="0" name="Variable">HitEnemyVariation</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
+                        </action>
+                    </actions>
                     <sub-events>
+                        <event-block sid="7390133272829767">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5599767564252201" type="System">
+                                    <param id="0" name="Variable">HitEnemyVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="7300322804105357" type="Audio">
+                                    <param id="0" name="Audio file">hit_enemy_a</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;hit_enemy_a&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6947324534109038">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6006700596861426" type="System">
+                                    <param id="0" name="Variable">HitEnemyVariation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="1256597186350075" type="Audio">
+                                    <param id="0" name="Audio file">hit_enemy_a</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;hit_enemy_b&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
                         <event-block sid="6222268252218864">
                             <conditions>
                                 <condition id="2" name="Is playing" sid="2084638263195673" type="Slime">
@@ -1099,6 +1338,12 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Play" sid="8467961954908219" type="Audio">
+                                    <param id="0" name="Audio file">enemy_died</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;enemy_died&quot;</param>
+                                </action>
                                 <action id="-12" name="Subtract from" sid="3764809604717276" type="Slime">
                                     <param id="0" name="Instance variable">life</param>
                                     <param id="1" name="Value">1</param>
@@ -1120,6 +1365,12 @@
                                 </condition>
                             </conditions>
                             <actions>
+                                <action id="0" name="Play" sid="6875532540568267" type="Audio">
+                                    <param id="0" name="Audio file">enemy_died</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">20</param>
+                                    <param id="1" name="Tag (optional)">&quot;enemy_died&quot;</param>
+                                </action>
                                 <action id="-12" name="Subtract from" sid="2512284774995867" type="Slime">
                                     <param id="0" name="Instance variable">life</param>
                                     <param id="1" name="Value">1</param>
@@ -1140,6 +1391,27 @@
         </event-group>
         <event-group collapsed="1" description="" sid="3854492226766296" title="Logic">
             <sub-events>
+                <event-block sid="6194689531019717">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="1322292557125" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="3413008291266384" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="17" name="Execute Javascript" sid="3492654152298073" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;grass&apos;)&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="3043824836472668" type="Audio">
+                            <param id="0" name="Audio file">grass_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;grass_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="5833461462286609">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="8577945313795331" type="System">
@@ -1147,8 +1419,21 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">2</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="9525853427471375" type="System" />
                     </conditions>
                     <actions>
+                        <action id="17" name="Execute Javascript" sid="7044430915097195" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;sand&apos;)&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="4213145842837348" type="Audio">
+                            <param id="0" name="Tag">&quot;grass_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="7389992536553555" type="Audio">
+                            <param id="0" name="Audio file">sand_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;sand_bgm&quot;</param>
+                        </action>
                         <action id="-9" name="Set value" sid="6537819679528213" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">15</param>
@@ -1194,8 +1479,21 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">3</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="4614227909761408" type="System" />
                     </conditions>
                     <actions>
+                        <action id="17" name="Execute Javascript" sid="8755455670098236" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;snow&apos;)&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="1582444228952022" type="Audio">
+                            <param id="0" name="Tag">&quot;sand_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="7900623108139197" type="Audio">
+                            <param id="0" name="Audio file">snow_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;snow_bgm&quot;</param>
+                        </action>
                         <action id="-9" name="Set value" sid="3756242061044229" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">10</param>
@@ -1245,8 +1543,21 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">4</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="8754343332201397" type="System" />
                     </conditions>
                     <actions>
+                        <action id="17" name="Execute Javascript" sid="2915417139511685" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;stone&apos;)&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="9743467161674921" type="Audio">
+                            <param id="0" name="Tag">&quot;snow_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="8092163688697854" type="Audio">
+                            <param id="0" name="Audio file">stone_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;stone_bgm&quot;</param>
+                        </action>
                         <action id="-9" name="Set value" sid="2182813124409626" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">5</param>
@@ -1300,8 +1611,21 @@
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">5</param>
                         </condition>
+                        <condition id="-4" name="Trigger once while true" sid="8169514084345905" type="System" />
                     </conditions>
                     <actions>
+                        <action id="17" name="Execute Javascript" sid="7581716584179626" type="Browser">
+                            <param id="0" name="Javascript">&quot;console.log(&apos;level_5&apos;)&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="990975684652635" type="Audio">
+                            <param id="0" name="Tag">&quot;stone_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="3395352485078278" type="Audio">
+                            <param id="0" name="Audio file">level_5_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;level_5_bgm&quot;</param>
+                        </action>
                         <action id="-9" name="Set value" sid="8967233561435452" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">2</param>
@@ -1995,9 +2319,6 @@
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
-                                        <action id="17" name="Execute Javascript" sid="8110712752597751" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;coin&apos;)&quot;</param>
-                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="6061436383342961">
@@ -2026,9 +2347,6 @@
                                         <action id="-29" name="Move to object" sid="9198450783688588" type="Star">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="17" name="Execute Javascript" sid="9658995601990431" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;star&apos;)&quot;</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -2324,7 +2642,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="7556961883700548">
+                        <event-block any="1" sid="7556961883700548">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="4699369309390841" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2381,9 +2699,6 @@
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
-                                        <action id="17" name="Execute Javascript" sid="1660338041747591" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;coin&apos;)&quot;</param>
-                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="9839425244854296">
@@ -2412,9 +2727,6 @@
                                         <action id="-29" name="Move to object" sid="9411804675263831" type="Star">
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="17" name="Execute Javascript" sid="4290996179972482" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;star&apos;)&quot;</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -2710,7 +3022,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" sid="6928695699797022">
+                        <event-block any="1" collapsed="1" sid="6928695699797022">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="7518128308296029" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2767,9 +3079,6 @@
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
-                                        <action id="17" name="Execute Javascript" sid="4530877230752926" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;coin&apos;)&quot;</param>
-                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="3356494466955264">
@@ -2798,9 +3107,6 @@
                                         <action id="-29" name="Move to object" sid="1029290445509497" type="Star">
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="17" name="Execute Javascript" sid="2981673599949483" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;star&apos;)&quot;</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -3096,7 +3402,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="6927354907691136">
+                        <event-block any="1" sid="6927354907691136">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="5953108436831646" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -3153,9 +3459,6 @@
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
-                                        <action id="17" name="Execute Javascript" sid="4782976392201824" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;coin&apos;)&quot;</param>
-                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="7878974913074837">
@@ -3184,9 +3487,6 @@
                                         <action id="-29" name="Move to object" sid="5473332186885814" type="Star">
                                             <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="17" name="Execute Javascript" sid="2442593821311454" type="Browser">
-                                            <param id="0" name="Javascript">&quot;console.log(&apos;star&apos;)&quot;</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -3478,9 +3778,6 @@
                             <param id="0" name="Instance variable">direction</param>
                             <param id="1" name="Value">floor(random(1, 3))</param>
                         </action>
-                        <action id="17" name="Execute Javascript" sid="5311662963678091" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;bridge&apos;)&quot;</param>
-                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="8590494141972773">
@@ -3549,9 +3846,6 @@
                         <action id="-10" name="Set value" sid="677962491110392" type="BridgeLogs">
                             <param id="0" name="Instance variable">direction</param>
                             <param id="1" name="Value">floor(random(3, 5))</param>
-                        </action>
-                        <action id="17" name="Execute Javascript" sid="9119697180576908" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;bridgelogs&apos;)&quot;</param>
                         </action>
                     </actions>
                     <sub-events>

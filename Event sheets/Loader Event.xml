@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Loader Event</name>
+    <events>
+        <event-block disabled="1" sid="5020157751148728">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="6575264556264017" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Preload" sid="2414068094159491" type="Audio">
+                    <param id="0" name="Audio file">achievement_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="3680948220362662" type="Audio">
+                    <param id="0" name="Audio file">main_menu_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="5246221434822099" type="Audio">
+                    <param id="0" name="Audio file">menu_selection_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="5088421499686116" type="Audio">
+                    <param id="0" name="Audio file">grass_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="6685094228706853" type="Audio">
+                    <param id="0" name="Audio file">sand_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="6934813084198564" type="Audio">
+                    <param id="0" name="Audio file">snow_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="9130713646138776" type="Audio">
+                    <param id="0" name="Audio file">stone_bgm</param>
+                </action>
+                <action id="4" name="Preload" sid="2790315939376117" type="Audio">
+                    <param id="0" name="Audio file">level_5_bgm</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="737678965909871">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="3315606643581734" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="5393432659623426" type="LoadingPercentageBox">
+                    <param id="0" name="Text">&quot;Loading...&quot; &amp; round(loadingprogress * 100) &amp; &quot;%&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="595869004984246" type="LoadingPercentageBox">
+                    <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4646300001458924">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="9881332731241568" type="System" />
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="1742972236143567" type="System">
+                    <param id="0" name="Layout">Main Menu Layout</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

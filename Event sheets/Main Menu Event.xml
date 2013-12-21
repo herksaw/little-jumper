@@ -25,18 +25,6 @@
                     <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                     <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                 </action>
-                <action id="3" name="Set font size" sid="9111560416843032" type="ButtonPlayText">
-                    <param id="0" name="Size (pt)">18</param>
-                </action>
-                <action id="3" name="Set font size" sid="3111580652243539" type="ButtonTimePlayText">
-                    <param id="0" name="Size (pt)">18</param>
-                </action>
-                <action id="3" name="Set font size" sid="5671102414804805" type="ButtonAchievementText">
-                    <param id="0" name="Size (pt)">18</param>
-                </action>
-                <action id="3" name="Set font size" sid="1281371923632397" type="ButtonQuitText">
-                    <param id="0" name="Size (pt)">18</param>
-                </action>
                 <action id="0" name="Play" sid="9199110076460205" type="Audio">
                     <param id="0" name="Audio file">main_menu_bgm</param>
                     <param id="2" name="Loop">1</param>
@@ -96,6 +84,7 @@
                         <action id="-2" name="Go to layout" sid="6153476993226951" type="System">
                             <param id="0" name="Layout">Game Layout</param>
                         </action>
+                        <action id="33" name="Stop all" sid="7509187003257339" type="Audio" />
                     </actions>
                 </event-block>
             </sub-events>
@@ -178,6 +167,34 @@
                 <action id="-9" name="Set value" sid="4983135426595421" type="System">
                     <param id="0" name="Variable">TouchFlag</param>
                     <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6467035162545312">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="6170217169131064" type="System">
+                    <param id="0" name="Variable">AudioFlag</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Set silent" sid="6572876189126173" type="Audio">
+                    <param id="0" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3950194555981127">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="9846108656295918" type="System">
+                    <param id="0" name="Variable">AudioFlag</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Set silent" sid="8121752971727527" type="Audio">
+                    <param id="0" name="Mode">1</param>
                 </action>
             </actions>
         </event-block>

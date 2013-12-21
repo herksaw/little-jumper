@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -21,9 +21,9 @@
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
         <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
         <behavior author="Scirra" id="jumpthru" version="1">Jump-thru</behavior>
     </used-behaviors>
@@ -36,8 +36,8 @@
         <height>960</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
-    <first-layout>Main Menu Layout</first-layout>
-    <use-loader-layout>0</use-loader-layout>
+    <first-layout>Loader Layout</first-layout>
+    <use-loader-layout>1</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Enable WebGL">On</prop>
@@ -604,6 +604,108 @@
         <object-type name="Audio" sid="1827819081859366">
             <plugin id="Audio" />
         </object-type>
+        <object-type name="PauseBox" sid="8086324297033128">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4977168916381768" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502762" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ButtonYes" sid="4450170106230792">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="885930952351716" speed="5">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ButtonNo" sid="9535533080020545">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5309057876180099" speed="5">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LoadingLogo" sid="3824481298677101">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="60" loop="1" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8137747066121602" speed="10">
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.510204" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.510204" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.509804" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.510204" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.510638" />
+                    <frame duration="1" hotspotX="0.520833" hotspotY="0.510638" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.520833" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.52" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.509804" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.519231" />
+                    <frame duration="1" hotspotX="0.519231" hotspotY="0.52" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LoadingGameLogo" sid="2316012499117725">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="579362563204093" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LoadingPercentageBox" sid="4288228388450806">
+            <plugin id="Text" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -703,10 +805,12 @@
     <layout-folder expanded="1">
         <layout>Game Layout.xml</layout>
         <layout>Main Menu Layout.xml</layout>
+        <layout>Loader Layout.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Game Event.xml</event-sheet>
         <event-sheet>Main Menu Event.xml</event-sheet>
+        <event-sheet>Loader Event.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="23">
@@ -732,7 +836,7 @@
             </properties>
         </global-instance>
     </global-instances>
-    <sounds-folder expanded="1">
+    <sounds-folder expanded="0">
         <file name="click.m4a" />
         <file name="click.ogg" />
         <file name="eat_normal.m4a" />
@@ -757,8 +861,10 @@
         <file name="land.ogg" />
         <file name="switch.m4a" />
         <file name="switch.ogg" />
+        <file name="gain_coin.m4a" />
+        <file name="gain_coin.ogg" />
     </sounds-folder>
-    <music-folder expanded="1">
+    <music-folder expanded="0">
         <file name="achievement_bgm.m4a" />
         <file name="achievement_bgm.ogg" />
         <file name="grass_bgm.m4a" />
