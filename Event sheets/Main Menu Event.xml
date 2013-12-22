@@ -78,10 +78,48 @@
                         <action id="5" name="Set frame" sid="7421330825834414" type="Button">
                             <param id="0" name="Frame number">1</param>
                         </action>
+                        <action id="33" name="Stop all" sid="7509187003257339" type="Audio" />
                         <action id="-2" name="Go to layout" sid="6153476993226951" type="System">
                             <param id="0" name="Layout">Game Layout</param>
                         </action>
-                        <action id="33" name="Stop all" sid="7509187003257339" type="Audio" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="8194254025341312">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9468369110924809" type="Touch">
+                    <param id="0" name="Object">ButtonTimePlayText</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="1001010358076331">
+                    <conditions>
+                        <condition id="-15" name="Pick nearest/furthest" sid="5837302359069963" type="Button">
+                            <param id="0" name="Which">0</param>
+                            <param id="1" name="X">ButtonPlayText.X</param>
+                            <param id="2" name="Y">ButtonPlayText.Y</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="2577131572719317" type="Audio">
+                            <param id="0" name="Audio file">click</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">10</param>
+                            <param id="1" name="Tag (optional)">&quot;click&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="4749585796711783" type="Button">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                        <action id="33" name="Stop all" sid="5431745522299368" type="Audio" />
+                        <action id="-9" name="Set value" sid="8459336702912826" type="System">
+                            <param id="0" name="Variable">TimeMode</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="6249384052861788" type="System">
+                            <param id="0" name="Layout">Game Layout</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>

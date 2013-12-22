@@ -653,6 +653,68 @@
         <object-type name="WebStorage" sid="6489358634672728">
             <plugin id="WebStorage" />
         </object-type>
+        <object-type name="PausedText" sid="8429441316177009">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Fish" sid="9764039467383696">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="2" loop="1" name="SwimLeft" pingpong="0" repeatcount="0" repeatto="0" sid="9678773588628814" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.511628" />
+                </animation>
+                <animation framecount="2" loop="1" name="SwimRight" pingpong="0" repeatcount="0" repeatto="0" sid="7868125671815822" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.511628">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="DiedLeft" pingpong="0" repeatcount="1" repeatto="0" sid="1296300013376781" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="DiedRight" pingpong="0" repeatcount="1" repeatto="0" sid="8107486693774937" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TimeBox" sid="6933508554638776">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Blocker" sid="621118603240992">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="2399737288672126">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3667915028891311" speed="5">
+                    <frame duration="1" hotspotX="0.509804" hotspotY="0.509804" />
+                </animation>
+                <animation framecount="1" loop="0" name="Died" pingpong="0" repeatcount="1" repeatto="0" sid="8424579851041611" speed="5">
+                    <frame duration="1" hotspotX="0.509804" hotspotY="0.509804" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -678,6 +740,7 @@
         </family>
         <family name="Enemy" plugin-id="Sprite" sid="9253178698631335">
             <members>
+                <member>Blocker</member>
                 <member>Fly</member>
                 <member>Slime</member>
             </members>

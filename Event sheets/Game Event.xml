@@ -7,9 +7,11 @@
         <variable constant="0" name="PlayingBgmFlag" sid="2430985898250879" static="0" type="number">1</variable>
         <variable constant="0" name="CurrentHeight" sid="8204775679643404" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentLevel" sid="2384745318579744" static="0" type="number">0</variable>
+        <variable constant="0" name="TimeMode" sid="1961749484696524" static="0" type="number">0</variable>
         <variable constant="0" name="HitEnemyVariation" sid="1286964031056115" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerJumpVariation" sid="5883998605771122" static="0" type="number">0</variable>
         <comment>/* List of frequency</comment>
+        <variable constant="0" name="BlockerFrequency" sid="3217449922617597" static="0" type="number">40</variable>
         <variable constant="0" name="CoinFrequency" sid="9851590177290782" static="0" type="number">1</variable>
         <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">40</variable>
         <variable constant="0" name="MushroomFrequency" sid="4441800794342375" static="0" type="number">30</variable>
@@ -19,6 +21,7 @@
         <comment>*/ List of frequency end</comment>
         <variable constant="0" name="EnemiesNumber" sid="409151676941108" static="0" type="number">2</variable>
         <variable constant="0" name="EnemiesVariation" sid="8818763468791296" static="0" type="number">0</variable>
+        <variable constant="0" name="BlockerVariation" sid="83670271620205" static="0" type="number">0</variable>
         <variable constant="0" name="CoinVariation" sid="4740122202064194" static="0" type="number">0</variable>
         <variable constant="0" name="StarVariation" sid="8376508952291155" static="0" type="number">0</variable>
         <variable constant="0" name="MushroomVariation" sid="9460533529551497" static="0" type="number">20</variable>
@@ -26,6 +29,7 @@
         <variable constant="0" name="WideVariation" sid="5473949630683315" static="0" type="number">0</variable>
         <variable constant="0" name="HalfVariation" sid="4537961053544164" static="0" type="number">0</variable>
         <comment>/* Constants</comment>
+        <variable constant="1" name="BLOCKER" sid="560112229192032" static="0" type="number">0</variable>
         <variable constant="1" name="SLIME" sid="6066955832816319" static="0" type="number">1</variable>
         <variable constant="1" name="FLY" sid="2333232577699062" static="0" type="number">0</variable>
         <variable constant="1" name="COIN" sid="1966484749219432" static="0" type="number">0</variable>
@@ -53,7 +57,7 @@
         <variable comment="The current scroll Y position" constant="0" name="MinScroll" sid="1158545394144303" static="0" type="number">999</variable>
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
-        <event-group description="" sid="5194284430658767" title="System">
+        <event-group collapsed="1" description="" sid="5194284430658767" title="System">
             <sub-events>
                 <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
                 <event-block sid="4278721947506207">
@@ -70,6 +74,10 @@
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
                         <action id="5" name="Set web font" sid="7124421419114503" type="ScoreBox">
+                            <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="6202207967514554" type="TimeBox">
                             <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
@@ -154,6 +162,9 @@
                         <action id="0" name="Set text" sid="7391665997783247" type="ScoreBox">
                             <param id="0" name="Text">&quot;Score: &quot; &amp; Player.score</param>
                         </action>
+                        <action id="0" name="Set text" sid="8295518754415555" type="TimeBox">
+                            <param id="0" name="Text">&quot;Time: &quot; &amp; floor(Timer / 3600) &amp; &quot; : &quot; &amp; floor(Timer / 60 % 60) &amp; &quot; : &quot; &amp; floor(Timer % 60)</param>
+                        </action>
                         <action id="-24" name="Move to top" sid="5803378280356695" type="Player" />
                         <action id="-2" name="Set Y" sid="8614785097190574" type="Sky">
                             <param id="0" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
@@ -200,6 +211,16 @@
                             <param id="1" name="Layer">&quot;HUD&quot;</param>
                             <param id="2" name="X">LayoutWidth / 2</param>
                             <param id="3" name="Y">LayoutHeight / 2</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="8274426910119723" type="System">
+                            <param id="0" name="Object to create">PausedText</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">LayoutWidth / 2</param>
+                            <param id="3" name="Y">PauseBox.BBoxTop + PausedText.Height / 2</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="4485648556091272" type="PausedText">
+                            <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
                         <action id="-3" name="Create object" sid="6746187004237438" type="System">
                             <param id="0" name="Object to create">ButtonPlay</param>
@@ -268,6 +289,7 @@
                             <param id="1" name="Value">0</param>
                         </action>
                         <action id="-9" name="Destroy" sid="1211321690368445" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="177926262408857" type="PausedText" />
                         <action id="-9" name="Destroy" sid="5631127829929619" type="ButtonPlay" />
                         <action id="-9" name="Destroy" sid="5947940427181811" type="ButtonRestart" />
                         <action id="-9" name="Destroy" sid="3050846599021559" type="ButtonMenu" />
@@ -289,6 +311,7 @@
                             <param id="1" name="Value">0</param>
                         </action>
                         <action id="-9" name="Destroy" sid="3097016778800213" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="5542044238760029" type="PausedText" />
                         <action id="-9" name="Destroy" sid="5223029893999279" type="ButtonPlay" />
                         <action id="-9" name="Destroy" sid="5739392608901447" type="ButtonRestart" />
                         <action id="-9" name="Destroy" sid="1228445607085077" type="ButtonMenu" />
@@ -311,6 +334,7 @@
                             <param id="1" name="Value">0</param>
                         </action>
                         <action id="-9" name="Destroy" sid="9189823753244697" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="2037117587393584" type="PausedText" />
                         <action id="-9" name="Destroy" sid="1593270327021716" type="ButtonPlay" />
                         <action id="-9" name="Destroy" sid="512520815184767" type="ButtonRestart" />
                         <action id="-9" name="Destroy" sid="2218385403073517" type="ButtonMenu" />
@@ -426,6 +450,30 @@
                     <actions>
                         <action id="8" name="Set silent" sid="2930405555292017" type="Audio">
                             <param id="0" name="Mode">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2843052039292091">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4044160815712413" type="System">
+                            <param id="0" name="Variable">TimeMode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="2038717939150147" type="TimeBox">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1384142401534505">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="3978143229246655" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="6405123120728689" type="TimeBox">
+                            <param id="0" name="Visibility">0</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1468,6 +1516,10 @@
                         <condition id="-4" name="Trigger once while true" sid="9525853427471375" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="80325960607809" type="System">
+                            <param id="0" name="Variable">BlockerFrequency</param>
+                            <param id="1" name="Value">35</param>
+                        </action>
                         <action id="-9" name="Set value" sid="6537819679528213" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">35</param>
@@ -1500,6 +1552,10 @@
                         <condition id="-4" name="Trigger once while true" sid="4614227909761408" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="8548050789122183" type="System">
+                            <param id="0" name="Variable">BlockerFrequency</param>
+                            <param id="1" name="Value">30</param>
+                        </action>
                         <action id="-9" name="Set value" sid="3756242061044229" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">30</param>
@@ -1536,6 +1592,10 @@
                         <condition id="-4" name="Trigger once while true" sid="8754343332201397" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="2229917629354525" type="System">
+                            <param id="0" name="Variable">BlockerFrequency</param>
+                            <param id="1" name="Value">25</param>
+                        </action>
                         <action id="-9" name="Set value" sid="2182813124409626" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">25</param>
@@ -1576,6 +1636,10 @@
                         <condition id="-4" name="Trigger once while true" sid="8169514084345905" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="3285248306410936" type="System">
+                            <param id="0" name="Variable">BlockerFrequency</param>
+                            <param id="1" name="Value">20</param>
+                        </action>
                         <action id="-9" name="Set value" sid="8967233561435452" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">20</param>
@@ -2236,7 +2300,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="4485066291661521" title="Bgm">
+        <event-group collapsed="1" description="" sid="4485066291661521" title="Bgm">
             <sub-events>
                 <event-block collapsed="1" sid="8378716022662507">
                     <conditions>
@@ -2364,9 +2428,13 @@
                     <param id="0" name="Variable">BridgeLogsVariation</param>
                     <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
                 </action>
+                <action id="-9" name="Set value" sid="7589168636221107" type="System">
+                    <param id="0" name="Variable">BlockerVariation</param>
+                    <param id="1" name="Value">floor(random(BLOCKER, BlockerFrequency))</param>
+                </action>
             </actions>
             <sub-events>
-                <event-block sid="3334282208380972">
+                <event-block collapsed="1" sid="3334282208380972">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="6377748598297995" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2385,7 +2453,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="7296902232643926">
+                        <event-block any="1" sid="7296902232643926">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="4298298193697985" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2584,7 +2652,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="6785198773307701">
+                <event-block collapsed="1" sid="6785198773307701">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="8360692198922932" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2802,7 +2870,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="7595968218827235">
+                <event-block collapsed="1" sid="7595968218827235">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="3148959204486972" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -3020,7 +3088,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="6644944064766411">
+                <event-block collapsed="1" sid="6644944064766411">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="9765357758382479" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -3328,7 +3396,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="7884969092319558">
+                <event-block collapsed="1" sid="7884969092319558">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="4167696631668781" type="System">
                             <param id="0" name="Variable">MushroomVariation</param>
@@ -3341,11 +3409,7 @@
                             <param id="0" name="Object to create">Mushroom</param>
                             <param id="1" name="Layer">&quot;Game&quot;</param>
                             <param id="2" name="X">floor(random(Mushroom.Width / 2, LayoutWidth - (Mushroom.Width / 2)))</param>
-                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;)</param>
-                        </action>
-                        <action id="-29" name="Move to object" sid="9317963323666373" type="Mushroom">
-                            <param id="0" name="Where">0</param>
-                            <param id="1" name="Object">BridgeLogs</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
                         </action>
                         <action id="-29" name="Move to object" sid="5911519218437141" type="Mushroom">
                             <param id="0" name="Where">0</param>
@@ -3386,6 +3450,23 @@
                             </actions>
                         </event-block>
                     </sub-events>
+                </event-block>
+                <event-block sid="3405035775980101">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2119994716541249" type="System">
+                            <param id="0" name="Variable">BlockerVariation</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">BLOCKER</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="9256962187183532" type="System">
+                            <param id="0" name="Object to create">Blocker</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">floor(random(Blocker.Width / 2, LayoutWidth - (Blocker.Width / 2)))</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-block collapsed="1" sid="797253448159978">
                     <conditions>
