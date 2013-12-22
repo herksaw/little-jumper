@@ -50,9 +50,6 @@
                 <action id="0" name="Set text" sid="2236289133706868" type="ButtonQuitText">
                     <param id="0" name="Text">&quot;Quit&quot;</param>
                 </action>
-                <action id="0" name="Set text" sid="7410187981939681" type="DebugBox">
-                    <param id="0" name="Text">AudioFlag</param>
-                </action>
             </actions>
         </event-block>
         <event-block sid="8905815088158319">
@@ -91,7 +88,7 @@
         </event-block>
         <event-block sid="4547024968874856">
             <conditions>
-                <condition id="4" name="Is touching object" sid="3706797752893302" type="Touch">
+                <condition id="3" name="On touched object" sid="3706797752893302" type="Touch">
                     <param id="0" name="Object">ButtonAudio</param>
                 </condition>
                 <condition id="3" name="Compare frame" sid="7158119368680927" type="ButtonAudio">
@@ -105,22 +102,19 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="0" name="Play" sid="6132680998188174" type="Audio">
-                    <param id="0" name="Audio file">switch</param>
-                    <param id="2" name="Loop">0</param>
-                    <param id="3" name="Volume">10</param>
-                    <param id="1" name="Tag (optional)">&quot;switch&quot;</param>
-                </action>
-                <action id="5" name="Set frame" sid="2647685115039417" type="ButtonAudio">
-                    <param id="0" name="Frame number">1</param>
-                </action>
-                <action id="-9" name="Set value" sid="3336242758804848" type="System">
-                    <param id="0" name="Variable">AudioFlag</param>
-                    <param id="1" name="Value">0</param>
+                <action id="8" name="Set silent" sid="6324601536308159" type="Audio">
+                    <param id="0" name="Mode">0</param>
                 </action>
                 <action id="-9" name="Set value" sid="1752052239205964" type="System">
                     <param id="0" name="Variable">TouchFlag</param>
                     <param id="1" name="Value">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="2647685115039417" type="ButtonAudio">
+                    <param id="0" name="Frame number">1</param>
+                </action>
+                <action id="0" name="Set local value" sid="7709867227724679" type="WebStorage">
+                    <param id="0" name="Key">&quot;audio&quot;</param>
+                    <param id="1" name="Value">&quot;0&quot;</param>
                 </action>
             </actions>
         </event-block>
@@ -140,6 +134,13 @@
                 </condition>
             </conditions>
             <actions>
+                <action id="8" name="Set silent" sid="4650184442979683" type="Audio">
+                    <param id="0" name="Mode">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="5750108060443652" type="System">
+                    <param id="0" name="Variable">TouchFlag</param>
+                    <param id="1" name="Value">0</param>
+                </action>
                 <action id="0" name="Play" sid="8813681885985208" type="Audio">
                     <param id="0" name="Audio file">switch</param>
                     <param id="2" name="Loop">0</param>
@@ -149,13 +150,9 @@
                 <action id="5" name="Set frame" sid="3315027410370804" type="ButtonAudio">
                     <param id="0" name="Frame number">0</param>
                 </action>
-                <action id="-9" name="Set value" sid="4637809820135661" type="System">
-                    <param id="0" name="Variable">AudioFlag</param>
-                    <param id="1" name="Value">1</param>
-                </action>
-                <action id="-9" name="Set value" sid="5750108060443652" type="System">
-                    <param id="0" name="Variable">TouchFlag</param>
-                    <param id="1" name="Value">0</param>
+                <action id="0" name="Set local value" sid="4435107970981719" type="WebStorage">
+                    <param id="0" name="Key">&quot;audio&quot;</param>
+                    <param id="1" name="Value">&quot;1&quot;</param>
                 </action>
             </actions>
         </event-block>
@@ -172,8 +169,8 @@
         </event-block>
         <event-block sid="6467035162545312">
             <conditions>
-                <condition id="-14" name="Compare variable" sid="6170217169131064" type="System">
-                    <param id="0" name="Variable">AudioFlag</param>
+                <condition id="7" name="Compare key value (as number)" sid="651130953614621" type="WebStorage">
+                    <param id="0" name="Key">&quot;audio&quot;</param>
                     <param id="1" name="Comparison">0</param>
                     <param id="2" name="Value">0</param>
                 </condition>
@@ -186,8 +183,8 @@
         </event-block>
         <event-block sid="3950194555981127">
             <conditions>
-                <condition id="-14" name="Compare variable" sid="9846108656295918" type="System">
-                    <param id="0" name="Variable">AudioFlag</param>
+                <condition id="7" name="Compare key value (as number)" sid="3660504683821316" type="WebStorage">
+                    <param id="0" name="Key">&quot;audio&quot;</param>
                     <param id="1" name="Comparison">0</param>
                     <param id="2" name="Value">1</param>
                 </condition>

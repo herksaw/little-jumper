@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -10,8 +10,8 @@
     <unique-id>14fir0wto7bt4</unique-id>
     <saved-with-version>13900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
@@ -19,6 +19,7 @@
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
@@ -223,7 +224,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="CoinNumberBox" sid="8617769402260189">
+        <object-type name="CoinBox" sid="8617769402260189">
             <plugin id="Text" />
         </object-type>
         <object-type name="HUDCoin" sid="1891431927085911">
@@ -461,7 +462,13 @@
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="type" sid="1484604216243737" type="number" />
+                <instance-variable name="direction" sid="5807185835481244" type="number" />
             </instance-variables>
+            <behaviors>
+                <behavior-type name="Platform" sid="1582258481008619">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1169956661579697" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="-0.125" />
@@ -517,7 +524,7 @@
         <object-type name="PauseBox" sid="8086324297033128">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4977168916381768" speed="5">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4977168916381768" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.502762" />
                 </animation>
             </animation-folder>
@@ -616,6 +623,36 @@
         <object-type name="LoadingPercentageBox" sid="4288228388450806">
             <plugin id="Text" />
         </object-type>
+        <object-type name="ScoreBox" sid="3362115950533643">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="ButtonPlay" sid="3762594085241708">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9043841939053531" speed="0">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ButtonRestart" sid="4177403144947294">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="2090144226682094" speed="0">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ButtonMenu" sid="1620443012279906">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9312531732037707" speed="0">
+                    <frame duration="1" hotspotX="0.506849" hotspotY="0.506849" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="WebStorage" sid="6489358634672728">
+            <plugin id="WebStorage" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
@@ -623,11 +660,12 @@
                 <member>Beta</member>
             </members>
             <instance-variables>
-                <instance-variable name="totalCoin" sid="6043421239395242" type="number" />
+                <instance-variable name="coin" sid="6043421239395242" type="number" />
                 <instance-variable name="life" sid="301502082705608" type="number" />
                 <instance-variable name="name" sid="3680970676380199" type="number" />
                 <instance-variable name="isStar" sid="3123948734772794" type="number" />
                 <instance-variable name="starTimer" sid="9444714846788053" type="number" />
+                <instance-variable name="score" sid="2742315791093357" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Platform" sid="7997466528632153">
@@ -685,6 +723,16 @@
                 </behavior-type>
             </behaviors>
         </family>
+        <family name="Buttons" plugin-id="Sprite" sid="9975483120782078">
+            <members>
+                <member>ButtonAudio</member>
+                <member>ButtonMenu</member>
+                <member>ButtonNo</member>
+                <member>ButtonPlay</member>
+                <member>ButtonRestart</member>
+                <member>ButtonYes</member>
+            </members>
+        </family>
     </families>
     <layout-folder expanded="1">
         <layout>Game Layout.xml</layout>
@@ -719,6 +767,7 @@
                 <doppler-factor>1</doppler-factor>
             </properties>
         </global-instance>
+        <global-instance type="WebStorage" uid="51" />
     </global-instances>
     <sounds-folder expanded="0">
         <file name="click.m4a" />

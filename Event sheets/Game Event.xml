@@ -3,7 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Game Event</name>
     <events>
-        <variable constant="0" name="AudioFlag" sid="4951322465580892" static="0" type="number">1</variable>
+        <variable constant="0" name="IsPaused" sid="7636097099237715" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayingBgmFlag" sid="2430985898250879" static="0" type="number">1</variable>
         <variable constant="0" name="CurrentHeight" sid="8204775679643404" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentLevel" sid="2384745318579744" static="0" type="number">0</variable>
         <variable constant="0" name="HitEnemyVariation" sid="1286964031056115" static="0" type="number">0</variable>
@@ -11,7 +12,7 @@
         <comment>/* List of frequency</comment>
         <variable constant="0" name="CoinFrequency" sid="9851590177290782" static="0" type="number">1</variable>
         <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">40</variable>
-        <variable constant="0" name="MushroomFrequency" sid="4441800794342375" static="0" type="number">15</variable>
+        <variable constant="0" name="MushroomFrequency" sid="4441800794342375" static="0" type="number">30</variable>
         <variable constant="0" name="BridgeLogsFrequency" sid="9295929386309377" static="0" type="number">20</variable>
         <variable constant="0" name="WideFrequency" sid="8148543060379368" static="0" type="number">20</variable>
         <variable constant="0" name="HalfFrequency" sid="3866764329498598" static="0" type="number">1</variable>
@@ -52,7 +53,7 @@
         <variable comment="The current scroll Y position" constant="0" name="MinScroll" sid="1158545394144303" static="0" type="number">999</variable>
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
-        <event-group collapsed="1" description="" sid="5194284430658767" title="System">
+        <event-group description="" sid="5194284430658767" title="System">
             <sub-events>
                 <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
                 <event-block sid="4278721947506207">
@@ -60,11 +61,15 @@
                         <condition id="-2" name="On start of layout" sid="4868304817676469" type="System" />
                     </conditions>
                     <actions>
-                        <action id="5" name="Set web font" sid="53036848188293" type="CoinNumberBox">
+                        <action id="5" name="Set web font" sid="53036848188293" type="CoinBox">
                             <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
                         <action id="5" name="Set web font" sid="4594969489868492" type="PlayerHeightBox">
+                            <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                            <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="7124421419114503" type="ScoreBox">
                             <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                             <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                         </action>
@@ -140,11 +145,14 @@
                             <param id="0" name="Instance variable">timer</param>
                             <param id="1" name="Value">dt</param>
                         </action>
-                        <action id="0" name="Set text" sid="9070687968454477" type="CoinNumberBox">
-                            <param id="0" name="Text">Player.totalCoin</param>
+                        <action id="0" name="Set text" sid="9070687968454477" type="CoinBox">
+                            <param id="0" name="Text">Player.coin</param>
                         </action>
                         <action id="0" name="Set text" sid="7966559457675479" type="PlayerHeightBox">
                             <param id="0" name="Text">&quot;Height: &quot; &amp; CurrentHeight</param>
+                        </action>
+                        <action id="0" name="Set text" sid="7391665997783247" type="ScoreBox">
+                            <param id="0" name="Text">&quot;Score: &quot; &amp; Player.score</param>
                         </action>
                         <action id="-24" name="Move to top" sid="5803378280356695" type="Player" />
                         <action id="-2" name="Set Y" sid="8614785097190574" type="Sky">
@@ -168,41 +176,258 @@
                         <action behavior="Fade" id="1" name="Start fade" sid="8132760378356576" type="Sky" />
                     </actions>
                 </event-block>
-                <event-block sid="2185096325281153">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="1834469766821499" type="System">
-                            <param id="0" name="Variable">AudioFlag</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="8" name="Set silent" sid="6535093279152979" type="Audio">
-                            <param id="0" name="Mode">0</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="2356391271353455">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="1806373585383731" type="System">
-                            <param id="0" name="Variable">AudioFlag</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="8" name="Set silent" sid="9289036610197046" type="Audio">
-                            <param id="0" name="Mode">1</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="6180266066730591">
                     <conditions>
                         <condition id="3" name="On touched object" sid="4780224467833277" type="Touch">
                             <param id="0" name="Object">HUDClose</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="5482420435319176" type="System">
+                            <param id="0" name="Variable">IsPaused</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="4649399965366128" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="586095634102914" type="System">
+                            <param id="0" name="Variable">IsPaused</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="8629328326136017" type="System">
+                            <param id="0" name="Object to create">PauseBox</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">LayoutWidth / 2</param>
+                            <param id="3" name="Y">LayoutHeight / 2</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="6746187004237438" type="System">
+                            <param id="0" name="Object to create">ButtonPlay</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">PauseBox.BBoxLeft + Buttons.Width</param>
+                            <param id="3" name="Y">PauseBox.BBoxTop + Buttons.Height + (Buttons.Height / 2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="4959527054599008" type="System">
+                            <param id="0" name="Object to create">ButtonRestart</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">PauseBox.BBoxLeft + (Buttons.Width * 2.6)</param>
+                            <param id="3" name="Y">PauseBox.BBoxTop + Buttons.Height + (Buttons.Height / 2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="9996331498161355" type="System">
+                            <param id="0" name="Object to create">ButtonMenu</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">PauseBox.BBoxLeft + (Buttons.Width * 4.2)</param>
+                            <param id="3" name="Y">PauseBox.BBoxTop + Buttons.Height + (Buttons.Height / 2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="9735339708280391" type="System">
+                            <param id="0" name="Object to create">ButtonAudio</param>
+                            <param id="1" name="Layer">&quot;HUD&quot;</param>
+                            <param id="2" name="X">ViewportLeft(&quot;Game&quot;) + (Buttons.Width / 2)</param>
+                            <param id="3" name="Y">LayoutHeight - (Buttons.Width / 2)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="5271035522055954">
+                            <conditions>
+                                <condition id="7" name="Compare key value (as number)" sid="5791242679515224" type="WebStorage">
+                                    <param id="0" name="Key">&quot;audio&quot;</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="304859997596021" type="ButtonAudio">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1082174072258841">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="8283838559142977" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="8410988033318972" type="ButtonAudio">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="7069498633766744">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="6266506850895057" type="Touch">
+                            <param id="0" name="Object">ButtonPlay</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="4845391710581617" type="System">
+                            <param id="0" name="Time scale">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3902297506600916" type="System">
+                            <param id="0" name="Variable">IsPaused</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="1211321690368445" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="5631127829929619" type="ButtonPlay" />
+                        <action id="-9" name="Destroy" sid="5947940427181811" type="ButtonRestart" />
+                        <action id="-9" name="Destroy" sid="3050846599021559" type="ButtonMenu" />
+                        <action id="-9" name="Destroy" sid="2788032649399667" type="ButtonAudio" />
+                    </actions>
+                </event-block>
+                <event-block sid="3415989263070688">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="6823297073493667" type="Touch">
+                            <param id="0" name="Object">ButtonRestart</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="2145570587069526" type="System">
+                            <param id="0" name="Time scale">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="8941141559322646" type="System">
+                            <param id="0" name="Variable">IsPaused</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="3097016778800213" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="5223029893999279" type="ButtonPlay" />
+                        <action id="-9" name="Destroy" sid="5739392608901447" type="ButtonRestart" />
+                        <action id="-9" name="Destroy" sid="1228445607085077" type="ButtonMenu" />
+                        <action id="-9" name="Destroy" sid="6013671774516424" type="ButtonAudio" />
+                        <action id="-26" name="Restart layout" sid="3640713877758966" type="System" />
+                    </actions>
+                </event-block>
+                <event-block sid="7805687525632138">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="2593248565946097" type="Touch">
+                            <param id="0" name="Object">ButtonMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="7440295024381483" type="System">
+                            <param id="0" name="Time scale">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="4303239634330755" type="System">
+                            <param id="0" name="Variable">IsPaused</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="9189823753244697" type="PauseBox" />
+                        <action id="-9" name="Destroy" sid="1593270327021716" type="ButtonPlay" />
+                        <action id="-9" name="Destroy" sid="512520815184767" type="ButtonRestart" />
+                        <action id="-9" name="Destroy" sid="2218385403073517" type="ButtonMenu" />
+                        <action id="-9" name="Destroy" sid="2307499531000072" type="ButtonAudio" />
+                        <action id="-2" name="Go to layout" sid="5004895164779557" type="System">
+                            <param id="0" name="Layout">Main Menu Layout</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6533199510491237">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="3991466008668855" type="Touch">
+                            <param id="0" name="Object">ButtonAudio</param>
+                        </condition>
+                        <condition id="3" name="Compare frame" sid="1775034388417705" type="ButtonAudio">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="5757765012474525" type="System">
+                            <param id="0" name="Variable">TouchFlag</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="5198736503852708" type="Audio">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3233798877677084" type="System">
+                            <param id="0" name="Variable">TouchFlag</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="3857575778136259" type="ButtonAudio">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="6409849923407566" type="WebStorage">
+                            <param id="0" name="Key">&quot;audio&quot;</param>
+                            <param id="1" name="Value">&quot;0&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4697075772366174">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="561266922258921" type="Touch">
+                            <param id="0" name="Object">ButtonAudio</param>
+                        </condition>
+                        <condition id="3" name="Compare frame" sid="5082979535500169" type="ButtonAudio">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Number">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="8480228697275987" type="System">
+                            <param id="0" name="Variable">TouchFlag</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="1274565805722004" type="Audio">
+                            <param id="0" name="Mode">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="5008432413171851" type="System">
+                            <param id="0" name="Variable">TouchFlag</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Play" sid="5111619747645447" type="Audio">
+                            <param id="0" name="Audio file">switch</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">10</param>
+                            <param id="1" name="Tag (optional)">&quot;switch&quot;</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="7687519645884012" type="ButtonAudio">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="2008587166154779" type="WebStorage">
+                            <param id="0" name="Key">&quot;audio&quot;</param>
+                            <param id="1" name="Value">&quot;1&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3444913260206802">
+                    <conditions>
+                        <condition id="1" name="On any touch end" sid="7756895498881246" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2513454871849517" type="System">
+                            <param id="0" name="Variable">TouchFlag</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8396031598058753">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="4097365257790583" type="WebStorage">
+                            <param id="0" name="Key">&quot;audio&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="3132627570380071" type="Audio">
+                            <param id="0" name="Mode">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2269020173632993">
+                    <conditions>
+                        <condition id="7" name="Compare key value (as number)" sid="881103461950612" type="WebStorage">
+                            <param id="0" name="Key">&quot;audio&quot;</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="8" name="Set silent" sid="2930405555292017" type="Audio">
+                            <param id="0" name="Mode">1</param>
+                        </action>
+                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
@@ -474,6 +699,10 @@
                         <condition behavior="Platform" id="9" name="On landed" sid="9082473835450555" type="Player" />
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="8327076330874277" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="0" name="Play" sid="8350339954327143" type="Audio">
                             <param id="0" name="Audio file">land</param>
                             <param id="2" name="Loop">0</param>
@@ -756,6 +985,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="3759006637229274" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="0" name="Play" sid="5025194538470404" type="Audio">
                             <param id="0" name="Audio file">gain_coin</param>
                             <param id="2" name="Loop">0</param>
@@ -764,7 +997,7 @@
                         </action>
                         <action id="-9" name="Destroy" sid="7410825650120748" type="Coin" />
                         <action id="-11" name="Add to" sid="1784131710635251" type="Player">
-                            <param id="0" name="Instance variable">totalCoin</param>
+                            <param id="0" name="Instance variable">coin</param>
                             <param id="1" name="Value">1</param>
                         </action>
                     </actions>
@@ -776,6 +1009,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="6600944108989287" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="0" name="Play" sid="2902628479206096" type="Audio">
                             <param id="0" name="Audio file">eat_star</param>
                             <param id="2" name="Loop">0</param>
@@ -805,6 +1042,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="2453331950607834" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="0" name="Play" sid="6993252919763756" type="Audio">
                             <param id="0" name="Audio file">eat_normal</param>
                             <param id="2" name="Loop">0</param>
@@ -830,6 +1071,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="4626047500092392" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="0" name="Play" sid="4853053801231442" type="Audio">
                             <param id="0" name="Audio file">eat_poison</param>
                             <param id="2" name="Loop">0</param>
@@ -884,36 +1129,6 @@
                     </conditions>
                     <actions>
                         <action id="-9" name="Destroy" sid="6390051616968219" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="4874080885082467">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="1660623868030317" type="Mushroom">
-                            <param id="0" name="Object">Coin</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="8627816100753107" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="9108572557160454">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="4218917166363603" type="Mushroom">
-                            <param id="0" name="Object">Half</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="4631820410268938" type="Mushroom" />
-                    </actions>
-                </event-block>
-                <event-block sid="5095532258724459">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="2653451394767508" type="Mushroom">
-                            <param id="0" name="Object">Wide</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="2002280452003153" type="Mushroom" />
                     </actions>
                 </event-block>
                 <event-block collapsed="1" sid="4932879068044754">
@@ -1000,6 +1215,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="9411184836447742" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="-9" name="Set value" sid="4501877457160788" type="System">
                             <param id="0" name="Variable">HitEnemyVariation</param>
                             <param id="1" name="Value">floor(random(0, 2))</param>
@@ -1108,6 +1327,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="1389624914757325" type="Function">
+                            <param id="0" name="Name">&quot;AddScore&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="-9" name="Set value" sid="9043294126922615" type="System">
                             <param id="0" name="Variable">HitEnemyVariation</param>
                             <param id="1" name="Value">floor(random(0, 2))</param>
@@ -1208,24 +1431,30 @@
         </event-group>
         <event-group description="" sid="3854492226766296" title="Logic">
             <sub-events>
-                <event-block sid="6194689531019717">
+                <event-block sid="5996248188519901">
                     <conditions>
-                        <condition id="-14" name="Compare variable" sid="1322292557125" type="System">
-                            <param id="0" name="Variable">CurrentLevel</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">1</param>
-                        </condition>
-                        <condition id="-4" name="Trigger once while true" sid="3413008291266384" type="System" />
+                        <condition id="-2" name="On start of layout" sid="4804333487221881" type="System" />
+                        <condition id="3" name="Is silent" sid="6153028247708395" type="Audio" />
                     </conditions>
                     <actions>
-                        <action id="17" name="Execute Javascript" sid="3492654152298073" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;grass&apos;)&quot;</param>
+                        <action id="-12" name="Set group active" sid="1210029536739483" type="System">
+                            <param id="0" name="Group name">&quot;Bgm&quot;</param>
+                            <param id="1" name="State">0</param>
                         </action>
-                        <action id="0" name="Play" sid="3043824836472668" type="Audio">
-                            <param id="0" name="Audio file">grass_bgm</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="1" name="Tag (optional)">&quot;grass_bgm&quot;</param>
+                        <action id="-9" name="Set value" sid="449552156137189" type="System">
+                            <param id="0" name="Variable">PlayingBgmFlag</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3286883117689743">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Is silent" sid="170370844685448" type="Audio" />
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Set group active" sid="5914243010073877" type="System">
+                            <param id="0" name="Group name">&quot;Bgm&quot;</param>
+                            <param id="1" name="State">1</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1239,18 +1468,6 @@
                         <condition id="-4" name="Trigger once while true" sid="9525853427471375" type="System" />
                     </conditions>
                     <actions>
-                        <action id="17" name="Execute Javascript" sid="7044430915097195" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;sand&apos;)&quot;</param>
-                        </action>
-                        <action id="6" name="Stop" sid="4213145842837348" type="Audio">
-                            <param id="0" name="Tag">&quot;grass_bgm&quot;</param>
-                        </action>
-                        <action id="0" name="Play" sid="7389992536553555" type="Audio">
-                            <param id="0" name="Audio file">sand_bgm</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="1" name="Tag (optional)">&quot;sand_bgm&quot;</param>
-                        </action>
                         <action id="-9" name="Set value" sid="6537819679528213" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">35</param>
@@ -1265,7 +1482,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="2659244988147427" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">10</param>
+                            <param id="1" name="Value">25</param>
                         </action>
                         <action id="-10" name="Set value" sid="2314036786859561" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
@@ -1283,18 +1500,6 @@
                         <condition id="-4" name="Trigger once while true" sid="4614227909761408" type="System" />
                     </conditions>
                     <actions>
-                        <action id="17" name="Execute Javascript" sid="8755455670098236" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;snow&apos;)&quot;</param>
-                        </action>
-                        <action id="6" name="Stop" sid="1582444228952022" type="Audio">
-                            <param id="0" name="Tag">&quot;sand_bgm&quot;</param>
-                        </action>
-                        <action id="0" name="Play" sid="7900623108139197" type="Audio">
-                            <param id="0" name="Audio file">snow_bgm</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="1" name="Tag (optional)">&quot;snow_bgm&quot;</param>
-                        </action>
                         <action id="-9" name="Set value" sid="3756242061044229" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">30</param>
@@ -1309,7 +1514,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="6973024448753305" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">5</param>
+                            <param id="1" name="Value">20</param>
                         </action>
                         <action id="-10" name="Set value" sid="6056919589070378" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
@@ -1331,18 +1536,6 @@
                         <condition id="-4" name="Trigger once while true" sid="8754343332201397" type="System" />
                     </conditions>
                     <actions>
-                        <action id="17" name="Execute Javascript" sid="2915417139511685" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;stone&apos;)&quot;</param>
-                        </action>
-                        <action id="6" name="Stop" sid="9743467161674921" type="Audio">
-                            <param id="0" name="Tag">&quot;snow_bgm&quot;</param>
-                        </action>
-                        <action id="0" name="Play" sid="8092163688697854" type="Audio">
-                            <param id="0" name="Audio file">stone_bgm</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="1" name="Tag (optional)">&quot;stone_bgm&quot;</param>
-                        </action>
                         <action id="-9" name="Set value" sid="2182813124409626" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">25</param>
@@ -1357,7 +1550,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="9106361420418061" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">2</param>
+                            <param id="1" name="Value">15</param>
                         </action>
                         <action id="-9" name="Set value" sid="7433279300218996" type="System">
                             <param id="0" name="Variable">HalfFrequency</param>
@@ -1383,18 +1576,6 @@
                         <condition id="-4" name="Trigger once while true" sid="8169514084345905" type="System" />
                     </conditions>
                     <actions>
-                        <action id="17" name="Execute Javascript" sid="7581716584179626" type="Browser">
-                            <param id="0" name="Javascript">&quot;console.log(&apos;level_5&apos;)&quot;</param>
-                        </action>
-                        <action id="6" name="Stop" sid="990975684652635" type="Audio">
-                            <param id="0" name="Tag">&quot;stone_bgm&quot;</param>
-                        </action>
-                        <action id="0" name="Play" sid="3395352485078278" type="Audio">
-                            <param id="0" name="Audio file">level_5_bgm</param>
-                            <param id="2" name="Loop">1</param>
-                            <param id="3" name="Volume">0</param>
-                            <param id="1" name="Tag (optional)">&quot;level_5_bgm&quot;</param>
-                        </action>
                         <action id="-9" name="Set value" sid="8967233561435452" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
                             <param id="1" name="Value">20</param>
@@ -1409,7 +1590,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="7872359524864139" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">1</param>
+                            <param id="1" name="Value">10</param>
                         </action>
                         <action id="-9" name="Set value" sid="7625328012085898" type="System">
                             <param id="0" name="Variable">HalfFrequency</param>
@@ -1905,7 +2086,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="5402771042784259">
+                <event-block collapsed="1" sid="5402771042784259">
                     <conditions>
                         <condition behavior="Platform" id="3" name="Is jumping" sid="1869987437769891" type="Star" />
                     </conditions>
@@ -1940,6 +2121,57 @@
                             </conditions>
                             <actions>
                                 <action behavior="Platform" id="7" name="Simulate control" sid="9973633028873187" type="Star">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="4824513679721571">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="5269935992383643" type="Mushroom" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="8374111909151387" type="Mushroom">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block collapsed="1" sid="8792421453470674">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="8901509842487459" type="Mushroom" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="2888329171000276" type="Mushroom">
+                            <param id="0" name="Instance variable">direction</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="3631448257341824">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9890149628796674" type="Mushroom">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="5059861493640887" type="Mushroom">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4161772553897971">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="495206280145681" type="Mushroom">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="7700431561034706" type="Mushroom">
                                     <param id="0" name="Control">1</param>
                                 </action>
                             </actions>
@@ -2004,7 +2236,116 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="4153992389788106">
+        <event-group description="" sid="4485066291661521" title="Bgm">
+            <sub-events>
+                <event-block collapsed="1" sid="8378716022662507">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="5665712156002249" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6974007091758552">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4262306147282243" type="System">
+                                    <param id="0" name="Variable">CurrentLevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="6456477849405294" type="Audio">
+                                    <param id="0" name="Audio file">grass_bgm</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;grass_bgm&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1744138259485308">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7123464075848832" type="System">
+                                    <param id="0" name="Variable">CurrentLevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Stop" sid="1763114795183832" type="Audio">
+                                    <param id="0" name="Tag">&quot;grass_bgm&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="6624435667443793" type="Audio">
+                                    <param id="0" name="Audio file">sand_bgm</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;sand_bgm&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="9390665979397402">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1575338849315379" type="System">
+                                    <param id="0" name="Variable">CurrentLevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Stop" sid="3315505318498546" type="Audio">
+                                    <param id="0" name="Tag">&quot;sand_bgm&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="2912058641166697" type="Audio">
+                                    <param id="0" name="Audio file">snow_bgm</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;snow_bgm&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3176068053784991">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6250785837409885" type="System">
+                                    <param id="0" name="Variable">CurrentLevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Stop" sid="2199716324215382" type="Audio">
+                                    <param id="0" name="Tag">&quot;snow_bgm&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="8873989250893728" type="Audio">
+                                    <param id="0" name="Audio file">stone_bgm</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;stone_bgm&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3249386080997638">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3000988856585264" type="System">
+                                    <param id="0" name="Variable">CurrentLevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Stop" sid="6392682570693268" type="Audio">
+                                    <param id="0" name="Tag">&quot;stone_bgm&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="2586004301140326" type="Audio">
+                                    <param id="0" name="Audio file">level_5_bgm</param>
+                                    <param id="2" name="Loop">1</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;level_5_bgm&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block collapsed="1" sid="4153992389788106">
             <conditions>
                 <condition id="0" name="On function" sid="1143780483638221" type="Function">
                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
@@ -2015,13 +2356,17 @@
                     <param id="0" name="Variable">StarVariation</param>
                     <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
                 </action>
+                <action id="-9" name="Set value" sid="4812286449372684" type="System">
+                    <param id="0" name="Variable">MushroomVariation</param>
+                    <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
+                </action>
                 <action id="-9" name="Set value" sid="121593539444755" type="System">
                     <param id="0" name="Variable">BridgeLogsVariation</param>
                     <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
                 </action>
             </actions>
             <sub-events>
-                <event-block collapsed="1" sid="3334282208380972">
+                <event-block sid="3334282208380972">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="6377748598297995" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2052,10 +2397,6 @@
                                 <action id="-9" name="Set value" sid="3186160354436362" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="2630440241410802" type="System">
-                                    <param id="0" name="Variable">MushroomVariation</param>
-                                    <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
                                 </action>
                                 <action id="-3" name="Create object" sid="4061290023306003" type="System">
                                     <param id="0" name="Object to create">GrassHalf</param>
@@ -2090,65 +2431,6 @@
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="7136883265491453">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="5685267751966291" type="System">
-                                            <param id="0" name="Variable">MushroomVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">MUSHROOM</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="347711546871301" type="System">
-                                            <param id="0" name="Object to create">Mushroom</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">GrassHalf.X</param>
-                                            <param id="3" name="Y">GrassHalf.Y - GrassHalf.Height - Mushroom.Height</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="9503639489039844" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="5681765795279879" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="196324067431641" type="Mushroom">
-                                            <param id="0" name="Instance variable">type</param>
-                                            <param id="1" name="Value">floor(random(0, 2))</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="9773218517365312">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="7127291370151821" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">NORMAL</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="6755479862535749" type="Mushroom">
-                                                    <param id="0" name="Frame number">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="15773843707005">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="1050684644220105" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">POISON</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="7300160125086605" type="Mushroom">
-                                                    <param id="0" name="Frame number">1</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -2302,7 +2584,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6785198773307701">
+                <event-block sid="6785198773307701">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="8360692198922932" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2333,10 +2615,6 @@
                                 <action id="-9" name="Set value" sid="4177666198023328" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="5293260972763155" type="System">
-                                    <param id="0" name="Variable">MushroomVariation</param>
-                                    <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
                                 </action>
                                 <action id="-3" name="Create object" sid="5072367098018232" type="System">
                                     <param id="0" name="Object to create">SandHalf</param>
@@ -2371,65 +2649,6 @@
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="947048739145876">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="770280847252863" type="System">
-                                            <param id="0" name="Variable">MushroomVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">MUSHROOM</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="2643667272374843" type="System">
-                                            <param id="0" name="Object to create">Mushroom</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">SandHalf.X</param>
-                                            <param id="3" name="Y">SandHalf.Y - SandHalf.Height - Mushroom.Height</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3261158734469195" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="9668259534016195" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="4316530932696533" type="Mushroom">
-                                            <param id="0" name="Instance variable">type</param>
-                                            <param id="1" name="Value">floor(random(0, 2))</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="2491611273310752">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="2306642667923417" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">NORMAL</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="6061407343316423" type="Mushroom">
-                                                    <param id="0" name="Frame number">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="675692182066838">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="9964965112435744" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">POISON</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="976524518513273" type="Mushroom">
-                                                    <param id="0" name="Frame number">1</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -2583,7 +2802,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="7595968218827235">
+                <event-block sid="7595968218827235">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="3148959204486972" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2602,7 +2821,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" sid="6928695699797022">
+                        <event-block any="1" collapsed="1" sid="6928695699797022">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="7518128308296029" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2614,10 +2833,6 @@
                                 <action id="-9" name="Set value" sid="6882635392688807" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="4812286449372684" type="System">
-                                    <param id="0" name="Variable">MushroomVariation</param>
-                                    <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
                                 </action>
                                 <action id="-3" name="Create object" sid="5013436662413875" type="System">
                                     <param id="0" name="Object to create">SnowHalf</param>
@@ -2652,65 +2867,6 @@
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="160822136387379">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="8342263322398246" type="System">
-                                            <param id="0" name="Variable">MushroomVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">MUSHROOM</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="3945999099185746" type="System">
-                                            <param id="0" name="Object to create">Mushroom</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">SnowHalf.X</param>
-                                            <param id="3" name="Y">SnowHalf.Y - SnowHalf.Height - Mushroom.Height</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="4977925059950322" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3475851857284006" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="2422465624868067" type="Mushroom">
-                                            <param id="0" name="Instance variable">type</param>
-                                            <param id="1" name="Value">floor(random(0, 2))</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="6881246078317739">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="7585538470249308" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">NORMAL</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="6289825955431606" type="Mushroom">
-                                                    <param id="0" name="Frame number">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="5215227384600972">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="1505443805997526" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">POISON</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="7683988847289164" type="Mushroom">
-                                                    <param id="0" name="Frame number">1</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -2864,7 +3020,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6644944064766411">
+                <event-block sid="6644944064766411">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="9765357758382479" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2895,10 +3051,6 @@
                                 <action id="-9" name="Set value" sid="2072163914854616" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="9318207532720267" type="System">
-                                    <param id="0" name="Variable">MushroomVariation</param>
-                                    <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
                                 </action>
                                 <action id="-3" name="Create object" sid="4272438174200542" type="System">
                                     <param id="0" name="Object to create">StoneHalf</param>
@@ -2933,65 +3085,6 @@
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="6405373390296466">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="493667659855457" type="System">
-                                            <param id="0" name="Variable">MushroomVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">MUSHROOM</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="4685913249384185" type="System">
-                                            <param id="0" name="Object to create">Mushroom</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">StoneHalf.X</param>
-                                            <param id="3" name="Y">StoneHalf.Y - StoneHalf.Height - Mushroom.Height</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3749187715536696" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="5204867484790558" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                        <action id="-10" name="Set value" sid="8024635936796731" type="Mushroom">
-                                            <param id="0" name="Instance variable">type</param>
-                                            <param id="1" name="Value">floor(random(0, 2))</param>
-                                        </action>
-                                    </actions>
-                                    <sub-events>
-                                        <event-block sid="152854086799337">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="5234141678469082" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">NORMAL</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="7845464430448787" type="Mushroom">
-                                                    <param id="0" name="Frame number">0</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="7684072173921015">
-                                            <conditions>
-                                                <condition id="-7" name="Compare instance variable" sid="2622343524133946" type="Mushroom">
-                                                    <param id="0" name="Instance variable">type</param>
-                                                    <param id="1" name="Comparison">0</param>
-                                                    <param id="2" name="Value">POISON</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="5" name="Set frame" sid="4169044002987305" type="Mushroom">
-                                                    <param id="0" name="Frame number">1</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -3235,6 +3328,65 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="7884969092319558">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="4167696631668781" type="System">
+                            <param id="0" name="Variable">MushroomVariation</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">MUSHROOM</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="5641154603059743" type="System">
+                            <param id="0" name="Object to create">Mushroom</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">floor(random(Mushroom.Width / 2, LayoutWidth - (Mushroom.Width / 2)))</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;)</param>
+                        </action>
+                        <action id="-29" name="Move to object" sid="9317963323666373" type="Mushroom">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Object">BridgeLogs</param>
+                        </action>
+                        <action id="-29" name="Move to object" sid="5911519218437141" type="Mushroom">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Object">Enemy</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7432601861646787" type="Mushroom">
+                            <param id="0" name="Instance variable">type</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="7281538636028161">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5416696485800446" type="Mushroom">
+                                    <param id="0" name="Instance variable">type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">NORMAL</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="1147413403416305" type="Mushroom">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5497953122251465">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3552131582116046" type="Mushroom">
+                                    <param id="0" name="Instance variable">type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">POISON</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="5" name="Set frame" sid="9321357196495816" type="Mushroom">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
                 <event-block collapsed="1" sid="797253448159978">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="3367991449537522" type="System">
@@ -3339,6 +3491,19 @@
                     </sub-events>
                 </event-block>
             </sub-events>
+        </event-block>
+        <event-block sid="4777124197871729">
+            <conditions>
+                <condition id="0" name="On function" sid="2483865950629162" type="Function">
+                    <param id="0" name="Name">&quot;AddScore&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Add to" sid="7698733366374906" type="Player">
+                    <param id="0" name="Instance variable">score</param>
+                    <param id="1" name="Value">12</param>
+                </action>
+            </actions>
         </event-block>
     </events>
 </c2eventsheet>
