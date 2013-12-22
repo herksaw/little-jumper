@@ -26,8 +26,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <family expanded="0" name="Enemy" />
         <family expanded="0" name="Lock" />
         <family expanded="0" name="Half" />
-        <family expanded="1" name="CliffLeft" />
-        <family expanded="0" name="CliffRight" />
         <family expanded="0" name="Wide" />
     </families-expanded>
 </c2uistate>

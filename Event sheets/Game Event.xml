@@ -10,12 +10,9 @@
         <variable constant="0" name="PlayerJumpVariation" sid="5883998605771122" static="0" type="number">0</variable>
         <comment>/* List of frequency</comment>
         <variable constant="0" name="CoinFrequency" sid="9851590177290782" static="0" type="number">1</variable>
-        <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">20</variable>
-        <variable constant="0" name="MushroomFrequency" sid="4441800794342375" static="0" type="number">20</variable>
-        <variable constant="0" name="CliffRightFrequency" sid="9624181846966542" static="0" type="number">20</variable>
-        <variable constant="0" name="CliffLeftFrequency" sid="2265899623862856" static="0" type="number">20</variable>
-        <variable constant="0" name="BridgeLogsFrequency" sid="1297286776420902" static="0" type="number">20</variable>
-        <variable constant="0" name="BridgeFrequency" sid="9295929386309377" static="0" type="number">20</variable>
+        <variable constant="0" name="StarFrequency" sid="1842565776966497" static="0" type="number">40</variable>
+        <variable constant="0" name="MushroomFrequency" sid="4441800794342375" static="0" type="number">15</variable>
+        <variable constant="0" name="BridgeLogsFrequency" sid="9295929386309377" static="0" type="number">20</variable>
         <variable constant="0" name="WideFrequency" sid="8148543060379368" static="0" type="number">20</variable>
         <variable constant="0" name="HalfFrequency" sid="3866764329498598" static="0" type="number">1</variable>
         <comment>*/ List of frequency end</comment>
@@ -24,10 +21,7 @@
         <variable constant="0" name="CoinVariation" sid="4740122202064194" static="0" type="number">0</variable>
         <variable constant="0" name="StarVariation" sid="8376508952291155" static="0" type="number">0</variable>
         <variable constant="0" name="MushroomVariation" sid="9460533529551497" static="0" type="number">20</variable>
-        <variable constant="0" name="BridgeLogsVariation" sid="9443600835539593" static="0" type="number">0</variable>
-        <variable constant="0" name="BridgeVariation" sid="7418580186089524" static="0" type="number">0</variable>
-        <variable constant="0" name="CliffRightVariation" sid="919919751171277" static="0" type="number">0</variable>
-        <variable constant="0" name="CliffLeftVariation" sid="4053404684132174" static="0" type="number">0</variable>
+        <variable constant="0" name="BridgeLogsVariation" sid="7418580186089524" static="0" type="number">0</variable>
         <variable constant="0" name="WideVariation" sid="5473949630683315" static="0" type="number">0</variable>
         <variable constant="0" name="HalfVariation" sid="4537961053544164" static="0" type="number">0</variable>
         <comment>/* Constants</comment>
@@ -38,10 +32,7 @@
         <variable constant="1" name="POISON" sid="722263722372991" static="0" type="number">1</variable>
         <variable constant="1" name="NORMAL" sid="7046108836252551" static="0" type="number">0</variable>
         <variable constant="1" name="MUSHROOM" sid="80813705771978" static="0" type="number">0</variable>
-        <variable constant="1" name="BRIDGE_LOGS" sid="4457735247051594" static="0" type="number">0</variable>
-        <variable constant="1" name="BRIDGE" sid="1660403730670708" static="0" type="number">0</variable>
-        <variable constant="1" name="CLIFF_RIGHT" sid="6463931221102185" static="0" type="number">0</variable>
-        <variable constant="1" name="CLIFF_LEFT" sid="8931743796170575" static="0" type="number">0</variable>
+        <variable constant="1" name="BRIDGE_LOGS" sid="1660403730670708" static="0" type="number">0</variable>
         <variable constant="1" name="WIDE" sid="4506296822903806" static="0" type="number">0</variable>
         <variable constant="1" name="HALF" sid="1895510042690214" static="0" type="number">0</variable>
         <variable constant="1" name="DOWN_DIRECTION" sid="6423277347218116" static="0" type="number">4</variable>
@@ -61,7 +52,7 @@
         <variable comment="The current scroll Y position" constant="0" name="MinScroll" sid="1158545394144303" static="0" type="number">999</variable>
         <comment>This variable holds the Y co-ordinate of the next platform to create.  When the top of the screen reaches that position, the platform is created.</comment>
         <variable comment="The next Y scroll position to create a platform at" constant="0" name="NextPlatform" sid="9552638794208944" static="0" type="number">0</variable>
-        <event-group description="" sid="5194284430658767" title="System">
+        <event-group collapsed="1" description="" sid="5194284430658767" title="System">
             <sub-events>
                 <comment>If the player is above the scroll position, scroll up to the player&apos;s position.</comment>
                 <event-block sid="4278721947506207">
@@ -111,9 +102,9 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="2416295202153288" type="System">
+                                <action id="-9" name="Set value" sid="8692854859151855" type="System">
                                     <param id="0" name="Variable">NextPlatform</param>
-                                    <param id="1" name="Value">ViewportTop(&quot;Game&quot;) - random(50, 100)</param>
+                                    <param id="1" name="Value">ViewportTop(&quot;Game&quot;) - random(100, 200)</param>
                                 </action>
                                 <action id="0" name="Call function" sid="1057519980023587" type="Function">
                                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
@@ -145,11 +136,7 @@
                             <param id="0" name="Variable">CloudTimer</param>
                             <param id="1" name="Value">dt</param>
                         </action>
-                        <action id="-11" name="Add to" sid="4559426714552582" type="Bridge">
-                            <param id="0" name="Instance variable">timer</param>
-                            <param id="1" name="Value">dt</param>
-                        </action>
-                        <action id="-11" name="Add to" sid="9740765042319033" type="BridgeLogs">
+                        <action id="-11" name="Add to" sid="4559426714552582" type="BridgeLogs">
                             <param id="0" name="Instance variable">timer</param>
                             <param id="1" name="Value">dt</param>
                         </action>
@@ -219,7 +206,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="7861142062135304" title="Debug">
+        <event-group collapsed="1" description="" sid="7861142062135304" title="Debug">
             <sub-events>
                 <event-block sid="5405765113996254">
                     <conditions>
@@ -656,52 +643,16 @@
                         <action id="-9" name="Destroy" sid="9080471290087266" type="Wide" />
                     </actions>
                 </event-block>
-                <event-block sid="4208422592518418">
-                    <conditions>
-                        <condition id="-3" inverted="1" name="Is on-screen" sid="8672319488938925" type="CliffLeft" />
-                        <condition id="-2" name="Compare Y" sid="2436396123134681" type="CliffLeft">
-                            <param id="0" name="Comparison">4</param>
-                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="8047306116343018" type="CliffLeft" />
-                    </actions>
-                </event-block>
-                <event-block sid="7482659656830182">
-                    <conditions>
-                        <condition id="-3" inverted="1" name="Is on-screen" sid="6134337030474486" type="CliffRight" />
-                        <condition id="-2" name="Compare Y" sid="6128441508772343" type="CliffRight">
-                            <param id="0" name="Comparison">4</param>
-                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="6293538710177212" type="CliffRight" />
-                    </actions>
-                </event-block>
                 <event-block sid="7411283499795627">
                     <conditions>
-                        <condition id="-3" inverted="1" name="Is on-screen" sid="3821740496668051" type="Bridge" />
-                        <condition id="-2" name="Compare Y" sid="5271737575462179" type="Bridge">
+                        <condition id="-3" inverted="1" name="Is on-screen" sid="3821740496668051" type="BridgeLogs" />
+                        <condition id="-2" name="Compare Y" sid="5271737575462179" type="BridgeLogs">
                             <param id="0" name="Comparison">4</param>
                             <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-9" name="Destroy" sid="4161927267188246" type="Bridge" />
-                    </actions>
-                </event-block>
-                <event-block sid="2266122941750646">
-                    <conditions>
-                        <condition id="-3" inverted="1" name="Is on-screen" sid="7507376103527672" type="BridgeLogs" />
-                        <condition id="-2" name="Compare Y" sid="6626418934784718" type="BridgeLogs">
-                            <param id="0" name="Comparison">4</param>
-                            <param id="1" name="Y co-ordinate">ViewportBottom(&quot;Game&quot;)</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="5379891955433131" type="BridgeLogs" />
+                        <action id="-9" name="Destroy" sid="4161927267188246" type="BridgeLogs" />
                     </actions>
                 </event-block>
                 <event-block sid="4408915059401894">
@@ -935,76 +886,6 @@
                         <action id="-9" name="Destroy" sid="6390051616968219" type="Coin" />
                     </actions>
                 </event-block>
-                <event-block sid="2781419916376787">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="1387992186281153" type="Coin">
-                            <param id="0" name="Object">CliffLeft</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="5469974530058036" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="4036194159641101">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="2263781863292156" type="Coin">
-                            <param id="0" name="Object">CliffRight</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="6680979056614656" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="343179512219202">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="7901895168775343" type="Coin">
-                            <param id="0" name="Object">Star</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="3932106581840798" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="4088384886047035">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="6359422373445879" type="Star">
-                            <param id="0" name="Object">Half</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="4800881163148595" type="Star" />
-                    </actions>
-                </event-block>
-                <event-block sid="7502877059693174">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="6499102677122427" type="Star">
-                            <param id="0" name="Object">Wide</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="1399293418654677" type="Star" />
-                    </actions>
-                </event-block>
-                <event-block sid="530729764631091">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="1898433416195883" type="Star">
-                            <param id="0" name="Object">CliffLeft</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="8230170600797977" type="Star" />
-                    </actions>
-                </event-block>
-                <event-block sid="4357989098645694">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="8929637684761781" type="Star">
-                            <param id="0" name="Object">CliffRight</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="6576550469000604" type="Star" />
-                    </actions>
-                </event-block>
                 <event-block sid="4874080885082467">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="1660623868030317" type="Mushroom">
@@ -1013,16 +894,6 @@
                     </conditions>
                     <actions>
                         <action id="-9" name="Destroy" sid="8627816100753107" type="Coin" />
-                    </actions>
-                </event-block>
-                <event-block sid="7522210817604782">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="860639798273211" type="Mushroom">
-                            <param id="0" name="Object">Star</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="7262597886060318" type="Mushroom" />
                     </actions>
                 </event-block>
                 <event-block sid="9108572557160454">
@@ -1045,66 +916,6 @@
                         <action id="-9" name="Destroy" sid="2002280452003153" type="Mushroom" />
                     </actions>
                 </event-block>
-                <event-block sid="7492067626586559">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="6598616201514037" type="CliffLeft">
-                            <param id="0" name="Object">Half</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="7490937069296379" type="Half" />
-                    </actions>
-                </event-block>
-                <event-block sid="2320231993311549">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="9420141974763099" type="CliffLeft">
-                            <param id="0" name="Object">Wide</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="6591261094736313" type="CliffLeft" />
-                    </actions>
-                </event-block>
-                <event-block sid="6833824303565912">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="6811260705108156" type="CliffLeft">
-                            <param id="0" name="Object">CliffLeft</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="108852030117472" type="CliffLeft" />
-                    </actions>
-                </event-block>
-                <event-block sid="8666356344465343">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="4869478602746721" type="CliffRight">
-                            <param id="0" name="Object">Half</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="4312200345668043" type="Half" />
-                    </actions>
-                </event-block>
-                <event-block sid="4054555482113059">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="5674768915105505" type="CliffRight">
-                            <param id="0" name="Object">Wide</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="8813301657858322" type="CliffRight" />
-                    </actions>
-                </event-block>
-                <event-block sid="3590680046609613">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="6454427078474442" type="CliffRight">
-                            <param id="0" name="Object">CliffRight</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="6909438796484766" type="CliffRight" />
-                    </actions>
-                </event-block>
                 <event-block collapsed="1" sid="4932879068044754">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="5822756382280108" type="Player">
@@ -1115,6 +926,12 @@
                             <param id="0" name="Instance variable">isStar</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="2" inverted="1" name="Is playing" sid="2790143778930017" type="Enemy">
+                            <param id="0" name="Animation">&quot;DiedLeft&quot;</param>
+                        </condition>
+                        <condition id="2" inverted="1" name="Is playing" sid="1253052891716322" type="Enemy">
+                            <param id="0" name="Animation">&quot;DiedRight&quot;</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -1389,7 +1206,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="3854492226766296" title="Logic">
+        <event-group description="" sid="3854492226766296" title="Logic">
             <sub-events>
                 <event-block sid="6194689531019717">
                     <conditions>
@@ -1436,21 +1253,9 @@
                         </action>
                         <action id="-9" name="Set value" sid="6537819679528213" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
-                            <param id="1" name="Value">15</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="3488757919046994" type="System">
-                            <param id="0" name="Variable">CliffLeftFrequency</param>
-                            <param id="1" name="Value">25</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="1734531177044185" type="System">
-                            <param id="0" name="Variable">CliffRightFrequency</param>
-                            <param id="1" name="Value">25</param>
+                            <param id="1" name="Value">35</param>
                         </action>
                         <action id="-9" name="Set value" sid="5792519322802883" type="System">
-                            <param id="0" name="Variable">BridgeFrequency</param>
-                            <param id="1" name="Value">15</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="8078886861410955" type="System">
                             <param id="0" name="Variable">BridgeLogsFrequency</param>
                             <param id="1" name="Value">15</param>
                         </action>
@@ -1460,13 +1265,9 @@
                         </action>
                         <action id="-9" name="Set value" sid="2659244988147427" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">15</param>
+                            <param id="1" name="Value">10</param>
                         </action>
-                        <action id="-10" name="Set value" sid="2314036786859561" type="Bridge">
-                            <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">50</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="4594613404121909" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="2314036786859561" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
                             <param id="1" name="Value">50</param>
                         </action>
@@ -1496,21 +1297,9 @@
                         </action>
                         <action id="-9" name="Set value" sid="3756242061044229" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="767258613131625" type="System">
-                            <param id="0" name="Variable">CliffLeftFrequency</param>
-                            <param id="1" name="Value">30</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="5270670616129393" type="System">
-                            <param id="0" name="Variable">CliffRightFrequency</param>
                             <param id="1" name="Value">30</param>
                         </action>
                         <action id="-9" name="Set value" sid="5037432694674434" type="System">
-                            <param id="0" name="Variable">BridgeFrequency</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="7065310011967327" type="System">
                             <param id="0" name="Variable">BridgeLogsFrequency</param>
                             <param id="1" name="Value">10</param>
                         </action>
@@ -1520,13 +1309,9 @@
                         </action>
                         <action id="-9" name="Set value" sid="6973024448753305" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">10</param>
+                            <param id="1" name="Value">5</param>
                         </action>
-                        <action id="-10" name="Set value" sid="6056919589070378" type="Bridge">
-                            <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">60</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="7551069537809775" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="6056919589070378" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
                             <param id="1" name="Value">60</param>
                         </action>
@@ -1560,41 +1345,25 @@
                         </action>
                         <action id="-9" name="Set value" sid="2182813124409626" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
-                            <param id="1" name="Value">5</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="5894332476356409" type="System">
-                            <param id="0" name="Variable">CliffLeftFrequency</param>
-                            <param id="1" name="Value">35</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="6429386586182903" type="System">
-                            <param id="0" name="Variable">CliffRightFrequency</param>
-                            <param id="1" name="Value">35</param>
+                            <param id="1" name="Value">25</param>
                         </action>
                         <action id="-9" name="Set value" sid="5941258108334109" type="System">
-                            <param id="0" name="Variable">BridgeFrequency</param>
-                            <param id="1" name="Value">5</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="9530178908331843" type="System">
                             <param id="0" name="Variable">BridgeLogsFrequency</param>
-                            <param id="1" name="Value">5</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                         <action id="-9" name="Set value" sid="5143767656452192" type="System">
                             <param id="0" name="Variable">WideFrequency</param>
                             <param id="1" name="Value">12</param>
                         </action>
-                        <action id="-9" name="Set value" sid="7423385754031415" type="System">
-                            <param id="0" name="Variable">HalfFrequency</param>
-                            <param id="1" name="Value">2</param>
-                        </action>
                         <action id="-9" name="Set value" sid="9106361420418061" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">5</param>
+                            <param id="1" name="Value">2</param>
                         </action>
-                        <action id="-10" name="Set value" sid="9763461943103032" type="Bridge">
-                            <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">80</param>
+                        <action id="-9" name="Set value" sid="7433279300218996" type="System">
+                            <param id="0" name="Variable">HalfFrequency</param>
+                            <param id="1" name="Value">4</param>
                         </action>
-                        <action id="-10" name="Set value" sid="8709834502057274" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="9763461943103032" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
                             <param id="1" name="Value">80</param>
                         </action>
@@ -1628,41 +1397,25 @@
                         </action>
                         <action id="-9" name="Set value" sid="8967233561435452" type="System">
                             <param id="0" name="Variable">StarFrequency</param>
-                            <param id="1" name="Value">2</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="1631635657773437" type="System">
-                            <param id="0" name="Variable">CliffLeftFrequency</param>
-                            <param id="1" name="Value">40</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="3231292095147661" type="System">
-                            <param id="0" name="Variable">CliffRightFrequency</param>
-                            <param id="1" name="Value">40</param>
+                            <param id="1" name="Value">20</param>
                         </action>
                         <action id="-9" name="Set value" sid="5113726087685066" type="System">
-                            <param id="0" name="Variable">BridgeFrequency</param>
-                            <param id="1" name="Value">2</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="982753087263444" type="System">
                             <param id="0" name="Variable">BridgeLogsFrequency</param>
-                            <param id="1" name="Value">2</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                         <action id="-9" name="Set value" sid="3176548655607073" type="System">
                             <param id="0" name="Variable">WideFrequency</param>
                             <param id="1" name="Value">10</param>
                         </action>
-                        <action id="-9" name="Set value" sid="3894177158585139" type="System">
-                            <param id="0" name="Variable">HalfFrequency</param>
-                            <param id="1" name="Value">4</param>
-                        </action>
                         <action id="-9" name="Set value" sid="7872359524864139" type="System">
                             <param id="0" name="Variable">MushroomFrequency</param>
-                            <param id="1" name="Value">2</param>
+                            <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-10" name="Set value" sid="7909386205869228" type="Bridge">
-                            <param id="0" name="Instance variable">speed</param>
-                            <param id="1" name="Value">100</param>
+                        <action id="-9" name="Set value" sid="7625328012085898" type="System">
+                            <param id="0" name="Variable">HalfFrequency</param>
+                            <param id="1" name="Value">8</param>
                         </action>
-                        <action id="-10" name="Set value" sid="2003406080636965" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="7909386205869228" type="BridgeLogs">
                             <param id="0" name="Instance variable">speed</param>
                             <param id="1" name="Value">100</param>
                         </action>
@@ -1925,7 +1678,7 @@
                         <condition id="-7" name="Compare instance variable" sid="3870937345489969" type="Player">
                             <param id="0" name="Instance variable">starTimer</param>
                             <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">10</param>
+                            <param id="2" name="Value">5</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -1951,7 +1704,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="9204982721248199">
+                <event-block collapsed="1" sid="9204982721248199">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="78225731255813" type="Fly">
                             <param id="0" name="Instance variable">life</param>
@@ -2023,7 +1776,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="9454944183743302">
+                <event-block collapsed="1" sid="9454944183743302">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="8345788698355872" type="Slime">
                             <param id="0" name="Instance variable">life</param>
@@ -2097,37 +1850,18 @@
                 </event-block>
                 <event-block sid="1450152257170919">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="3365423054889451" type="Bridge">
+                        <condition id="-7" name="Compare instance variable" sid="3365423054889451" type="BridgeLogs">
                             <param id="0" name="Instance variable">timer</param>
                             <param id="1" name="Comparison">4</param>
                             <param id="2" name="Value">10</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action behavior="CustomMovement" id="2" name="Set speed" sid="3211799387730177" type="Bridge">
+                        <action behavior="CustomMovement" id="2" name="Set speed" sid="3211799387730177" type="BridgeLogs">
                             <param id="0" name="Which">1</param>
                             <param id="1" name="Speed">-Self.speed</param>
                         </action>
-                        <action id="-10" name="Set value" sid="6131794918854873" type="Bridge">
-                            <param id="0" name="Instance variable">timer</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="4541609926278238">
-                    <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="3753739934809621" type="BridgeLogs">
-                            <param id="0" name="Instance variable">timer</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">10</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action behavior="CustomMovement" id="2" name="Set speed" sid="9390590166294542" type="BridgeLogs">
-                            <param id="0" name="Which">2</param>
-                            <param id="1" name="Speed">-Self.speed</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="9971479528446331" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="6131794918854873" type="BridgeLogs">
                             <param id="0" name="Instance variable">timer</param>
                             <param id="1" name="Value">0</param>
                         </action>
@@ -2135,13 +1869,13 @@
                 </event-block>
                 <event-block sid="4373098277921169">
                     <conditions>
-                        <condition id="-1" name="Compare X" sid="2106779024986952" type="Bridge">
+                        <condition id="-1" name="Compare X" sid="2106779024986952" type="BridgeLogs">
                             <param id="0" name="Comparison">3</param>
-                            <param id="1" name="X co-ordinate">Bridge.Width / 2</param>
+                            <param id="1" name="X co-ordinate">BridgeLogs.Width / 2</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5425555610131822" type="Bridge">
+                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5425555610131822" type="BridgeLogs">
                             <param id="0" name="Which">1</param>
                             <param id="1" name="Speed">Self.speed</param>
                         </action>
@@ -2149,17 +1883,68 @@
                 </event-block>
                 <event-block sid="3407767877143413">
                     <conditions>
-                        <condition id="-1" name="Compare X" sid="6758249826719521" type="Bridge">
+                        <condition id="-1" name="Compare X" sid="6758249826719521" type="BridgeLogs">
                             <param id="0" name="Comparison">5</param>
-                            <param id="1" name="X co-ordinate">LayoutWidth - (Bridge.Width / 2)</param>
+                            <param id="1" name="X co-ordinate">LayoutWidth - (BridgeLogs.Width / 2)</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5480622229289227" type="Bridge">
+                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5480622229289227" type="BridgeLogs">
                             <param id="0" name="Which">1</param>
                             <param id="1" name="Speed">-Self.speed</param>
                         </action>
                     </actions>
+                </event-block>
+                <event-block sid="768380950225363">
+                    <conditions>
+                        <condition behavior="Platform" id="2" name="Is on floor" sid="9918529436493822" type="Star" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="9763533143862979" type="Star">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5402771042784259">
+                    <conditions>
+                        <condition behavior="Platform" id="3" name="Is jumping" sid="1869987437769891" type="Star" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="7990815265056118" type="Star">
+                            <param id="0" name="Instance variable">direction</param>
+                            <param id="1" name="Value">floor(random(0, 2))</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="1073354807681354">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="6690847728402103" type="Star">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="1089075845545488" type="Star">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="3413284692389457">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9457873159040702" type="Star">
+                                    <param id="0" name="Instance variable">direction</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="7" name="Simulate control" sid="9973633028873187" type="Star">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block sid="6262226309885548">
                     <conditions>
@@ -2219,13 +2004,22 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block collapsed="1" sid="4153992389788106">
+        <event-block sid="4153992389788106">
             <conditions>
                 <condition id="0" name="On function" sid="1143780483638221" type="Function">
                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
                 </condition>
             </conditions>
-            <actions />
+            <actions>
+                <action id="-9" name="Set value" sid="8951828987060797" type="System">
+                    <param id="0" name="Variable">StarVariation</param>
+                    <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
+                </action>
+                <action id="-9" name="Set value" sid="121593539444755" type="System">
+                    <param id="0" name="Variable">BridgeLogsVariation</param>
+                    <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
+                </action>
+            </actions>
             <sub-events>
                 <event-block collapsed="1" sid="3334282208380972">
                     <conditions>
@@ -2244,22 +2038,6 @@
                             <param id="0" name="Variable">WideVariation</param>
                             <param id="1" name="Value">floor(random(WIDE, WideFrequency))</param>
                         </action>
-                        <action id="-9" name="Set value" sid="121593539444755" type="System">
-                            <param id="0" name="Variable">BridgeVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE, BridgeFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="6133070926984875" type="System">
-                            <param id="0" name="Variable">BridgeLogsVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="4650548534383677" type="System">
-                            <param id="0" name="Variable">CliffLeftVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_LEFT, CliffLeftFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="118813742799976" type="System">
-                            <param id="0" name="Variable">CliffRightVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_RIGHT, CliffRightFrequency))</param>
-                        </action>
                     </actions>
                     <sub-events>
                         <event-block any="1" collapsed="1" sid="7296902232643926">
@@ -2271,10 +2049,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="6434219344185413" type="System">
-                                    <param id="0" name="Variable">StarVariation</param>
-                                    <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
-                                </action>
                                 <action id="-9" name="Set value" sid="3186160354436362" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
@@ -2305,46 +2079,13 @@
                                             <param id="0" name="Object to create">Coin</param>
                                             <param id="1" name="Layer">&quot;Game&quot;</param>
                                             <param id="2" name="X">GrassHalf.X</param>
-                                            <param id="3" name="Y">GrassHalf.Y - GrassHalf.Height - (Coin.Height / 2)</param>
+                                            <param id="3" name="Y">GrassHalf.Y - GrassHalf.Height - Coin.Height</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="3437692062582243" type="Coin">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">Enemy</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="9293702624361199" type="Coin">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="4269444898546571" type="Coin">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="6061436383342961">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="5681052147753972" type="System">
-                                            <param id="0" name="Variable">StarVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">STAR</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="5630254469841332" type="System">
-                                            <param id="0" name="Object to create">Star</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">GrassHalf.X</param>
-                                            <param id="3" name="Y">GrassHalf.Y - GrassHalf.Height - (Star.Height / 2)</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="6365035559730177" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="7326775394035027" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="9198450783688588" type="Star">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
@@ -2370,10 +2111,6 @@
                                             <param id="1" name="Object">Enemy</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="5681765795279879" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="2614825319182637" type="Mushroom">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
@@ -2563,48 +2300,6 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="7924623979792007">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="5896130498749973" type="System">
-                                    <param id="0" name="Variable">CliffLeftVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_LEFT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="2994687238367428" type="System">
-                                    <param id="0" name="Object to create">GrassCliffLeft</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">LayoutWidth - (GrassCliffLeft.Width / 2)</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="4286626620973632" type="GrassCliffLeft">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="9619901529435681" type="GrassCliffLeft" />
-                            </actions>
-                        </event-block>
-                        <event-block sid="6884493218468767">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="1547681027638945" type="System">
-                                    <param id="0" name="Variable">CliffRightVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_RIGHT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="3223917332569138" type="System">
-                                    <param id="0" name="Object to create">GrassCliffRight</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">GrassCliffRight.Width / 2</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="4646108421209534" type="GrassCliffRight">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="5949976428459724" type="GrassCliffRight" />
-                            </actions>
-                        </event-block>
                     </sub-events>
                 </event-block>
                 <event-block collapsed="1" sid="6785198773307701">
@@ -2624,25 +2319,9 @@
                             <param id="0" name="Variable">WideVariation</param>
                             <param id="1" name="Value">floor(random(WIDE, WideFrequency))</param>
                         </action>
-                        <action id="-9" name="Set value" sid="8509558955335501" type="System">
-                            <param id="0" name="Variable">BridgeVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE, BridgeFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="9070967353528169" type="System">
-                            <param id="0" name="Variable">BridgeLogsVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="5964526718098938" type="System">
-                            <param id="0" name="Variable">CliffLeftVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_LEFT, CliffLeftFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="6189815599584141" type="System">
-                            <param id="0" name="Variable">CliffRightVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_RIGHT, CliffRightFrequency))</param>
-                        </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" sid="7556961883700548">
+                        <event-block any="1" collapsed="1" sid="7556961883700548">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="4699369309390841" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2651,10 +2330,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="8951828987060797" type="System">
-                                    <param id="0" name="Variable">StarVariation</param>
-                                    <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
-                                </action>
                                 <action id="-9" name="Set value" sid="4177666198023328" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
@@ -2685,7 +2360,7 @@
                                             <param id="0" name="Object to create">Coin</param>
                                             <param id="1" name="Layer">&quot;Game&quot;</param>
                                             <param id="2" name="X">SandHalf.X</param>
-                                            <param id="3" name="Y">SandHalf.Y - SandHalf.Height - (Coin.Height / 2)</param>
+                                            <param id="3" name="Y">SandHalf.Y - SandHalf.Height - Coin.Height</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="781026132105664" type="Coin">
                                             <param id="0" name="Where">1</param>
@@ -2693,39 +2368,6 @@
                                         </action>
                                         <action id="-29" name="Move to object" sid="6771695129462685" type="Coin">
                                             <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="6375763837088718" type="Coin">
-                                            <param id="0" name="Where">0</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="9839425244854296">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="2288442640917466" type="System">
-                                            <param id="0" name="Variable">StarVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">STAR</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="5238997433084738" type="System">
-                                            <param id="0" name="Object to create">Star</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">SandHalf.X</param>
-                                            <param id="3" name="Y">SandHalf.Y - SandHalf.Height - (Star.Height / 2)</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="8296401804957092" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3064420835446576" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="9411804675263831" type="Star">
-                                            <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
@@ -2750,10 +2392,6 @@
                                             <param id="1" name="Object">Enemy</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="9668259534016195" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3873245416851212" type="Mushroom">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
@@ -2943,48 +2581,6 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="16055668368184">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="3183856846215216" type="System">
-                                    <param id="0" name="Variable">CliffLeftVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_LEFT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="6565075083571749" type="System">
-                                    <param id="0" name="Object to create">SandCliffLeft</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">LayoutWidth - (SandCliffLeft.Width / 2)</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="4142854856624452" type="SandCliffLeft">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="1168797047934597" type="SandCliffLeft" />
-                            </actions>
-                        </event-block>
-                        <event-block sid="7509501634402049">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="6873775852179688" type="System">
-                                    <param id="0" name="Variable">CliffRightVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_RIGHT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="5052902177523271" type="System">
-                                    <param id="0" name="Object to create">SandCliffRight</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">SandCliffRight.Width / 2</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="9773758162747821" type="SandCliffRight">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="3643738084365198" type="SandCliffRight" />
-                            </actions>
-                        </event-block>
                     </sub-events>
                 </event-block>
                 <event-block collapsed="1" sid="7595968218827235">
@@ -3004,25 +2600,9 @@
                             <param id="0" name="Variable">WideVariation</param>
                             <param id="1" name="Value">floor(random(WIDE, WideFrequency))</param>
                         </action>
-                        <action id="-9" name="Set value" sid="4346341877361291" type="System">
-                            <param id="0" name="Variable">BridgeVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE, BridgeFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="2186416436642973" type="System">
-                            <param id="0" name="Variable">BridgeLogsVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="8390942456579381" type="System">
-                            <param id="0" name="Variable">CliffLeftVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_LEFT, CliffLeftFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="1130612748185775" type="System">
-                            <param id="0" name="Variable">CliffRightVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_RIGHT, CliffRightFrequency))</param>
-                        </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="6928695699797022">
+                        <event-block any="1" sid="6928695699797022">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="7518128308296029" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -3031,10 +2611,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="1061948473630099" type="System">
-                                    <param id="0" name="Variable">StarVariation</param>
-                                    <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
-                                </action>
                                 <action id="-9" name="Set value" sid="6882635392688807" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
@@ -3065,7 +2641,7 @@
                                             <param id="0" name="Object to create">Coin</param>
                                             <param id="1" name="Layer">&quot;Game&quot;</param>
                                             <param id="2" name="X">SnowHalf.X</param>
-                                            <param id="3" name="Y">SnowHalf.Y - SnowHalf.Height - (Coin.Height / 2)</param>
+                                            <param id="3" name="Y">SnowHalf.Y - SnowHalf.Height - Coin.Height</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="5905789932047914" type="Coin">
                                             <param id="0" name="Where">1</param>
@@ -3073,39 +2649,6 @@
                                         </action>
                                         <action id="-29" name="Move to object" sid="9535844910176573" type="Coin">
                                             <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="3083099762432256" type="Coin">
-                                            <param id="0" name="Where">0</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="3356494466955264">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="2364891024368312" type="System">
-                                            <param id="0" name="Variable">StarVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">STAR</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="7020696057656232" type="System">
-                                            <param id="0" name="Object to create">Star</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">SnowHalf.X</param>
-                                            <param id="3" name="Y">SnowHalf.Y - SnowHalf.Height - (Star.Height / 2)</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="1563204997853516" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="5943958130817894" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="1029290445509497" type="Star">
-                                            <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
@@ -3130,10 +2673,6 @@
                                             <param id="1" name="Object">Enemy</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="3475851857284006" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="355164363892229" type="Mushroom">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
@@ -3323,48 +2862,6 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="7373861454757206">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="4975884235027956" type="System">
-                                    <param id="0" name="Variable">CliffLeftVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_LEFT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="1057850599406522" type="System">
-                                    <param id="0" name="Object to create">SnowCliffLeft</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">LayoutWidth - (SnowCliffLeft.Width / 2)</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="2348965532851949" type="SnowCliffLeft">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="8377480618326095" type="SnowCliffLeft" />
-                            </actions>
-                        </event-block>
-                        <event-block sid="5810308742015949">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="5269014091753219" type="System">
-                                    <param id="0" name="Variable">CliffRightVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_RIGHT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="3407852988371404" type="System">
-                                    <param id="0" name="Object to create">SnowCliffRight</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">SnowCliffRight.Width / 2</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="872927540709418" type="SnowCliffRight">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="7056163958885631" type="SnowCliffRight" />
-                            </actions>
-                        </event-block>
                     </sub-events>
                 </event-block>
                 <event-block collapsed="1" sid="6644944064766411">
@@ -3384,25 +2881,9 @@
                             <param id="0" name="Variable">WideVariation</param>
                             <param id="1" name="Value">floor(random(WIDE, WideFrequency))</param>
                         </action>
-                        <action id="-9" name="Set value" sid="9205739152998864" type="System">
-                            <param id="0" name="Variable">BridgeVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE, BridgeFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="9618636723741715" type="System">
-                            <param id="0" name="Variable">BridgeLogsVariation</param>
-                            <param id="1" name="Value">floor(random(BRIDGE_LOGS, BridgeLogsFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="3256633211692638" type="System">
-                            <param id="0" name="Variable">CliffLeftVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_LEFT, CliffLeftFrequency))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="3561559216865843" type="System">
-                            <param id="0" name="Variable">CliffRightVariation</param>
-                            <param id="1" name="Value">floor(random(CLIFF_RIGHT, CliffRightFrequency))</param>
-                        </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" sid="6927354907691136">
+                        <event-block any="1" collapsed="1" sid="6927354907691136">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="5953108436831646" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -3411,10 +2892,6 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="5726862805837129" type="System">
-                                    <param id="0" name="Variable">StarVariation</param>
-                                    <param id="1" name="Value">floor(random(STAR, StarFrequency))</param>
-                                </action>
                                 <action id="-9" name="Set value" sid="2072163914854616" type="System">
                                     <param id="0" name="Variable">CoinVariation</param>
                                     <param id="1" name="Value">floor(random(COIN, CoinFrequency))</param>
@@ -3445,7 +2922,7 @@
                                             <param id="0" name="Object to create">Coin</param>
                                             <param id="1" name="Layer">&quot;Game&quot;</param>
                                             <param id="2" name="X">StoneHalf.X</param>
-                                            <param id="3" name="Y">StoneHalf.Y - StoneHalf.Height - (Coin.Height / 2)</param>
+                                            <param id="3" name="Y">StoneHalf.Y - StoneHalf.Height - Coin.Height</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="8849877629162573" type="Coin">
                                             <param id="0" name="Where">1</param>
@@ -3453,39 +2930,6 @@
                                         </action>
                                         <action id="-29" name="Move to object" sid="7218586243800956" type="Coin">
                                             <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="5348428173442578" type="Coin">
-                                            <param id="0" name="Where">0</param>
-                                            <param id="1" name="Object">BridgeLogs</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="7878974913074837">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="1117813424826822" type="System">
-                                            <param id="0" name="Variable">StarVariation</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">STAR</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="3008885273944129" type="System">
-                                            <param id="0" name="Object to create">Star</param>
-                                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                                            <param id="2" name="X">StoneHalf.X</param>
-                                            <param id="3" name="Y">StoneHalf.Y - StoneHalf.Height - (Star.Height / 2)</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="2209166447910465" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Enemy</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="257439335790153" type="Star">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="5473332186885814" type="Star">
-                                            <param id="0" name="Where">0</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
                                     </actions>
@@ -3510,10 +2954,6 @@
                                             <param id="1" name="Object">Enemy</param>
                                         </action>
                                         <action id="-29" name="Move to object" sid="5204867484790558" type="Mushroom">
-                                            <param id="0" name="Where">1</param>
-                                            <param id="1" name="Object">Bridge</param>
-                                        </action>
-                                        <action id="-29" name="Move to object" sid="7276287404660073" type="Mushroom">
                                             <param id="0" name="Where">1</param>
                                             <param id="1" name="Object">BridgeLogs</param>
                                         </action>
@@ -3703,183 +3143,97 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="7410076854647915">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="7751011122807593" type="System">
-                                    <param id="0" name="Variable">CliffLeftVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_LEFT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="2496826205742679" type="System">
-                                    <param id="0" name="Object to create">StoneCliffLeft</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">LayoutWidth - (StoneCliffLeft.Width / 2)</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="351702772814708" type="StoneCliffLeft">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="6905945561384811" type="StoneCliffLeft" />
-                            </actions>
-                        </event-block>
-                        <event-block sid="2177598527425018">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="9774835863644942" type="System">
-                                    <param id="0" name="Variable">CliffRightVariation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">CLIFF_RIGHT</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="-3" name="Create object" sid="7418153572888559" type="System">
-                                    <param id="0" name="Object to create">StoneCliffRight</param>
-                                    <param id="1" name="Layer">&quot;Game&quot;</param>
-                                    <param id="2" name="X">StoneCliffRight.Width / 2</param>
-                                    <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                                </action>
-                                <action id="5" name="Set frame" sid="5143627329422828" type="StoneCliffRight">
-                                    <param id="0" name="Frame number">floor(random(0, 2))</param>
-                                </action>
-                                <action id="-25" name="Move to bottom" sid="8582699469970982" type="StoneCliffRight" />
-                            </actions>
-                        </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="8585270399330913">
+                <event-block collapsed="1" sid="4197080698769848">
                     <conditions>
-                        <condition id="-14" name="Compare variable" sid="8862140919660613" type="System">
-                            <param id="0" name="Variable">BridgeVariation</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">BRIDGE</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" sid="7641048367117225" type="System">
-                            <param id="0" name="Object to create">Bridge</param>
-                            <param id="1" name="Layer">&quot;Game&quot;</param>
-                            <param id="2" name="X">random(Bridge.Width / 2, LayoutWidth - (Bridge.Width / 2))</param>
-                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
-                        </action>
-                        <action id="-29" name="Move to object" sid="222646679573367" type="Bridge">
-                            <param id="0" name="Where">0</param>
-                            <param id="1" name="Object">Half</param>
-                        </action>
-                        <action id="-29" name="Move to object" sid="3401314255142745" type="Bridge">
-                            <param id="0" name="Where">0</param>
-                            <param id="1" name="Object">Wide</param>
-                        </action>
-                        <action id="-29" name="Move to object" sid="1572831202845342" type="Bridge">
-                            <param id="0" name="Where">0</param>
-                            <param id="1" name="Object">Enemy</param>
-                        </action>
-                        <action id="-10" name="Set value" sid="1103984606287899" type="Bridge">
-                            <param id="0" name="Instance variable">direction</param>
-                            <param id="1" name="Value">floor(random(1, 3))</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="8590494141972773">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="2728810916029259" type="Bridge">
-                                    <param id="0" name="Instance variable">direction</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">LEFT_DIRECTION</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="2520604536494955" type="Bridge">
-                                    <param id="0" name="Which">1</param>
-                                    <param id="1" name="Speed">-Bridge.speed</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="2754869895506154">
-                            <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="9188068959727098" type="Bridge">
-                                    <param id="0" name="Instance variable">direction</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">RIGHT_DIRECTION</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="8722693620112209" type="Bridge">
-                                    <param id="0" name="Which">1</param>
-                                    <param id="1" name="Speed">Bridge.speed</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block collapsed="1" sid="7398517005597037">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="5270865218853423" type="System">
+                        <condition id="-14" name="Compare variable" sid="1129392938021526" type="System">
                             <param id="0" name="Variable">BridgeLogsVariation</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">BRIDGE_LOGS</param>
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-9" name="Set value" sid="4507035950658807" type="System">
-                            <param id="0" name="Variable">MushroomVariation</param>
-                            <param id="1" name="Value">floor(random(MUSHROOM, MushroomFrequency))</param>
-                        </action>
-                        <action id="-3" name="Create object" sid="2262397810705836" type="System">
+                        <action id="-3" name="Create object" sid="8086103428757886" type="System">
                             <param id="0" name="Object to create">BridgeLogs</param>
                             <param id="1" name="Layer">&quot;Game&quot;</param>
                             <param id="2" name="X">random(BridgeLogs.Width / 2, LayoutWidth - (BridgeLogs.Width / 2))</param>
                             <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 400</param>
                         </action>
-                        <action id="-29" name="Move to object" sid="2153451802135767" type="BridgeLogs">
+                        <action id="-29" name="Move to object" sid="5016274757814583" type="BridgeLogs">
                             <param id="0" name="Where">0</param>
                             <param id="1" name="Object">Half</param>
                         </action>
-                        <action id="-29" name="Move to object" sid="8587588405526801" type="BridgeLogs">
+                        <action id="-29" name="Move to object" sid="41964034865741" type="BridgeLogs">
                             <param id="0" name="Where">0</param>
                             <param id="1" name="Object">Wide</param>
                         </action>
-                        <action id="-29" name="Move to object" sid="2140925623574734" type="BridgeLogs">
+                        <action id="-29" name="Move to object" sid="177371887384754" type="BridgeLogs">
                             <param id="0" name="Where">0</param>
                             <param id="1" name="Object">Enemy</param>
                         </action>
-                        <action id="-10" name="Set value" sid="677962491110392" type="BridgeLogs">
+                        <action id="-10" name="Set value" sid="5368778256762412" type="BridgeLogs">
                             <param id="0" name="Instance variable">direction</param>
-                            <param id="1" name="Value">floor(random(3, 5))</param>
+                            <param id="1" name="Value">floor(random(1, 3))</param>
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="6306726708751634">
+                        <event-block sid="4501758824954959">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="7404253236194309" type="BridgeLogs">
+                                <condition id="-7" name="Compare instance variable" sid="711999259022503" type="BridgeLogs">
                                     <param id="0" name="Instance variable">direction</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">UP_DIRECTION</param>
+                                    <param id="2" name="Value">LEFT_DIRECTION</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4235559207610659" type="BridgeLogs">
-                                    <param id="0" name="Which">2</param>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4828270988680015" type="BridgeLogs">
+                                    <param id="0" name="Which">1</param>
                                     <param id="1" name="Speed">-BridgeLogs.speed</param>
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="3446019509263864">
+                        <event-block sid="9293157806495259">
                             <conditions>
-                                <condition id="-7" name="Compare instance variable" sid="3073055131915161" type="BridgeLogs">
+                                <condition id="-7" name="Compare instance variable" sid="5568128265298758" type="BridgeLogs">
                                     <param id="0" name="Instance variable">direction</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">DOWN_DIRECTION</param>
+                                    <param id="2" name="Value">RIGHT_DIRECTION</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9365331501333002" type="BridgeLogs">
-                                    <param id="0" name="Which">2</param>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="8211198054994952" type="BridgeLogs">
+                                    <param id="0" name="Which">1</param>
                                     <param id="1" name="Speed">BridgeLogs.speed</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
+                </event-block>
+                <event-block sid="8621081995218791">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="7284423072768243" type="System">
+                            <param id="0" name="Variable">StarVariation</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">STAR</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="7798023273854746" type="System">
+                            <param id="0" name="Object to create">Star</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">floor(random(Star.Width / 2, LayoutWidth - (Star.Width / 2)))</param>
+                            <param id="3" name="Y">ViewportTop(&quot;Game&quot;) - 100</param>
+                        </action>
+                        <action id="-29" name="Move to object" sid="5202578407370853" type="Star">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Object">BridgeLogs</param>
+                        </action>
+                        <action id="-29" name="Move to object" sid="4800567674077235" type="Star">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Object">Enemy</param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-block collapsed="1" sid="797253448159978">
                     <conditions>

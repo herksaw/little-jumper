@@ -21,9 +21,9 @@
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
     </used-plugins>
     <used-behaviors>
-        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
-        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
         <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
         <behavior author="Scirra" id="jumpthru" version="1">Jump-thru</behavior>
     </used-behaviors>
@@ -102,7 +102,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="597443212653047" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -191,7 +191,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="3634166155890026" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.473684" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -245,7 +245,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Bridge" sid="2837328472503148">
+        <object-type name="BridgeLogs" sid="2837328472503148">
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="timer" sid="2030602296605958" type="number" />
@@ -253,60 +253,21 @@
                 <instance-variable name="speed" sid="5162995741189811" type="number" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="Jumpthru" sid="3467062841423234">
-                    <behavior id="jumpthru" />
-                </behavior-type>
                 <behavior-type name="CustomMovement" sid="1481898913127321">
                     <behavior id="custom" />
+                </behavior-type>
+                <behavior-type name="Jumpthru" sid="5639144630657128">
+                    <behavior id="jumpthru" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9206233755743863" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="-0.636364" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="BridgeLogs" sid="6052786879800519">
-            <plugin id="Sprite" />
-            <instance-variables>
-                <instance-variable name="timer" sid="6361084805400447" type="number" />
-                <instance-variable name="direction" sid="3505097398552985" type="number" />
-                <instance-variable name="speed" sid="3414978102279338" type="number" />
-            </instance-variables>
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="8671922720872391">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-                <behavior-type name="CustomMovement" sid="7584141151062474">
-                    <behavior id="custom" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9518576482643078" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="-0.333333" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.518519" />
                 </animation>
             </animation-folder>
         </object-type>
         <object-type name="DebugBox" sid="449839191740686">
             <plugin id="Text" />
-        </object-type>
-        <object-type name="GrassCliffLeft" sid="1857370509681049">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="5528885133818944" speed="0">
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="GrassCliffRight" sid="7121009665190818">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="3409449002787177" speed="0">
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="0" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
         </object-type>
         <object-type name="StarParticles" sid="5131972513201743">
             <plugin id="Particles" />
@@ -330,17 +291,20 @@
         </object-type>
         <object-type name="Star" sid="8668282118682967">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="direction" sid="9891504807745156" type="number" />
+            </instance-variables>
             <behaviors>
-                <behavior-type name="CustomMovement" sid="7022437113203843">
-                    <behavior id="custom" />
+                <behavior-type name="Platform" sid="3522634885495692">
+                    <behavior id="Platform" />
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
                 <animation framecount="4" loop="1" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6616739051463402" speed="4">
-                    <frame duration="2" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="0.5" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="2" hotspotX="0.666667" hotspotY="0.354167" />
+                    <frame duration="0.5" hotspotX="0.645833" hotspotY="0.666667" />
+                    <frame duration="0.5" hotspotX="0.333333" hotspotY="0.645833" />
+                    <frame duration="0.5" hotspotX="0.354167" hotspotY="0.333333" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -439,7 +403,7 @@
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9519069470754752" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.511628" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -461,29 +425,11 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="SandCliffLeft" sid="1641920630382808">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6312082771538181" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="SandCliffRight" sid="959943273943486">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="3526802986552592" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="SnowHalf" sid="1266592664834248">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="6040053180053134" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.837209" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -495,29 +441,11 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="SnowCliffLeft" sid="4372408727285344">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="8979267190400396" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="SnowCliffRight" sid="3152595886415363">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="3584248092733756" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="StoneHalf" sid="5837784735878596">
             <plugin id="Sprite" />
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="9000559284706321" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -526,24 +454,6 @@
             <animation-folder expanded="1">
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="1525967551320807" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.857143" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="StoneCliffLeft" sid="4237730112811191">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4623797705095552" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="StoneCliffRight" sid="3653124872214198">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="0" repeatto="0" sid="4856492980214357" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -757,33 +667,7 @@
                 <member>StoneHalf</member>
             </members>
             <behaviors>
-                <behavior-type name="Jumpthru" sid="8141183461409059">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
-        </family>
-        <family name="CliffLeft" plugin-id="Sprite" sid="2815242434553326">
-            <members>
-                <member>GrassCliffLeft</member>
-                <member>SandCliffLeft</member>
-                <member>SnowCliffLeft</member>
-                <member>StoneCliffLeft</member>
-            </members>
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="2067166089945213">
-                    <behavior id="jumpthru" />
-                </behavior-type>
-            </behaviors>
-        </family>
-        <family name="CliffRight" plugin-id="Sprite" sid="5131956562335839">
-            <members>
-                <member>GrassCliffRight</member>
-                <member>SandCliffRight</member>
-                <member>SnowCliffRight</member>
-                <member>StoneCliffRight</member>
-            </members>
-            <behaviors>
-                <behavior-type name="Jumpthru" sid="8107423901384524">
+                <behavior-type name="Jumpthru" sid="6236245134897626">
                     <behavior id="jumpthru" />
                 </behavior-type>
             </behaviors>
