@@ -2,7 +2,7 @@
 <c2project>
     <name>Little Jumper</name>
     <description>An infinite jumping game in 2D.</description>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
     <author>Herks Aw</author>
     <author-email>herksaw@gmail.com</author-email>
     <author-website>http://www.herksaw.com/</author-website>
@@ -10,12 +10,12 @@
     <unique-id>14fir0wto7bt4</unique-id>
     <saved-with-version>13900</saved-with-version>
     <used-plugins>
-        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
-        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
@@ -715,16 +715,128 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="IconBeta" sid="4793031157634974">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2500601366283279" speed="5">
+                    <frame duration="1" hotspotX="0.510638" hotspotY="0.510638" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="SelectionText" sid="8767300900110987">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="IconAlpha" sid="1529803093495424">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7479360494637533" speed="5">
+                    <frame duration="1" hotspotX="0.510638" hotspotY="0.510638" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="IconGamma" sid="5028040809210865">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1640332644535516" speed="5">
+                    <frame duration="1" hotspotX="0.510638" hotspotY="0.510638" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="KeyRed" sid="7499705133800577">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4949302344630534" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="KeyBlue" sid="7403278712901297">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2658020143051432" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Alpha" sid="2531408881681945">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="2475735540719901" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="JumpRight" pingpong="0" repeatcount="1" repeatto="0" sid="2469318514567295" speed="5">
+                    <frame duration="1" hotspotX="0.507463" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="JumpLeft" pingpong="0" repeatcount="1" repeatto="0" sid="5599923075976364" speed="5">
+                    <frame duration="1" hotspotX="0.492537" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="HurtRight" pingpong="0" repeatcount="1" repeatto="0" sid="7492656758340296" speed="5">
+                    <frame duration="1" hotspotX="0.507246" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="HurtLeft" pingpong="0" repeatcount="1" repeatto="0" sid="8936978152544084" speed="5">
+                    <frame duration="1" hotspotX="0.492754" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Gamma" sid="7347168239907973">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="1236227665010404" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="JumpRight" pingpong="0" repeatcount="1" repeatto="0" sid="9903529945570231" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="JumpLeft" pingpong="0" repeatcount="1" repeatto="0" sid="1185799838709647" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="1" loop="0" name="HurtRight" pingpong="0" repeatcount="1" repeatto="0" sid="6708009651611968" speed="5">
+                    <frame duration="1" hotspotX="0.507463" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="HurtLeft" pingpong="0" repeatcount="1" repeatto="0" sid="9454518467097371" speed="5">
+                    <frame duration="1" hotspotX="0.492537" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="0" />
+                            <point x="1" y="0" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Player" plugin-id="Sprite" sid="293314872638652">
             <members>
+                <member>Alpha</member>
                 <member>Beta</member>
+                <member>Gamma</member>
             </members>
             <instance-variables>
                 <instance-variable name="coin" sid="6043421239395242" type="number" />
                 <instance-variable name="life" sid="301502082705608" type="number" />
-                <instance-variable name="name" sid="3680970676380199" type="number" />
                 <instance-variable name="isStar" sid="3123948734772794" type="number" />
                 <instance-variable name="starTimer" sid="9444714846788053" type="number" />
                 <instance-variable name="score" sid="2742315791093357" type="number" />
@@ -796,16 +908,29 @@
                 <member>ButtonYes</member>
             </members>
         </family>
+        <family name="Key" plugin-id="Sprite" sid="6415808016290453">
+            <members>
+                <member>KeyBlue</member>
+                <member>KeyRed</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Platform" sid="4651670714532056">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+        </family>
     </families>
     <layout-folder expanded="1">
         <layout>Game Layout.xml</layout>
         <layout>Main Menu Layout.xml</layout>
         <layout>Loader Layout.xml</layout>
+        <layout>Selection Layout.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Game Event.xml</event-sheet>
         <event-sheet>Main Menu Event.xml</event-sheet>
         <event-sheet>Loader Event.xml</event-sheet>
+        <event-sheet>Selection Event.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="23">

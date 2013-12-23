@@ -32,6 +32,125 @@
                     <param id="1" name="Tag (optional)">&quot;main_menu_bgm&quot;</param>
                 </action>
             </actions>
+            <sub-events>
+                <event-block sid="781830376274119">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="3626377173998208" type="WebStorage">
+                            <param id="0" name="Key">&quot;player_name&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="2927904262644008" type="WebStorage">
+                            <param id="0" name="Key">&quot;player_name&quot;</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6880978921294446">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="9618028753612402" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_coin&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="37336008848813" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_coin&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="5723207763448416">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="2085507318145375" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_score&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="5885714424184591" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_score&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9561162813904322">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="6671621023159075" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_hurt&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="9593819195579276" type="WebStorage">
+                            <param id="0" name="Key">&quot;total_hurt&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6815795189348498">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="8869742702064347" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_fly&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="5393401224391566" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_fly&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1395259664654258">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="5859582725762027" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_slime&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="3926017071412022" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_slime&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="6075895718597246">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="3711403530427006" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_blocker&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="6254227905532858" type="WebStorage">
+                            <param id="0" name="Key">&quot;hit_blocker&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3814311582086515">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="4172546983043822" type="WebStorage">
+                            <param id="0" name="Key">&quot;eat_mushroom&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="4059665993669081" type="WebStorage">
+                            <param id="0" name="Key">&quot;eat_mushroom&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3141946844785106">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Local key exists" sid="8325972249566908" type="WebStorage">
+                            <param id="0" name="Key">&quot;eat_star&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set local value" sid="1123742201721535" type="WebStorage">
+                            <param id="0" name="Key">&quot;eat_star&quot;</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="8589311189374007">
             <conditions>
@@ -80,7 +199,7 @@
                         </action>
                         <action id="33" name="Stop all" sid="7509187003257339" type="Audio" />
                         <action id="-2" name="Go to layout" sid="6153476993226951" type="System">
-                            <param id="0" name="Layout">Game Layout</param>
+                            <param id="0" name="Layout">Selection Layout</param>
                         </action>
                     </actions>
                 </event-block>
@@ -117,8 +236,8 @@
                             <param id="0" name="Variable">TimeMode</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-2" name="Go to layout" sid="6249384052861788" type="System">
-                            <param id="0" name="Layout">Game Layout</param>
+                        <action id="-2" name="Go to layout" sid="6026775329176068" type="System">
+                            <param id="0" name="Layout">Selection Layout</param>
                         </action>
                     </actions>
                 </event-block>

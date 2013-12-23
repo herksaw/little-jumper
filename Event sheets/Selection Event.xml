@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Selection Event</name>
+    <events>
+        <event-block sid="2065386513944269">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="8677331525655314" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="6648657494289536" type="SelectionText">
+                    <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9392640235749069">
+            <conditions>
+                <condition id="7" name="Compare key value (as number)" sid="2311756696205076" type="WebStorage">
+                    <param id="0" name="Key">&quot;red_key&quot;</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="9118480211764803" type="LockRed">
+                    <param id="0" name="Object">IconAlpha</param>
+                    <param id="1" name="Layer">&quot;UI&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="168580930859972" type="LockRed" />
+            </actions>
+        </event-block>
+        <event-block sid="6796781654581135">
+            <conditions>
+                <condition id="7" name="Compare key value (as number)" sid="8835300296759169" type="WebStorage">
+                    <param id="0" name="Key">&quot;blue_key&quot;</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="3511747921811873" type="LockBlue">
+                    <param id="0" name="Object">IconGamma</param>
+                    <param id="1" name="Layer">&quot;UI&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="1847915826224259" type="LockBlue" />
+            </actions>
+        </event-block>
+        <event-block sid="420975616343246">
+            <conditions>
+                <condition id="3" name="On touched object" sid="4720245962515317" type="Touch">
+                    <param id="0" name="Object">IconAlpha</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="6626323705584872" type="WebStorage">
+                    <param id="0" name="Key">&quot;player_name&quot;</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="2707334648079268" type="System">
+                    <param id="0" name="Layout">Game Layout</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2471988809005943">
+            <conditions>
+                <condition id="3" name="On touched object" sid="9331568629098416" type="Touch">
+                    <param id="0" name="Object">IconBeta</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="448524730368437" type="WebStorage">
+                    <param id="0" name="Key">&quot;player_name&quot;</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="1258196015036208" type="System">
+                    <param id="0" name="Layout">Game Layout</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6011914056429496">
+            <conditions>
+                <condition id="3" name="On touched object" sid="1377174504155299" type="Touch">
+                    <param id="0" name="Object">IconGamma</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set local value" sid="5296828562668774" type="WebStorage">
+                    <param id="0" name="Key">&quot;player_name&quot;</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="2400294592641662" type="System">
+                    <param id="0" name="Layout">Game Layout</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
