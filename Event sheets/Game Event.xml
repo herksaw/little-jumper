@@ -541,7 +541,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="7861142062135304" title="Debug">
+        <event-group description="" sid="7861142062135304" title="Debug">
             <sub-events>
                 <event-block sid="5405765113996254">
                     <conditions>
@@ -640,7 +640,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" disabled="1" sid="6324912479345579" title="Level">
+        <event-group description="" disabled="1" sid="6324912479345579" title="Level">
             <sub-events>
                 <event-block sid="5858462652419309">
                     <conditions>
@@ -739,7 +739,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="9968106673728326" title="Input">
+        <event-group description="" sid="9968106673728326" title="Input">
             <sub-events>
                 <comment>As soon as the player lands, jump immediately.</comment>
                 <comment>Use left and right arrow keys to control the player.  (This is necessary because the &apos;Default controls&apos; property has been set to &apos;No&apos; on the platform behavior, so we can automate jumping.)</comment>
@@ -821,7 +821,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="6555800721048575">
+                <event-block sid="6555800721048575">
                     <conditions>
                         <condition id="-20" name="Is on mobile device" sid="855795242826751" type="System" />
                     </conditions>
@@ -865,7 +865,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="9769607241463748">
+                <event-block sid="9769607241463748">
                     <conditions>
                         <condition id="-22" name="Else" sid="2888353465640174" type="System" />
                     </conditions>
@@ -908,7 +908,7 @@
                 <comment>On a mobile device, use the left-to-right tilt (Gamma) to also control movement.  This simply simulates pressing a control if the device has tilted enough to the left or right.</comment>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="7914053857964889" title="Memory">
+        <event-group description="" sid="7914053857964889" title="Memory">
             <sub-events>
                 <event-block sid="426573163353817">
                     <conditions>
@@ -1060,7 +1060,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="2613182393368741" title="Collision">
+        <event-group description="" sid="2613182393368741" title="Collision">
             <sub-events>
                 <event-block sid="9614317370821308">
                     <conditions>
@@ -1281,7 +1281,7 @@
                         <action id="-9" name="Destroy" sid="6390051616968219" type="Coin" />
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="4932879068044754">
+                <event-block sid="4932879068044754">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="5822756382280108" type="Player">
                             <param id="0" name="Object">Enemy</param>
@@ -1353,7 +1353,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="5773756130878421">
+                <event-block sid="5773756130878421">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="5506649844452256" type="Player">
                             <param id="0" name="Object">Fly</param>
@@ -1469,7 +1469,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="2958022666480023">
+                <event-block sid="2958022666480023">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="3582187178619533" type="Player">
                             <param id="0" name="Object">Slime</param>
@@ -1585,7 +1585,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6987237710773882">
+                <event-block sid="6987237710773882">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="7498232433434811" type="Player">
                             <param id="0" name="Object">Blocker</param>
@@ -1934,7 +1934,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="1090121749564453">
+                <event-block sid="1090121749564453">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="1915617776667057" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -1982,7 +1982,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6478580908236552">
+                <event-block sid="6478580908236552">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="4773175320306726" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -2030,7 +2030,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="3284507238047814">
+                <event-block sid="3284507238047814">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="5551582626512389" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -2078,7 +2078,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="2459814288080798">
+                <event-block sid="2459814288080798">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="1751026253036861" type="Player">
                             <param id="0" name="Instance variable">life</param>
@@ -2198,7 +2198,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="9204982721248199">
+                <event-block sid="9204982721248199">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="78225731255813" type="Fly">
                             <param id="0" name="Instance variable">life</param>
@@ -2270,7 +2270,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="9454944183743302">
+                <event-block sid="9454944183743302">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="8345788698355872" type="Slime">
                             <param id="0" name="Instance variable">life</param>
@@ -2399,7 +2399,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="5402771042784259">
+                <event-block sid="5402771042784259">
                     <conditions>
                         <condition behavior="Platform" id="3" name="Is jumping" sid="1869987437769891" type="Star" />
                     </conditions>
@@ -2450,7 +2450,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="8792421453470674">
+                <event-block sid="8792421453470674">
                     <conditions>
                         <condition behavior="Platform" id="3" name="Is jumping" sid="8901509842487459" type="Mushroom" />
                     </conditions>
@@ -2555,9 +2555,9 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="" sid="4485066291661521" title="Bgm">
+        <event-group description="" sid="4485066291661521" title="Bgm">
             <sub-events>
-                <event-block collapsed="1" sid="8378716022662507">
+                <event-block sid="8378716022662507">
                     <conditions>
                         <condition id="-4" name="Trigger once while true" sid="5665712156002249" type="System" />
                     </conditions>
@@ -2664,7 +2664,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block collapsed="1" sid="4153992389788106">
+        <event-block sid="4153992389788106">
             <conditions>
                 <condition id="0" name="On function" sid="1143780483638221" type="Function">
                     <param id="0" name="Name">&quot;CreateObject&quot;</param>
@@ -2689,7 +2689,7 @@
                 </action>
             </actions>
             <sub-events>
-                <event-block collapsed="1" sid="3334282208380972">
+                <event-block sid="3334282208380972">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="6377748598297995" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2757,7 +2757,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="4684317160330933">
+                        <event-block sid="4684317160330933">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="9282788145354797" type="System">
                                     <param id="0" name="Variable">WideVariation</param>
@@ -2907,7 +2907,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6785198773307701">
+                <event-block sid="6785198773307701">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="8360692198922932" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -2926,7 +2926,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="7556961883700548">
+                        <event-block any="1" sid="7556961883700548">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="4699369309390841" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -2975,7 +2975,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="6194932686307003">
+                        <event-block sid="6194932686307003">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="3613650567995971" type="System">
                                     <param id="0" name="Variable">WideVariation</param>
@@ -2997,7 +2997,7 @@
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block collapsed="1" sid="1418408978506195">
+                                <event-block sid="1418408978506195">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="1107210618281121" type="System">
                                             <param id="0" name="Variable">EnemiesVariation</param>
@@ -3059,7 +3059,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="9873577629592697">
+                                <event-block sid="9873577629592697">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="904044546987238" type="System">
                                             <param id="0" name="Variable">EnemiesVariation</param>
@@ -3125,7 +3125,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="7595968218827235">
+                <event-block sid="7595968218827235">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="3148959204486972" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -3144,7 +3144,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="6928695699797022">
+                        <event-block any="1" sid="6928695699797022">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="7518128308296029" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -3193,7 +3193,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="5473297094934572">
+                        <event-block sid="5473297094934572">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="8967771370895367" type="System">
                                     <param id="0" name="Variable">WideVariation</param>
@@ -3215,7 +3215,7 @@
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block collapsed="1" sid="5412535386837559">
+                                <event-block sid="5412535386837559">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="3886798824455417" type="System">
                                             <param id="0" name="Variable">EnemiesVariation</param>
@@ -3277,7 +3277,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block collapsed="1" sid="1533575028476193">
+                                <event-block sid="1533575028476193">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="6617091891896741" type="System">
                                             <param id="0" name="Variable">EnemiesVariation</param>
@@ -3343,7 +3343,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="6644944064766411">
+                <event-block sid="6644944064766411">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="9765357758382479" type="System">
                             <param id="0" name="Variable">CurrentLevel</param>
@@ -3362,7 +3362,7 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block any="1" collapsed="1" sid="6927354907691136">
+                        <event-block any="1" sid="6927354907691136">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="5953108436831646" type="System">
                                     <param id="0" name="Variable">HalfVariation</param>
@@ -3411,7 +3411,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block collapsed="1" sid="7985169240013809">
+                        <event-block sid="7985169240013809">
                             <conditions>
                                 <condition id="-14" name="Compare variable" sid="5267023818631221" type="System">
                                     <param id="0" name="Variable">WideVariation</param>
@@ -3433,7 +3433,7 @@
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block collapsed="1" sid="8171313978324889">
+                                <event-block sid="8171313978324889">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="2550709573293767" type="System">
                                             <param id="0" name="Variable">EnemiesVariation</param>
@@ -3561,7 +3561,7 @@
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block collapsed="1" sid="4197080698769848">
+                <event-block sid="4197080698769848">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="1129392938021526" type="System">
                             <param id="0" name="Variable">BridgeLogsVariation</param>
@@ -3659,7 +3659,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="7884969092319558">
+                <event-block sid="7884969092319558">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="4167696631668781" type="System">
                             <param id="0" name="Variable">MushroomVariation</param>
@@ -3747,7 +3747,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block collapsed="1" sid="797253448159978">
+                <event-block sid="797253448159978">
                     <conditions>
                         <condition id="-14" name="Compare variable" sid="3367991449537522" type="System">
                             <param id="0" name="Variable">CloudTimer</param>

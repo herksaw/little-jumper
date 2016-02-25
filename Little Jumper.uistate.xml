@@ -10,12 +10,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout>Game Layout</layout>
-        <layout>Main Menu Layout</layout>
-        <layout>Selection Layout</layout>
-        <event-sheet active="1">Game Event</event-sheet>
-        <event-sheet>Main Menu Event</event-sheet>
-        <event-sheet>Selection Event</event-sheet>
+        <layout order="1">Game Layout</layout>
+        <layout order="2">Main Menu Layout</layout>
+        <layout order="3">Selection Layout</layout>
+        <event-sheet order="4">Game Event</event-sheet>
+        <event-sheet active="1" order="5">Main Menu Event</event-sheet>
+        <event-sheet order="6">Selection Event</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -32,4 +32,60 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <family expanded="0" name="Buttons" />
         <family expanded="0" name="Key" />
     </families-expanded>
+    <folders-expanded>
+        <folder expanded="1" path="object-folder/" />
+        <folder expanded="1" path="layout-folder/" />
+        <folder expanded="1" path="event-folder/" />
+        <folder expanded="0" path="file-folder/" />
+        <folder expanded="0" path="sound-folder/" />
+        <folder expanded="0" path="music-folder/" />
+        <folder expanded="0" path="file-folder/Fonts/Chunkfive/" />
+        <folder expanded="0" path="file-folder/Fonts/Source Sans Pro/" />
+        <folder expanded="0" path="file-folder/Icons/" />
+        <folder expanded="1" path="file-folder/Fonts/" />
+        <folder expanded="1" path="animation-folder/Beta/" />
+        <folder expanded="1" path="animation-folder/GrassHalf/" />
+        <folder expanded="1" path="animation-folder/GrassWide/" />
+        <folder expanded="1" path="animation-folder/Fly/" />
+        <folder expanded="1" path="animation-folder/Cloud/" />
+        <folder expanded="1" path="animation-folder/Coin/" />
+        <folder expanded="1" path="animation-folder/Health/" />
+        <folder expanded="1" path="animation-folder/HUDBeta/" />
+        <folder expanded="1" path="animation-folder/HUDCoin/" />
+        <folder expanded="1" path="animation-folder/BridgeLogs/" />
+        <folder expanded="1" path="animation-folder/LockBlue/" />
+        <folder expanded="1" path="animation-folder/LockRed/" />
+        <folder expanded="1" path="animation-folder/Star/" />
+        <folder expanded="1" path="animation-folder/HUDKeyBlue/" />
+        <folder expanded="1" path="animation-folder/HUDKeyRed/" />
+        <folder expanded="1" path="animation-folder/Slime/" />
+        <folder expanded="1" path="animation-folder/HUDClose/" />
+        <folder expanded="1" path="animation-folder/SandHalf/" />
+        <folder expanded="1" path="animation-folder/SandWide/" />
+        <folder expanded="1" path="animation-folder/SnowHalf/" />
+        <folder expanded="1" path="animation-folder/SnowWide/" />
+        <folder expanded="1" path="animation-folder/StoneHalf/" />
+        <folder expanded="1" path="animation-folder/StoneWide/" />
+        <folder expanded="1" path="animation-folder/Mushroom/" />
+        <folder expanded="1" path="animation-folder/Logo/" />
+        <folder expanded="1" path="animation-folder/Button/" />
+        <folder expanded="1" path="animation-folder/ButtonAudio/" />
+        <folder expanded="1" path="animation-folder/PauseBox/" />
+        <folder expanded="1" path="animation-folder/ButtonYes/" />
+        <folder expanded="1" path="animation-folder/ButtonNo/" />
+        <folder expanded="1" path="animation-folder/LoadingLogo/" />
+        <folder expanded="1" path="animation-folder/LoadingGameLogo/" />
+        <folder expanded="1" path="animation-folder/ButtonPlay/" />
+        <folder expanded="1" path="animation-folder/ButtonRestart/" />
+        <folder expanded="1" path="animation-folder/ButtonMenu/" />
+        <folder expanded="1" path="animation-folder/Fish/" />
+        <folder expanded="1" path="animation-folder/Blocker/" />
+        <folder expanded="1" path="animation-folder/IconBeta/" />
+        <folder expanded="1" path="animation-folder/IconAlpha/" />
+        <folder expanded="1" path="animation-folder/IconGamma/" />
+        <folder expanded="1" path="animation-folder/KeyRed/" />
+        <folder expanded="1" path="animation-folder/KeyBlue/" />
+        <folder expanded="1" path="animation-folder/Alpha/" />
+        <folder expanded="1" path="animation-folder/Gamma/" />
+    </folders-expanded>
 </c2uistate>

@@ -25,6 +25,7 @@
                     <param id="0" name="Family name">&quot;chunkfiveroman&quot;</param>
                     <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
                 </action>
+                <action id="33" name="Stop all" sid="5043721835135295" type="Audio" />
                 <action id="0" name="Play" sid="9199110076460205" type="Audio">
                     <param id="0" name="Audio file">main_menu_bgm</param>
                     <param id="2" name="Loop">1</param>
