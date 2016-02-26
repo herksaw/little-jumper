@@ -832,7 +832,7 @@
                                 <condition id="8" name="Compare orientation" sid="4601993392570043" type="Touch">
                                     <param id="0" name="Orientation">2</param>
                                     <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Angle">-8</param>
+                                    <param id="2" name="Angle">-6</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -850,7 +850,7 @@
                                 <condition id="8" name="Compare orientation" sid="5497034391299379" type="Touch">
                                     <param id="0" name="Orientation">2</param>
                                     <param id="1" name="Comparison">4</param>
-                                    <param id="2" name="Angle">8</param>
+                                    <param id="2" name="Angle">6</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -2557,110 +2557,111 @@
         </event-group>
         <event-group description="" sid="4485066291661521" title="Bgm">
             <sub-events>
-                <event-block sid="8378716022662507">
+                <event-block sid="6974007091758552">
                     <conditions>
                         <condition id="-4" name="Trigger once while true" sid="5665712156002249" type="System" />
+                        <condition id="-14" name="Compare variable" sid="4262306147282243" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
                     </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="6456477849405294" type="Audio">
+                            <param id="0" name="Audio file">grass_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;grass_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1744138259485308">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="1619453021006781" type="System" />
+                        <condition id="-14" name="Compare variable" sid="7123464075848832" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="1763114795183832" type="Audio">
+                            <param id="0" name="Tag">&quot;grass_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="6624435667443793" type="Audio">
+                            <param id="0" name="Audio file">sand_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;sand_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="9390665979397402">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="8459122586910539" type="System" />
+                        <condition id="-14" name="Compare variable" sid="1575338849315379" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="3315505318498546" type="Audio">
+                            <param id="0" name="Tag">&quot;sand_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="2912058641166697" type="Audio">
+                            <param id="0" name="Audio file">snow_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;snow_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3176068053784991">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="6143645138412434" type="System" />
+                        <condition id="-14" name="Compare variable" sid="6250785837409885" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="2199716324215382" type="Audio">
+                            <param id="0" name="Tag">&quot;snow_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="8873989250893728" type="Audio">
+                            <param id="0" name="Audio file">stone_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;stone_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3249386080997638">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="298652438791782" type="System" />
+                        <condition id="-14" name="Compare variable" sid="3000988856585264" type="System">
+                            <param id="0" name="Variable">CurrentLevel</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Stop" sid="6392682570693268" type="Audio">
+                            <param id="0" name="Tag">&quot;stone_bgm&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="2586004301140326" type="Audio">
+                            <param id="0" name="Audio file">level_5_bgm</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;level_5_bgm&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8378716022662507">
+                    <conditions />
                     <actions />
-                    <sub-events>
-                        <event-block sid="6974007091758552">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="4262306147282243" type="System">
-                                    <param id="0" name="Variable">CurrentLevel</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="0" name="Play" sid="6456477849405294" type="Audio">
-                                    <param id="0" name="Audio file">grass_bgm</param>
-                                    <param id="2" name="Loop">1</param>
-                                    <param id="3" name="Volume">0</param>
-                                    <param id="1" name="Tag (optional)">&quot;grass_bgm&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="1744138259485308">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="7123464075848832" type="System">
-                                    <param id="0" name="Variable">CurrentLevel</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">2</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="6" name="Stop" sid="1763114795183832" type="Audio">
-                                    <param id="0" name="Tag">&quot;grass_bgm&quot;</param>
-                                </action>
-                                <action id="0" name="Play" sid="6624435667443793" type="Audio">
-                                    <param id="0" name="Audio file">sand_bgm</param>
-                                    <param id="2" name="Loop">1</param>
-                                    <param id="3" name="Volume">0</param>
-                                    <param id="1" name="Tag (optional)">&quot;sand_bgm&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="9390665979397402">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="1575338849315379" type="System">
-                                    <param id="0" name="Variable">CurrentLevel</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">3</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="6" name="Stop" sid="3315505318498546" type="Audio">
-                                    <param id="0" name="Tag">&quot;sand_bgm&quot;</param>
-                                </action>
-                                <action id="0" name="Play" sid="2912058641166697" type="Audio">
-                                    <param id="0" name="Audio file">snow_bgm</param>
-                                    <param id="2" name="Loop">1</param>
-                                    <param id="3" name="Volume">0</param>
-                                    <param id="1" name="Tag (optional)">&quot;snow_bgm&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="3176068053784991">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="6250785837409885" type="System">
-                                    <param id="0" name="Variable">CurrentLevel</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">4</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="6" name="Stop" sid="2199716324215382" type="Audio">
-                                    <param id="0" name="Tag">&quot;snow_bgm&quot;</param>
-                                </action>
-                                <action id="0" name="Play" sid="8873989250893728" type="Audio">
-                                    <param id="0" name="Audio file">stone_bgm</param>
-                                    <param id="2" name="Loop">1</param>
-                                    <param id="3" name="Volume">0</param>
-                                    <param id="1" name="Tag (optional)">&quot;stone_bgm&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="3249386080997638">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="3000988856585264" type="System">
-                                    <param id="0" name="Variable">CurrentLevel</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">5</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="6" name="Stop" sid="6392682570693268" type="Audio">
-                                    <param id="0" name="Tag">&quot;stone_bgm&quot;</param>
-                                </action>
-                                <action id="0" name="Play" sid="2586004301140326" type="Audio">
-                                    <param id="0" name="Audio file">level_5_bgm</param>
-                                    <param id="2" name="Loop">1</param>
-                                    <param id="3" name="Volume">0</param>
-                                    <param id="1" name="Tag (optional)">&quot;level_5_bgm&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
