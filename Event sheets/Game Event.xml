@@ -743,6 +743,38 @@
             <sub-events>
                 <comment>As soon as the player lands, jump immediately.</comment>
                 <comment>Use left and right arrow keys to control the player.  (This is necessary because the &apos;Default controls&apos; property has been set to &apos;No&apos; on the platform behavior, so we can automate jumping.)</comment>
+                <event-block sid="4745090437360585">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="5214892301478799" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="3166079640094007" type="Player">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="6835645391060964" type="Player">
+                            <param id="0" name="Animation">&quot;JumpLeft&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1950110333632853">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="5335459124604985" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="3418716921075604" type="Player">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="6769638700272934" type="Player">
+                            <param id="0" name="Animation">&quot;JumpRight&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="3496833304157111">
                     <conditions>
                         <condition behavior="Platform" id="2" name="Is on floor" sid="8243475057141976" type="Player" />
